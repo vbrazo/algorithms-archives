@@ -3,13 +3,13 @@
 This is my personal algorithms archives and it's where I store my algorithms research that aims to provide resources to better interview developers in my engineering management journey.
 
 - [Algorithms](#algorithms)
-  - [In-place Algorithm](#in-place-algorithm)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
     - [Other Search Algorithms](#other-search-algorithms)
   - [Sorting](#sorting)
     - [Introduction](#introduction)
+    - [In-place Algorithm](#in-place-algorithm)
     - [Bubble and Selection Sort](#bubble-and-selection-sort)
     - [Insertion Sort](#insertion-sort)
     - [Quick Sort](#quick-sort)
@@ -26,12 +26,6 @@ This is my personal algorithms archives and it's where I store my algorithms res
   - [Advanced Algorithms](#advanced-algorithms)
 
 # Algorithms
-
-## In-place Algorithm
-
-An in-place algorithm is an algorithm which transforms input using no auxiliary data structure. However, a small amount of extra storage space is allowed for auxiliary variables. The input is usually overwritten by the output as the algorithm executes. In-place algorithm updates input sequence only through replacement or swapping of elements. An algorithm which is not in-place is sometimes called not-in-place or out-of-place.
-
-Reference: https://en.wikipedia.org/wiki/In-place_algorithm
 
 ## Searching
 
@@ -58,7 +52,21 @@ In this section, I'm reviewing different collection where we apply linear search
 
 ### Introduction
 
+## In-place Algorithm
+
+An in-place algorithm is an algorithm which transforms input using no auxiliary data structure. However, a small amount of extra storage space is allowed for auxiliary variables. The input is usually overwritten by the output as the algorithm executes. In-place algorithm updates input sequence only through replacement or swapping of elements. An algorithm which is not in-place is sometimes called not-in-place or out-of-place.
+
+Reference: https://en.wikipedia.org/wiki/In-place_algorithm
+
 ### Bubble and Selection Sort
+
+Bubble Sort is one of the most basic sorting algorithms. It is not used very often in practice other than explaining sorting to beginners. Selection sort, in a way, is a variation of bubble sort used where write to disk is costly.
+
+#### Bubble Sort
+
+Each iteration in bubble sort compares adjacent elements successively and move the larger one toward right by swapping them.
+
+The time complexity of a bubble sort is `O(n^2)`.
 
 ### Insertion Sort
 
