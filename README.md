@@ -3,15 +3,16 @@
 This is my personal algorithms archives and it's where I store my algorithms research that aims to provide resources to better interview developers in my engineering management journey.
 
 - [Algorithms](#algorithms)
-  - [In-place Algorithm](#in-place-algorithm)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
     - [Other Search Algorithms](#other-search-algorithms)
   - [Sorting](#sorting)
     - [Introduction](#introduction)
+    - [In-place Algorithm](#in-place-algorithm)
     - [Bubble and Selection Sort](#bubble-and-selection-sort)
-    - [Insertion Sort](#insertion-sort)
+      - [Bubble Sort](#bubble-sort)
+      - [Selection Sort](#selection-sort)
     - [Quick Sort](#quick-sort)
     - [Merge Sort](#merge-sort)
     - [Heap Sort](#heap-sort)
@@ -26,12 +27,6 @@ This is my personal algorithms archives and it's where I store my algorithms res
   - [Advanced Algorithms](#advanced-algorithms)
 
 # Algorithms
-
-## In-place Algorithm
-
-An in-place algorithm is an algorithm which transforms input using no auxiliary data structure. However, a small amount of extra storage space is allowed for auxiliary variables. The input is usually overwritten by the output as the algorithm executes. In-place algorithm updates input sequence only through replacement or swapping of elements. An algorithm which is not in-place is sometimes called not-in-place or out-of-place.
-
-Reference: https://en.wikipedia.org/wiki/In-place_algorithm
 
 ## Searching
 
@@ -58,9 +53,43 @@ In this section, I'm reviewing different collection where we apply linear search
 
 ### Introduction
 
+## In-place Algorithm
+
+An in-place algorithm is an algorithm which transforms input using no auxiliary data structure. However, a small amount of extra storage space is allowed for auxiliary variables. The input is usually overwritten by the output as the algorithm executes. In-place algorithm updates input sequence only through replacement or swapping of elements. An algorithm which is not in-place is sometimes called not-in-place or out-of-place.
+
+Reference: https://en.wikipedia.org/wiki/In-place_algorithm
+
 ### Bubble and Selection Sort
 
-### Insertion Sort
+Bubble Sort is one of the most basic sorting algorithms. It is not used very often in practice other than explaining sorting to beginners. Selection sort, in a way, is a variation of bubble sort used where write to disk is costly.
+
+#### Bubble Sort
+
+Each iteration in bubble sort compares adjacent elements successively and move the larger one toward right by swapping them.
+
+The time complexity of a bubble sort is `O(n^2)`.
+
+### Selection Sort
+
+Selection Sort is a variation of Bubble Sort where swaping happens only once per pass.
+Each pass identify largest element in current array and swap it with element
+at last position. Number of comparison are same as that of bubble sort,
+but number of swaps are `O(n)`.
+
+An important observation about selection sort is that for an array of
+size `n`, it performs only `O(n)` swap operations in worst case.
+This makes section sort a sorting algorithm that makes minimum number of writes
+on the disk. If write operation is expensive, selection sort is a good choice.
+
+The most optimal sorting algorithm in terms of number of write operations is cycle sort.
+But, it is not a stable sorting algorithm.
+
+The time complexity of a selection sort is `O(n^2)` time in best, worst and average
+case. The extra memory taken is constant, because our implementation is non-recursive.
+The recursive implementation takes `O(n)` extra memory.
+
+Common implementation of selection sort is observed to be taking almost half
+the time taken by bubble sort.
 
 ### Quick Sort
 
