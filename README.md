@@ -73,23 +73,23 @@ The time complexity of a bubble sort is `O(n^2)`.
 
 Selection Sort is a variation of Bubble Sort where swaping happens only once per pass.
 Each pass identify largest element in current array and swap it with element
-at last position. Number of comparison are same as that of bubble sort,
+at last position. Number of comparison are same as that of Bubble Sort,
 but number of swaps are `O(n)`.
 
 An important observation about selection sort is that for an array of
 size `n`, it performs only `O(n)` swap operations in worst case.
-This makes section sort a sorting algorithm that makes minimum number of writes
+This makes Selection Sort a sorting algorithm that makes minimum number of writes
 on the disk. If write operation is expensive, selection sort is a good choice.
 
-The most optimal sorting algorithm in terms of number of write operations is cycle sort.
+The most optimal sorting algorithm in terms of number of write operations is `cycle sort`.
 But, it is not a stable sorting algorithm.
 
 The time complexity of a selection sort is `O(n^2)` time in best, worst and average
 case. The extra memory taken is constant, because our implementation is non-recursive.
 The recursive implementation takes `O(n)` extra memory.
 
-Common implementation of selection sort is observed to be taking almost half
-the time taken by bubble sort.
+Common implementation of Selection Sort is observed to be taking almost half
+the time taken by Bubble Sort.
 
 ### Quick Sort
 
