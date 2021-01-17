@@ -13,8 +13,8 @@
 # array and the new length is i.
 #
 
-# Time complexity : O(n). Assume the array has a total of nn elements, both i and j traverse at most 2n steps.
-# Space complexity : O(1).
+# Time complexity: O(n). Assume the array has a total of nn elements, both i and j traverse at most 2n steps.
+# Space complexity: O(1).
 
 def remove_element(nums, val)
   pointer1 = 0
@@ -72,6 +72,14 @@ puts(len)
 # Note that the last element that was swapped in could be the value you want to
 # remove itself. But don't worry, in the next iteration we will still check this element.
 #
+
+# Complexity analysis
+#
+# Time complexity: O(n). Both i and n traverse at most n steps.
+# In this approach, the number of assignment operations is equal to the
+# number of elements to remove. So it is more efficient if elements to remove are rare.
+#
+# Space complexity: O(1)
 
 def remove_element(nums, val)
   n = nums.length
