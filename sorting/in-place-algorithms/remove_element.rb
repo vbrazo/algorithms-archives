@@ -13,21 +13,88 @@
 # array and the new length is i.
 #
 
-# Time complexity : O(n). Assume the array has a total of nn elements, both i and j traverse at most 2n steps.
-# Space complexity : O(1).
+# Time complexity: O(n). Assume the array has a total of nn elements, both i and j traverse at most 2n steps.
+# Space complexity: O(1).
 
-def remove_element(nums, value)
+def remove_element(nums, val)
   pointer1 = 0
-
-  nums.each_with_index do |val, pointer2|
-    if (nums[pointer2] != value)
+  nums.each_with_index do |num, pointer2|
+    if val != num
       nums[pointer1] = nums[pointer2]
       pointer1 = pointer1 + 1
     end
   end
-
-  print("#{nums}\n")
   pointer1
+end
+
+puts "First Example:"
+nums = [0, 1, 2, 2, 3, 0, 4, 2]
+nums.sort
+val = 2
+
+len = remove_element(nums, val)
+puts(len)
+# Output: 5, nums = [0,1,4,0,3]
+
+puts "\nSecond Example:"
+nums = [3, 2, 2, 3]
+nums.sort
+val = 3
+
+len = remove_element(nums, val)
+puts(len)
+# Output: 2, nums = [2,2]
+
+puts "\nThird Example:"
+nums = [4,5]
+nums.sort
+val = 4
+
+len = remove_element(nums, val)
+puts(len)
+
+# Approach 2: Two Pointers - when elements to remove are rare
+#
+# Intuition
+#
+# Now consider cases where the array contains few elements to remove.
+# For example, nums = [1,2,3,5,4], val = 4. The previous algorithm will do
+# unnecessary copy operation of the first four elements.
+# Another example is nums = [4,1,2,3,5], val = 4. It seems unnecessary to
+# move elements [1,2,3,5] one step left as the problem description mentions
+# that the order of elements could be changed.
+#
+# Algorithm
+#
+# When we encounter nums[i] = val, we can swap the current element out
+# with the last element and dispose the last one. This essentially reduces the array's size by 1.
+#
+# Note that the last element that was swapped in could be the value you want to
+# remove itself. But don't worry, in the next iteration we will still check this element.
+#
+
+# Complexity analysis
+#
+# Time complexity: O(n). Both i and n traverse at most n steps.
+# In this approach, the number of assignment operations is equal to the
+# number of elements to remove. So it is more efficient if elements to remove are rare.
+#
+# Space complexity: O(1)
+
+def remove_element(nums, val)
+  n = nums.length
+  pointer = 0
+
+  while pointer < n
+    if nums[pointer] == val
+      nums[pointer] = nums[n - 1]
+      n = n - 1
+    else
+      pointer=pointer+1
+    end
+  end
+
+  return pointer
 end
 
 puts "First Example:"
