@@ -7,6 +7,74 @@
 
 # Return true if there is a cycle in the linked list. Otherwise, return false
 
+
+# Approach 1: Hash Table
+#
+# Intuition
+#
+# To detect if a list is cyclic, we can check whether a node had been visited before.
+# A natural way is to use a hash table.
+#
+# Algorithm
+#
+# We go through each node one by one and record each node's reference (or memory address)
+# in a hash table. If the current node is null, we have reached the end of the list and
+# it must not be cyclic. If current node’s reference is in the hash table, then return true.
+
+# Complexity analysis
+#
+# Let nn be the total number of nodes in the linked list.
+#
+# Time complexity: O(n). We visit each of the nn elements in the list at most once.
+# Adding a node to the hash table costs only O(1) time.
+#
+# Space complexity: O(n). The space depends on the number of elements added
+# to the hash table, which contains at most nn elements.
+class ListNode
+  attr_accessor :val, :next
+  def initialize(val)
+    @val = val
+    @next = nil
+  end
+end
+
+# @param {ListNode} head
+# @return {Boolean}
+def has_cycle(head)
+  nodes_seen = []
+
+  while head != nil
+    return true if nodes_seen.include? head
+
+    nodes_seen.push(head)
+    head = head.next
+  end
+
+  return false
+end
+
+head = [3,2,0,-4]
+pos = 1
+has_cycle(head)
+# => true
+# Explanation: There is a cycle in the linked list,
+# where the tail connects to the 1st node (0-indexed).
+
+head = [1,2]
+pos = 0
+has_cycle(head)
+# => true
+# Explanation: There is a cycle in the linked list,
+# where the tail connects to the 0th node.
+
+head = [1]
+pos = -1
+has_cycle(head)
+# => false
+# Explanation: There is no cycle in the linked list.
+
+
+
 # Approach 2: Floyd's Cycle Finding Algorithm
 # Intuition
 #
