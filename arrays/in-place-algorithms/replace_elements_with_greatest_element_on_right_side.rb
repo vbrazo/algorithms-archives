@@ -8,30 +8,30 @@
 # @param {Integer[]} arr
 # @return {Integer[]}
 def replace_elements(arr)
-    return [-1] if arr.length == 1
+  return [-1] if arr.length == 1
 
-    arr.each_with_index do |value, pointer1|
-        max=0
-        (pointer1+1..arr.length-1).each do |pointer2|
-           if max < arr[pointer2]
-              max = arr[pointer2]
-           end
-        end
-        if max != 0
-            arr[pointer1] = max
-        end
-    end
-    arr[arr.length-1] = -1
-    arr
+  arr.each_with_index do |value, pointer1|
+      max=0
+      (pointer1+1..arr.length-1).each do |pointer2|
+         if max < arr[pointer2]
+            max = arr[pointer2]
+         end
+      end
+      if max != 0
+          arr[pointer1] = max
+      end
+  end
+  arr[arr.length-1] = -1
+  arr
 end
 
 arr = [17,18,5,4,6,1]
 puts(replace_elements(arr))
 # => [18,6,6,6,1,-1]
-# Output: [18,6,6,6,1,-1]
 
 arr = [400]
-# Output: [-1]
+puts(replace_elements(arr))
+# => [-1]
 
 
 # Second approach
@@ -40,29 +40,29 @@ arr = [400]
 # @param {Integer[]} arr
 # @return {Integer[]}
 def replace_elements(arr)
-    return [-1] if arr.length == 1
+  return [-1] if arr.length == 1
 
-    new = []
-    max = -1
+  new = []
+  max = -1
 
-    (arr.length-1).downto(0) do |i|
-      if max > arr[i]
-        new_max = max
-      else
-        new_max = arr[i]
-      end
-
-      arr[i] = max
-      max = new_max
+  (arr.length-1).downto(0) do |i|
+    if max > arr[i]
+      new_max = max
+    else
+      new_max = arr[i]
     end
 
-    arr
+    arr[i] = max
+    max = new_max
+  end
+
+  arr
 end
 
 arr = [17,18,5,4,6,1]
 puts(replace_elements(arr))
 # => [18,6,6,6,1,-1]
-# Output: [18,6,6,6,1,-1]
 
 arr = [400]
-# Output: [-1]
+puts(replace_elements(arr))
+# => [-1]
