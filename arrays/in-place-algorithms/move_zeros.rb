@@ -25,10 +25,10 @@
 
 # Approach #1 (Space Sub-Optimal)
 
-# // Count the zeroes
-# // Make all the non-zero elements retain their original order
-# // Move all zeroes to the end
-# // Combine the result
+# 1. Count the zeroes
+# 2. Make all the non-zero elements retain their original order
+# 3. Move all zeroes to the end
+# 4. Combine the result
 
 # Complexity Analysis
 
@@ -63,3 +63,52 @@ def move_zeroes(nums)
 end
 
 move_zeroes([0,1,0,3,12])
+# => [1,3,12,0,0]
+
+# Approach #2 (Space Optimal, Operation Sub-Optimal)
+
+# This approach works the same way as above, i.e., first fulfills
+# one requirement and then another. The catch? It does it in a clever way.
+# The above problem can also be stated in alternate way, "Bring all the non
+# 0 elements to the front of array keeping their relative order same".
+
+# This is a 2 pointer approach. The fast pointer which is denoted by
+# variable "cur" does the job of processing new elements. If the newly
+# found element is not a 0, we record it just after the last found non-0
+# element. The position of last found non-0 element is denoted by the slow
+# pointer "last_non_zero_found_at" variable. As we keep finding new non-0 elements,
+# we just overwrite them at the "last_non_zero_found_at + 1" 'th index. This
+# overwrite will not result in any loss of data because we already processed
+# what was there(if it were non-0,it already is now written at
+# it's corresponding index, or if it were 0 it will be handled later in time).
+
+# After the "cur" index reaches the end of array, we now know that all
+# the non-0 elements have been moved to beginning of array in their original
+# order. Now comes the time to fulfil other requirement, "Move all 0's to the
+# end". We now simply need to fill all the indexes after the
+# "last_non_zero_found_at" index with 0.
+
+def move_zeroes(nums)
+  last_non_zero_found_at = 0
+
+  # If the current element is not 0, then we need to
+  # append it just in front of last non 0 element we found.
+  nums.each_with_index do |value, index|
+    if nums[index] != 0
+      last_non_zero_found_at = last_non_zero_found_at + 1
+      nums[last_non_zero_found_at] = nums[index]
+    end
+  end
+
+  # After we have finished processing new elements,
+ 	# all the non-zero elements are already at beginning of array.
+ 	# We just need to fill remaining array with 0's
+  (last_non_zero_found_at..nums.length-1).each_with_index do |value, index|
+    nums[index] = 0
+  end
+
+  print(nums)
+end
+
+move_zeroes([0,1,0,3,12])
+# => [1,3,12,0,0]
