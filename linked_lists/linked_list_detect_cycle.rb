@@ -77,3 +77,83 @@ def detectCycle(head)
 
   return
 end
+
+
+# Approach 2: Floyd's Tortoise and Hare
+#
+# Intuition
+#
+# What happens when a fast runner (a hare) races a slow runner (a tortoise)
+# on a circular track? At some point, the fast runner will catch up to the slow
+# runner from behind.
+#
+# Algorithm
+#
+# Floyd's algorithm is separated into two distinct phases. In the first phase,
+# it determines whether a cycle is present in the list. If no cycle is present,
+# it returns null immediately, as it is impossible to find the entrance to a
+# nonexistant cycle. Otherwise, it uses the located "intersection node" to
+# find the entrance to the cycle.
+
+
+# Complexity Analysis
+#
+# Time complexity : O(n)
+#
+# For cyclic lists, hare and tortoise will point to the same node
+# after F+C-h iterations, as demonstrated in the proof of correctness.
+# F+C−h≤F+C=n, so phase 1 runs in O(n) time.
+# Phase 2 runs for F < n iterations, so it also runs in O(n) time.
+#
+# For acyclic lists, hare will reach the end of the list in roughly n/2
+# 2n iterations, causing the function to return before phase 2. Therefore,
+# regardless of which category of list the algorithm receives, it runs in time
+# linearly proportional to the number of nodes.
+#
+# Space complexity: O(1)
+#
+# Floyd's Tortoise and Hare algorithm allocates only pointers, so it runs with constant overall memory usage.
+
+def getIntersect(head)
+  tortoise = head
+  hare = head
+
+  # A fast pointer will either loop around a cycle and meet the slow
+  # pointer or reach the `null` at the end of a non-cyclic list.
+  while hare != nil and hare.next != nil
+    tortoise = tortoise.next
+    hare = hare.next.next
+
+    if tortoise == hare
+      return tortoise
+    end
+  end
+
+  return
+end
+
+def detectCycle(head)
+  if head.nil?
+    return
+  end
+
+  # If there is a cycle, the fast/slow pointers will intersect at some
+  # node. Otherwise, there is no cycle, so we cannot find an entrance to
+  # a cycle.
+  intersect = self.getIntersect(head)
+  if intersect.nil?
+    return
+  end
+
+  # To find the entrance to the cycle, we have two pointers traverse at
+  # the same speed -- one from the front of the list, and the other from
+  # the point of intersection.
+  ptr1 = head
+  ptr2 = intersect
+  while ptr1 != ptr2
+    ptr1 = ptr1.next
+    ptr2 = ptr2.next
+  end
+
+  return ptr1
+end
