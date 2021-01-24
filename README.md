@@ -103,6 +103,8 @@ the time taken by Bubble Sort.
 
 ## Recursion
 
+Recursion is an important concept in computer science. It is a foundation for many other algorithms and data structures.
+
 ## Dynamic Programming
 
 ## Backtracking
