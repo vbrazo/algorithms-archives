@@ -98,7 +98,7 @@ end
 
 # Complexity Analysis
 #
-# Time complexity : O(n)
+# Time complexity: O(n)
 #
 # For cyclic lists, hare and tortoise will point to the same node
 # after F+C-h iterations, as demonstrated in the proof of correctness.
