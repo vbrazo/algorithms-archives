@@ -57,7 +57,7 @@ class InPlaceAlgorithm
 
     pointer1 = 0
 
-    nums.each_with_index do |_, j|
+    nums.each_with_index do |_, pointer2|
       if (nums[pointer2] != nums[pointer1])
         pointer1 = pointer1 + 1
 
