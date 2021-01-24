@@ -30,11 +30,19 @@ def has_cycle(head)
   return false
 end
 
+head = [3,2,0,-4]
+pos = 1
+has_cycle(head)
+# => true
+# Explanation: There is a cycle in the linked list,
+# where the tail connects to the 1st node (0-indexed).
+
 head = [1,2]
 pos = 0
 has_cycle(head)
 # => true
-# Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.
+# Explanation: There is a cycle in the linked list,
+# where the tail connects to the 0th node.
 
 head = [1]
 pos = -1
