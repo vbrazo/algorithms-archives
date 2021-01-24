@@ -32,17 +32,18 @@
 
 # Complexity Analysis
 
-# Space Complexity : O(n). Since we are creating the "new" array to store results.
+# Space Complexity: O(n).
+# Since we are creating the "new" array to store results.
 
-# Time Complexity: O(n). However, the total number of operations are sub-optimal.
+# Time Complexity: O(n).
+# However, the total number of operations are sub-optimal.
 # We can achieve the same result in less number of operations.
 
 # If asked in an interview, the below solution would be a good start.
-# You can explain the interviewer(not code) the above and build your base for the next Optimal Solution.
+# You can explain the interviewer (not code) the above and build
+# your base for the next Optimal Solution.
 
 def move_zeroes(nums)
-  pointer1=0
-
   count = nums.select { |i| i.zero? }.count
 
   new = []
@@ -54,9 +55,11 @@ def move_zeroes(nums)
 
   count.times { new.push(0) }
 
-  nums = new
+  nums.each_with_index do |value, index|
+    nums[index] = new[index]
+  end
 
-  puts nums
+  nums
 end
 
 move_zeroes([0,1,0,3,12])
