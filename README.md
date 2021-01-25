@@ -16,11 +16,11 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Bubble and Selection Sort](#bubble-and-selection-sort)
       - [Bubble Sort](#bubble-sort)
       - [Selection Sort](#selection-sort)
-    - [Quick Sort](#quick-sort)
+    - [Heap Sort](#heap-sort)
     - [Merge Sort](#merge-sort)
+    - [Quick Sort](#quick-sort)
     - [Radix Sort](#radix-sort)
     - [Shell Sort](#shell-sort)
-    - [Heap Sort](#heap-sort)
 
 # Algorithms
 
@@ -75,7 +75,7 @@ The time complexity of a bubble sort is `O(n^2)`.
 
 #### Selection Sort
 
-Selection Sort is a variation of Bubble Sort where swaping happens only once per pass.
+Selection Sort is a variation of Bubble Sort where swapping happens only once per pass.
 Each pass identify largest element in current array and swap it with element
 at last position. Number of comparison are same as that of Bubble Sort,
 but number of swaps are `O(n)`.
@@ -95,12 +95,21 @@ The recursive implementation takes `O(n)` extra memory.
 Common implementation of Selection Sort is observed to be taking almost half
 the time taken by Bubble Sort.
 
-### Quick Sort
+### Heap Sort
 
 ### Merge Sort
+
+### Quick Sort
+
+In Quick Sort, we pick a random element and partition the array, such all numbers that
+are less than the partitioning element come before all elements that are great than it.
+The partitioning can be performed efficiently through a series of swaps.
+
+If we repeatedly partition the array (and its sub-arrays) around and element, the array
+will eventually become sorted. However, as the partitioned element is not guaranteed to be
+the median (or anywhere near the median), our sorting could be very slow. This is the reason
+for the `O(n^2)` worst case scenario.
 
 ### Radix Sort
 
 ### Shell Sort
-
-### Heap Sort
