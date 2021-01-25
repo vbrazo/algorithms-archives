@@ -16,11 +16,9 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Bubble and Selection Sort](#bubble-and-selection-sort)
       - [Bubble Sort](#bubble-sort)
       - [Selection Sort](#selection-sort)
-    - [Heap Sort](#heap-sort)
     - [Merge Sort](#merge-sort)
     - [Quick Sort](#quick-sort)
     - [Radix Sort](#radix-sort)
-    - [Shell Sort](#shell-sort)
 
 # Algorithms
 
@@ -95,8 +93,6 @@ The recursive implementation takes `O(n)` extra memory.
 Common implementation of Selection Sort is observed to be taking almost half
 the time taken by Bubble Sort.
 
-### Heap Sort
-
 ### Merge Sort
 
 Merge Sort divides the array in half, sorts each of those halves, and then merges them back
@@ -133,5 +129,3 @@ sorting by each subsequent digit, until finally the whole array is sorted.
 Unlike comparison sorting algorithms, which cannot perform better than `O(n log(n))` in the
 average case, radix sort has a runtime of `O(kn)`, where `n` is number of elements and `k`
 is the number of passes of the sorting algorithm.
-
-### Shell Sort
