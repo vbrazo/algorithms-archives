@@ -22,6 +22,56 @@ This is my personal algorithms archives and it's where I store my algorithms res
 
 ## Backtracking
 
+Backtracking is an effective technique for solving algorithmic problems. In backtracking, we perform a depth-first search for solutions, jumping back to the last valid path as soon as we hit a dead end.
+
+The benefit of backtracking is that when it is properly implemented, we are guaranteed to find a solution, if one exists. Further, the solution will be more efficient than a brute-force solution exploration, since we weed out paths that are known to be invalid, a process knwon as prunning.
+
+On the other hand, backtracking cannot guarantee that we will find an optimal solution, and it often leads to factorial or exponential time complexity if we are required to choose one of M paths at each of N steps.
+
+There are three core questions to ask in order to determine whether backtracking is the right algorithm to use for a problem.
+
+1. Can you construct a partial solution?
+2. Can you verify if the partial solution is invalid?
+3. Can you verify if the solution is complete?
+
+To illustrate this concept, we will walk through one of the most common example of backtracking: the N queens puzzle. In this problem, you are given a N x N board and asked to find the number of way N queens can be placed on the board without threatening each other. More explicitly, no two queens are allowed to share the same row, column, or diagonal.
+
+- Can we construct a partial solution?
+
+Yes, we can tentatively place queens on the board.
+
+- Can we verify if th epartial solution is invalid?
+
+Yes, we can check a solution is invalid if two queens threaten each other. To speed this up, we can ssume that all queens already placed so far do not threaten each other, so we only need to check if the last queen we added attacks any other quee.
+
+- Can we verify if the solution is complete?
+
+Yes, we know a solution is complete if all N queens have been placed.
+
+```python
+def n_queens(n, board=[]):
+  if n == len(board):
+    return 1
+  
+  count = 0
+  for col in range(n):
+    board.append(col)
+    if is_valid(board):
+      count += n_queens(n, board)
+     board.pop()
+   return count
+   
+def is_valid(board):
+  current_queen_row, current_queen_col = len(board) - 1, board[-1]
+  
+  # check if any queens can attack the last queen
+  for row, col in enumerate(board[:-1]):
+    diff = abs(current_queen_col - 1)
+    if diff == 0 or diff = current_queen_row - row:
+      return False
+  return True
+```
+
 ## Bit Manipulation
 
 ## Dynamic Programming
