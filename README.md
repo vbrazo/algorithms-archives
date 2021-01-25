@@ -12,9 +12,8 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Binary Search](#binary-search)
   - [Sorting](#sorting)
     - [In-place Algorithm](#in-place-algorithm)
-    - [Bubble and Selection Sort](#bubble-and-selection-sort)
-      - [Bubble Sort](#bubble-sort)
-      - [Selection Sort](#selection-sort)
+    - [Bubble Sort](#bubble-sort)
+    - [Selection Sort](#selection-sort)
     - [Merge Sort](#merge-sort)
     - [Quick Sort](#quick-sort)
     - [Radix Sort](#radix-sort)
@@ -71,17 +70,15 @@ An in-place algorithm is an algorithm which transforms input using no auxiliary 
 
 Reference: https://en.wikipedia.org/wiki/In-place_algorithm
 
-### Bubble and Selection Sort
+### Bubble Sort
 
 Bubble Sort is one of the most basic sorting algorithms. It is not used very often in practice other than explaining sorting to beginners. Selection sort, in a way, is a variation of bubble sort used where write to disk is costly.
-
-#### Bubble Sort
 
 Each iteration in bubble sort compares adjacent elements successively and move the larger one toward right by swapping them.
 
 The time complexity of a bubble sort is `O(n^2)`.
 
-#### Selection Sort
+### Selection Sort
 
 Selection Sort is a variation of Bubble Sort where swapping happens only once per pass.
 Each pass identify largest element in current array and swap it with element
