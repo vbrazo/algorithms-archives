@@ -3,6 +3,11 @@
 This is my personal algorithms archives and it's where I store my algorithms research that aims to provide resources to better interview developers in my engineering management journey.
 
 - [Algorithms](#algorithms)
+  - [Backtracking](#backtracking)
+  - [Bit Manipulation](#bit-manipulation)
+  - [Dynamic Programming](#dynamic-programming)
+  - [Pathfinding](#pathfinding)
+  - [Recursion](#recursion)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
@@ -16,13 +21,20 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Radix Sort](#radix-sort)
     - [Shell Sort](#shell-sort)
     - [Heap Sort](#heap-sort)
-  - [Recursion](#recursion)
-  - [Dynamic Programming](#dynamic-programming)
-  - [Backtracking](#backtracking)
-  - [Pathfinding](#pathfinding)
-  - [Bit Manipulation](#bit-manipulation)
 
 # Algorithms
+
+## Backtracking
+
+## Bit Manipulation
+
+## Dynamic Programming
+
+## Pathfinding
+
+## Recursion
+
+Recursion is an important concept in computer science. It is a foundation for many other algorithms and data structures.
 
 ## Searching
 
@@ -92,15 +104,3 @@ the time taken by Bubble Sort.
 ### Shell Sort
 
 ### Heap Sort
-
-## Recursion
-
-Recursion is an important concept in computer science. It is a foundation for many other algorithms and data structures.
-
-## Dynamic Programming
-
-## Backtracking
-
-## Pathfinding
-
-## Bit Manipulation
