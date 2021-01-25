@@ -6,7 +6,6 @@ This is my personal algorithms archives and it's where I store my algorithms res
   - [Backtracking](#backtracking)
   - [Bit Manipulation](#bit-manipulation)
   - [Dynamic Programming](#dynamic-programming)
-  - [Pathfinding](#pathfinding)
   - [Recursion](#recursion)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
@@ -27,8 +26,6 @@ This is my personal algorithms archives and it's where I store my algorithms res
 ## Bit Manipulation
 
 ## Dynamic Programming
-
-## Pathfinding
 
 ## Recursion
 
@@ -52,6 +49,19 @@ In this section, I'm reviewing different collection where we apply linear search
   - [Naive search in a string](algorithms/searching/linear-search/README.md#naive-search-in-a-string)
 
 ### Binary Search
+
+Binary Search is one of the most fundamental and useful algorithms in Computer Science. It describes the process of searching for a specific value in an ordered collection.
+
+In its simplest form, Binary Search operates on a contiguous sequence with a specified left and right index. This is called the Search Space. Binary Search maintains the left, right, and middle indicies of the search space and compares the search target or applies the search condition to the middle value of the collection; if the condition is unsatisfied or values unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful. If the search ends with an empty half, the condition cannot be fulfilled and target is not found.
+
+Terminology used in Binary Search:
+
+- Target - the value that you are searching for
+- Index - the current location that you are searching
+- Left, Right - the indicies from which we use to maintain our search Space
+- Mid - the index that we use to apply a condition to determine if we should search left or right
+
+Wikipedia: https://en.wikipedia.org/wiki/Binary_search_algorithm
 
 ## Sorting
 
