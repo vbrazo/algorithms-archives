@@ -6,25 +6,21 @@ This is my personal algorithms archives and it's where I store my algorithms res
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
-    - [Other Search Algorithms](#other-search-algorithms)
   - [Sorting](#sorting)
-    - [Introduction](#introduction)
     - [In-place Algorithm](#in-place-algorithm)
     - [Bubble and Selection Sort](#bubble-and-selection-sort)
       - [Bubble Sort](#bubble-sort)
       - [Selection Sort](#selection-sort)
     - [Quick Sort](#quick-sort)
     - [Merge Sort](#merge-sort)
+    - [Radix Sort](#radix-sort)
+    - [Shell Sort](#shell-sort)
     - [Heap Sort](#heap-sort)
-    - [Non-Comparison Sorting](#non-comparison-sorting)
-    - [Last Word on Sorting](#last-word-on-sorting)
   - [Recursion](#recursion)
   - [Dynamic Programming](#dynamic-programming)
   - [Backtracking](#backtracking)
   - [Pathfinding](#pathfinding)
   - [Bit Manipulation](#bit-manipulation)
-  - [Randomized Algorithms](#randomized-algorithms)
-  - [Advanced Algorithms](#advanced-algorithms)
 
 # Algorithms
 
@@ -47,13 +43,9 @@ In this section, I'm reviewing different collection where we apply linear search
 
 ### Binary Search
 
-### Other Search Algorithms
-
 ## Sorting
 
-### Introduction
-
-## In-place Algorithm
+### In-place Algorithm
 
 An in-place algorithm is an algorithm which transforms input using no auxiliary data structure. However, a small amount of extra storage space is allowed for auxiliary variables. The input is usually overwritten by the output as the algorithm executes. In-place algorithm updates input sequence only through replacement or swapping of elements. An algorithm which is not in-place is sometimes called not-in-place or out-of-place.
 
@@ -69,7 +61,7 @@ Each iteration in bubble sort compares adjacent elements successively and move t
 
 The time complexity of a bubble sort is `O(n^2)`.
 
-### Selection Sort
+#### Selection Sort
 
 Selection Sort is a variation of Bubble Sort where swaping happens only once per pass.
 Each pass identify largest element in current array and swap it with element
@@ -95,11 +87,11 @@ the time taken by Bubble Sort.
 
 ### Merge Sort
 
+### Radix Sort
+
+### Shell Sort
+
 ### Heap Sort
-
-### Non-Comparison Sorting
-
-### Last Word on Sorting
 
 ## Recursion
 
@@ -112,7 +104,3 @@ Recursion is an important concept in computer science. It is a foundation for ma
 ## Pathfinding
 
 ## Bit Manipulation
-
-## Randomized Algorithms
-
-## Advanced Algorithms
