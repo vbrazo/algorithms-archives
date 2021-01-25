@@ -99,6 +99,17 @@ the time taken by Bubble Sort.
 
 ### Merge Sort
 
+Merge Sort divides the array in half, sorts each of those halves, and then merges them back
+together. Each of those halves has the same sorting algorithm applied to it. Eventually,
+you are merging just two single element arrays. It is the "merge" part that does
+all the heavy lifting.
+
+The merge method operates by copying all the elements from the target array segment
+into a helper array, keeping track of where the start of the left and right halves should
+be (helperLeft and helperRight). We then iterate through helper, copying the smaller
+element from each half into the array. At the end, we copy an remaining elements into the
+target array.
+
 ### Quick Sort
 
 In Quick Sort, we pick a random element and partition the array, such all numbers that
