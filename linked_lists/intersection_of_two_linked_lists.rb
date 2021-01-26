@@ -1,6 +1,16 @@
 # Write a program to find the node at which the intersection of
 # two singly linked lists begins.
 
+# Approach 1: Brute Force
+# For each node ai in list A, traverse the entire list B and
+# check if any node in list B coincides with ai.
+#
+# Complexity Analysis
+#
+# Time complexity : O(mn).
+#
+# Space complexity : O(1).
+
 # class ListNode
 #   attr_accessor :val, :next
 #   def initialize(val)
@@ -55,7 +65,6 @@ getIntersectionNode(listA, listB)
 # From the head of A, it reads as [1,9,1,2,4]. From the head of B,
 # it reads as [3,2,4]. There are 3 nodes before the intersected node in A;
 # There are 1 node before the intersected node in B.
-
 
 listA = [2,6,4]
 listB = [1,5]
