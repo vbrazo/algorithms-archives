@@ -52,7 +52,7 @@ Yes, we know a solution is complete if all N queens have been placed.
 def n_queens(n, board=[]):
   if n == len(board):
     return 1
-  
+
   count = 0
   for col in range(n):
     board.append(col)
@@ -60,10 +60,10 @@ def n_queens(n, board=[]):
       count += n_queens(n, board)
      board.pop()
    return count
-   
+
 def is_valid(board):
   current_queen_row, current_queen_col = len(board) - 1, board[-1]
-  
+
   # check if any queens can attack the last queen
   for row, col in enumerate(board[:-1]):
     diff = abs(current_queen_col - 1)
@@ -73,6 +73,34 @@ def is_valid(board):
 ```
 
 ## Bit Manipulation
+
+What's a bit? A bit, short for binary digit, is either `0` or `1`. String a bunch of these bits together, and you can represent any integer. Each place value, starting from the right column and extending left, represents a power of two, so that `00000101` stands for 5 (2⁰ + 2²). In this example, we've represented 5 as an 8-bit number, and most of the bits are zero, or "off".
+
+To negate an n-bit number, we use an operation called two's complement, which is to say we invert all the bits and then add one. As a result, 5 would become 11111011.
+
+Bits are useful because they provide an extremely fast and space-efficient way of calculating numerical operations. In particular, you should be familiar with the following three operators:
+
+- `& (AND)`
+
+The bitwise `AND` takes two integers as input and produces a third integer whose bits are 1 if an only if both corresponding input bits are 1.
+
+For example, 00000101 & 00011110 = 00011111.
+
+- `^(XOR)`
+
+The bitwise `XOR` takes two integers as input and produces a third integer whose bits are 1 if the corresponding input bits are different. That is, for each place one of the input integers must be 0 and the other must be 1.
+
+For example, 00000101 ^ 000111110 = 00011011.
+
+Bits also provide a quick way of multiplying or dividing a number by powers of two. This method is called `bitshifting`, and is represented by the symbols << and >>. In effect, << inserts zeros at the right end of the bit, so that each corresponding bit is shifted to the left. Conversely, >> can be thought of as inserting zeros at the left end of the bit, pushing elements rightward.
+
+Here are some bitshifts in action:
+
+5 << 2 = 20 (00000101 << 2 = 00010100)
+
+5 >> 2 = 1 (00000101 >> 2 = 00000001)
+
+Note that in the last example, when we "push" the last two bits to the right, they essentially disappear.
 
 ## Dynamic Programming
 
