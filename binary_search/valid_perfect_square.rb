@@ -68,7 +68,7 @@ puts(is_perfect_square(num))
 # Approach 2: Newton's Method
 #
 
-def isPerfectSquare(num)
+def is_perfect_square(num)
   if num < 2
     return true
   end
