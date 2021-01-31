@@ -51,3 +51,24 @@ puts(search(nums, target))
 nums = [-1,0,3,5,9,12]
 target = 2
 puts(search(nums, target))
+
+# Approach 2:
+
+# Time complexity: O(n) implementation
+
+# This approach traverses the entire array until it finds the target value.
+
+def search(nums, target)
+  nums.each_with_index do |num, index|
+    return index if num == target
+  end
+  return -1
+end
+
+nums = [-1,0,3,5,9,12]
+target = 9
+puts(search(nums, target))
+
+nums = [-1,0,3,5,9,12]
+target = 2
+puts(search(nums, target))
