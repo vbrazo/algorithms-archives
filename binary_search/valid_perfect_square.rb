@@ -88,3 +88,20 @@ puts(is_perfect_square(num))
 num = 14
 puts(is_perfect_square(num))
 # => false
+
+#
+# Approach 3
+#
+
+def is_perfect_square(num)
+  res = num ** 0.5
+  res.to_i == res
+end
+
+num = 16
+puts(is_perfect_square(num))
+# => true
+
+num = 14
+puts(is_perfect_square(num))
+# => false
