@@ -85,3 +85,33 @@ puts(my_sqrt(x))
 x = 8
 puts(my_sqrt(x))
 # => 2
+
+
+# Approach 3: Recursion + Bit Shifts
+
+# Intuition
+
+# Let's use recursion. Bases cases are \sqrt{x} = x
+​
+# =x for x < 2x<2. Now the idea is to decrease xx recursively at each step to go down to the base cases.
+
+def my_sqrt(x)
+  return x if x < 2
+
+  left = self.my_sqrt(x >> 2) << 1
+  right = left + 1
+
+  if right * right > x
+    return left
+  else
+    return right
+  end
+end
+
+x = 4
+puts(my_sqrt(x))
+# => 2
+
+x = 8
+puts(my_sqrt(x))
+# => 2
