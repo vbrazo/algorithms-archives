@@ -3,36 +3,7 @@
 # Since the return type is an integer, the decimal digits are truncated,
 # and only the integer part of the result is returned.
 
-# Approach 1: Pocket Calculator Algorithm
-
-# Time complexity: O(1).
-# Space complexity: O(1).
-
-def my_sqrt(x)
-  if x < 2
-    return x
-  end
-
-  left = int(Math::e^(0.5 * Math::log(x)))
-  right = left + 1
-
-  if right * right > x
-    return left
-  else
-    return right
-  end
-end
-
-x = 4
-#my_sqrt(x)
-# => 2
-
-x = 8
-#my_sqrt(x)
-# => 2
-
-
-# Approach 2: Binary Search
+# Approach 1: Binary Search
 # Intuition
 
 # Let's go back to the interview context.
@@ -87,7 +58,7 @@ puts(my_sqrt(x))
 # => 2
 
 
-# Approach 3: Recursion + Bit Shifts
+# Approach 2: Recursion + Bit Shifts
 
 # Time complexity: O(log n).
 
