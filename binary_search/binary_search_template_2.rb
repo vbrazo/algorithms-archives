@@ -14,14 +14,16 @@
 # Loop/Recursion ends when you have 1 element left.
 # Need to assess if the remaining element meets the condition.
 
-def search(target)
-  if len(nums) == 0
+def search(nums, target)
+  if nums.length == 0
     return -1
   end
 
-  left, right = 0, len(nums)
+  left = 0
+  right = nums.length
+
   while left < right
-    mid = (left + right)
+    mid = (left + right) / 2
     if nums[mid] == target
       return mid
     elsif nums[mid] < target
@@ -33,9 +35,9 @@ def search(target)
 
   # Post-processing:
   # End Condition: left == right
-  if left != len(nums) and nums[left] == target
+  if left != nums.length and nums[left] == target
     return left
-  end
+  else
     return -1
   end
 end

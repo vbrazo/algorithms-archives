@@ -2,7 +2,7 @@
 # write a function to search target in nums. If target exists, then return its index,
 # otherwise return -1.
 
-# 
+#
 # Template #1 is the most basic and elementary form of Binary Search.
 # It is the standard Binary Search Template that most high schools or universities
 # use when they first teach students computer science. Template #1 is used to search
@@ -36,7 +36,7 @@ def search(nums, target)
   right = nums.length - 1
 
   while left <= right
-    pivot = left + (right - left)
+    pivot = left + (right - left) / 2
 
     return pivot if nums[pivot] == target
 
