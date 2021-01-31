@@ -45,25 +45,19 @@ x = 8
 # Algorithm
 
 # If x < 2, return x.
-
 # Set the left boundary to 2, and the right boundary to x / 2.
-
 # While left <= right:
-
-# Take num = (left + right) / 2 as a guess. Compute num * num and compare it with x:
-
+# Take num = (left + right) / 2 as a guess.
+# Compute num * num and compare it with x:
 # If num * num > x, move the right boundary right = pivot -1
-
 # Else, if num * num < x, move the left boundary left = pivot + 1
-
 # Otherwise num * num == x, the integer square root is here, let's return it
-
 # Return right
 
+# Time complexity: O(log N)
+
 def my_sqrt(x)
-  if x < 2
-    return x
-  end
+  return x if x < 2
 
   left = 2
   right = x
@@ -73,7 +67,7 @@ def my_sqrt(x)
     num = pivot * pivot
 
     if num > x
-      right = pivot -1
+      right = pivot - 1
     elsif num < x
       left = pivot + 1
     else
