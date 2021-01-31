@@ -104,6 +104,23 @@ Note that in the last example, when we "push" the last two bits to the right, th
 
 ## Dynamic Programming
 
+Dynamic Programming is a technique which combines the generality of recursion with efficient of greedy algorithms. he key idea is to break a problem down into reusable subproblems which combine to form the solution.
+
+More formally, dynamic programming is an excellent choice when a problem exhibits two key features:
+
+- overlapping subproblems: there is a way to partition the problem into smaller modular components.
+- optimal substructure: these modular components can be efficiently put together to obtain a solution.
+
+In particular, each subproblem should only be solved once, after which the solution should be cached and reused whenever that state is reached again.
+
+In general, dynamic programming is a good tool for counting the number of solutions, or for finding an optimal solution. As such it is frequently used as a building block for more complicated algorithms involving shortest path discovery, text similarity, and combinatorial optimization (such as the knapsack problem).
+
+A method we recommend to solve these problems, and one we will follow in the coming solutions, is to carry out the following steps:
+
+1. Identify the recurrence relation: how can the problem be broken down into smaller parts?
+2. Initialize a cache capable of storing the values for each subproblem.
+3. Create a memoized function (if top-down) or loop (if bottom-up) which populates these cache values.
+
 ## Recursion
 
 Recursion is an important concept in computer science. It is a foundation for many other algorithms and data structures.
