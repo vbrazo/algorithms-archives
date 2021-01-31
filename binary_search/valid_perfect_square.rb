@@ -38,10 +38,10 @@ def is_perfect_square(num)
   end
 
   left = 2
-  right = num
+  right = num / 2
 
   while left <= right
-    x = left + (right - left)
+    x = left + (right - left) / 2
     guess_squared = x * x
     if guess_squared == num
       return true
