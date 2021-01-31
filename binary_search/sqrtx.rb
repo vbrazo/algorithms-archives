@@ -54,7 +54,7 @@ x = 8
 # Otherwise num * num == x, the integer square root is here, let's return it
 # Return right
 
-# Time complexity: O(log N)
+# Time complexity: O(log n)
 
 def my_sqrt(x)
   return x if x < 2
@@ -89,7 +89,7 @@ puts(my_sqrt(x))
 
 # Approach 3: Recursion + Bit Shifts
 
-# Time complexity: O(logN).
+# Time complexity: O(log n).
 
 def my_sqrt(x)
   return x if x < 2
