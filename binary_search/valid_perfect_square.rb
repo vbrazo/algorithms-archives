@@ -1,7 +1,8 @@
 # Given a positive integer num, write a function which returns True
 # if num is a perfect square else False.
-#
-# Follow up: Do not use any built-in library function such as sqrt.
+
+
+# Approach 1:
 
 # For `num > 2` the square root a is always less than `num / 2` and greater than 1:
 # `1 < x < num/2`. Since x is an integer, the problem goes down to the search in
@@ -53,6 +54,31 @@ def is_perfect_square(num)
   end
 
   return false
+end
+
+num = 16
+puts(is_perfect_square(num))
+# => true
+
+num = 14
+puts(is_perfect_square(num))
+# => false
+
+#
+# Approach 2: Newton's Method
+#
+
+def isPerfectSquare(num)
+  if num < 2
+    return true
+  end
+
+  x = num / 2
+  while x * x > num
+    x = (x + num / x) / 2
+  end
+
+  return x * x == num
 end
 
 num = 16
