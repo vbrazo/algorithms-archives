@@ -125,6 +125,24 @@ A method we recommend to solve these problems, and one we will follow in the com
 
 Recursion is an important concept in computer science. It is a foundation for many other algorithms and data structures.
 
+Recursion is the process of defining a problem (or the solution to a problem) in terms of (a simpler version of) itself.
+
+### Parts of a Recursive Algorithm
+
+All recursive algorithms must have the following:
+
+1. Base Case (i.e., when to stop)
+2. Work toward Base Case
+3. Recursive Call (i.e., call ourselves)
+
+The "work toward base case" is where we make the problem simpler (e.g., divide list into two parts, each smaller than the original). The recursive call, is where we use the same algorithm to solve a simpler version of the problem. The base case is the solution to the "simplest" possible problem (For example, the base case in the problem 'find the largest number in a list' would be if the list had only one number and by definition if there is only one number, it is the largest).
+
+### Why Recursion Works
+
+In a recursive algorithm, the computer "remembers" every previous state of the problem. This information is "held" by the computer on the "activation stack" (i.e., inside of each functions workspace).
+
+Every function has its own workspace PER CALL of the function.
+
 ## Searching
 
 ### Linear Search
