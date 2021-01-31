@@ -72,6 +72,8 @@ def is_valid(board):
   return True
 ```
 
+Reference: https://en.wikipedia.org/wiki/Backtracking
+
 ## Bit Manipulation
 
 What's a bit? A bit, short for binary digit, is either `0` or `1`. String a bunch of these bits together, and you can represent any integer. Each place value, starting from the right column and extending left, represents a power of two, so that `00000101` stands for 5 (2⁰ + 2²). In this example, we've represented 5 as an 8-bit number, and most of the bits are zero, or "off".
@@ -102,6 +104,8 @@ Here are some bitshifts in action:
 
 Note that in the last example, when we "push" the last two bits to the right, they essentially disappear.
 
+Reference: https://en.wikipedia.org/wiki/Bit_manipulation
+
 ## Dynamic Programming
 
 Dynamic Programming is a technique which combines the generality of recursion with efficient of greedy algorithms. he key idea is to break a problem down into reusable subproblems which combine to form the solution.
@@ -120,6 +124,8 @@ A method we recommend to solve these problems, and one we will follow in the com
 1. Identify the recurrence relation: how can the problem be broken down into smaller parts?
 2. Initialize a cache capable of storing the values for each subproblem.
 3. Create a memoized function (if top-down) or loop (if bottom-up) which populates these cache values.
+
+Reference: https://en.wikipedia.org/wiki/Dynamic_programming
 
 ## Recursion
 
@@ -143,6 +149,8 @@ In a recursive algorithm, the computer "remembers" every previous state of the p
 
 Every function has its own workspace PER CALL of the function.
 
+Reference: https://en.wikipedia.org/wiki/Recursion
+
 ## Searching
 
 ### Linear Search
@@ -160,6 +168,8 @@ In this section, I'm reviewing different collection where we apply linear search
   - [Linear search in a graph](algorithms/searching/linear-search/README.md#linear-search-in-a-graph)
   - [Naive search in a string](algorithms/searching/linear-search/README.md#naive-search-in-a-string)
 
+Reference: https://en.wikipedia.org/wiki/Linear_search
+
 ### Binary Search
 
 Binary Search is one of the most fundamental and useful algorithms in Computer Science. It describes the process of searching for a specific value in an ordered collection.
@@ -173,7 +183,7 @@ Terminology used in Binary Search:
 - Left, Right - the indicies from which we use to maintain our search Space
 - Mid - the index that we use to apply a condition to determine if we should search left or right
 
-Wikipedia: https://en.wikipedia.org/wiki/Binary_search_algorithm
+Reference: https://en.wikipedia.org/wiki/Binary_search_algorithm
 
 ## Sorting
 
@@ -190,6 +200,8 @@ Bubble Sort is one of the most basic sorting algorithms. It is not used very oft
 Each iteration in bubble sort compares adjacent elements successively and move the larger one toward right by swapping them.
 
 The time complexity of a bubble sort is `O(n^2)`.
+
+Reference: https://en.wikipedia.org/wiki/Bubble_sort
 
 ### Selection Sort
 
@@ -213,6 +225,8 @@ The recursive implementation takes `O(n)` extra memory.
 Common implementation of Selection Sort is observed to be taking almost half
 the time taken by Bubble Sort.
 
+Reference: https://en.wikipedia.org/wiki/Selection_sort
+
 ### Merge Sort
 
 Merge Sort divides the array in half, sorts each of those halves, and then merges them back
@@ -226,6 +240,8 @@ be (helperLeft and helperRight). We then iterate through helper, copying the sma
 element from each half into the array. At the end, we copy an remaining elements into the
 target array.
 
+Reference: https://en.wikipedia.org/wiki/Merge_sort
+
 ### Quick Sort
 
 In Quick Sort, we pick a random element and partition the array, such all numbers that
@@ -236,6 +252,8 @@ If we repeatedly partition the array (and its sub-arrays) around and element, th
 will eventually become sorted. However, as the partitioned element is not guaranteed to be
 the median (or anywhere near the median), our sorting could be very slow. This is the reason
 for the `O(n^2)` worst case scenario.
+
+Reference: https://pt.wikipedia.org/wiki/Quicksort
 
 ### Radix Sort
 
@@ -249,3 +267,5 @@ sorting by each subsequent digit, until finally the whole array is sorted.
 Unlike comparison sorting algorithms, which cannot perform better than `O(n log(n))` in the
 average case, radix sort has a runtime of `O(kn)`, where `n` is number of elements and `k`
 is the number of passes of the sorting algorithm.
+
+Reference: https://pt.wikipedia.org/wiki/Radix_sort
