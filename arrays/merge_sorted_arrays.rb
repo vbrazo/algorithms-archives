@@ -47,11 +47,54 @@ merge(nums1, m, nums2, n)
 # The straightforward implementation would be to set get pointer p1 in the beginning of nums1, p2 in the beginning of nums2, and push the smallest value in the output array at each step.
 # Since nums1 is an array used for output, one has to keep first m elements of nums1 somewhere aside, that means O(m) space complexity for this approach.
 
-
-
-
 # Approach 3 : Two pointers / Start from the end
 
 # Approach 2 already demonstrates the best possible time complexity O(n+m)
 # but still uses an additional space. This is because one has to keep somewhere
 # the elements of array nums1 while overwriting it starting from the beginning.
+
+def merge(nums1, m, nums2, n)
+  p1 = m - 1
+  p2 = n - 1
+  p = m + n - 1
+
+  return nums2 if m == 0 || n == 0
+  return nums1 if n < 2
+
+  while p2 >= 0
+    if nums1[p1] < nums2[p2]
+      nums1[p] = nums2[p2]
+      p2 = p2 - 1
+    else
+      nums1[p] = nums1[p1]
+      p1 = p1 - 1
+    end
+    p = p - 1
+  end
+
+  print("#{nums1}")
+end
+
+nums1 = [1,2,3,0,0,0]
+m = 3
+
+nums2 = [2,5,6]
+n = 3
+
+merge(nums1, m, nums2, n)
+# => [1,2,2,3,5,6]
+
+nums1 = [1]
+m = 1
+nums2 = []
+n = 0
+
+merge(nums1, m, nums2, n)
+# => [1]
+
+nums1 = [0]
+m = 0
+nums2 = [1]
+n = 1
+
+puts(merge(nums1, m, nums2, n))
