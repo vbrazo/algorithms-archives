@@ -2,9 +2,11 @@
 
 # Approach 1: Sentinel Node
 
-# The problem seems to be very easy if one has to delete a node in the middle:
-# Pick the node-predecessor prev of the node to delete.
-# Set its next pointer to point to the node next to the one to delete.
+# Sentinel nodes are widely used in trees and linked lists as pseudo-heads,
+# pseudo-tails, markers of level end, etc. They are purely functional, and
+# usually does not hold any data. Their main purpose is to standardize the situation,
+# for example, make linked list to be never empty and never headless and hence simplify
+# insert and delete.
 
 # Algorithm
 # Initiate sentinel node as ListNode(0) and set it to be the new head: sentinel.next = head.
