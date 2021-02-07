@@ -9,6 +9,7 @@
 # insert and delete.
 
 # Algorithm
+# 
 # Initiate sentinel node as ListNode(0) and set it to be the new head: sentinel.next = head.
 # Initiate two pointers to track the current node and its predecessor: curr and prev.
 # While curr is not a null pointer:

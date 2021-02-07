@@ -4,6 +4,7 @@
 # and only the integer part of the result is returned.
 
 # Approach 1: Binary Search
+
 # Intuition
 
 # Let's go back to the interview context.

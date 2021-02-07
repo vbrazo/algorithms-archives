@@ -54,25 +54,17 @@ merge(nums1, m, nums2, n)
 # the elements of array nums1 while overwriting it starting from the beginning.
 
 def merge(nums1, m, nums2, n)
-  p1 = m - 1
-  p2 = n - 1
-  p = m + n - 1
-
-  return nums2 if m == 0 || n == 0
-  return nums1 if n < 2
-
-  while p2 >= 0
-    if nums1[p1] < nums2[p2]
-      nums1[p] = nums2[p2]
-      p2 = p2 - 1
+  while m>0 && n>0 do
+    if nums2[n-1] > nums1[m-1]
+      n-=1
+      nums1[m+n] = nums2[n]
     else
-      nums1[p] = nums1[p1]
-      p1 = p1 - 1
+      m-=1
+      nums1[m+n] = nums1[m]
     end
-    p = p - 1
   end
-
-  print("#{nums1}")
+  nums1[0,n] = nums2[0,n] if n>0
+  nums1
 end
 
 nums1 = [1,2,3,0,0,0]

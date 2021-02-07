@@ -2,14 +2,15 @@
 # two singly linked lists begins.
 
 # Approach 1: Brute Force
+#
 # For each node ai in list A, traverse the entire list B and
 # check if any node in list B coincides with ai.
 #
 # Complexity Analysis
 #
-# Time complexity : O(mn).
+# Time complexity: O(m*n).
 #
-# Space complexity : O(1).
+# Space complexity: O(1).
 
 # Approach 2: Hash Table
 # Traverse list A and store the address / reference to each node in a hash set.
@@ -45,7 +46,6 @@
 # Complexity Analysis
 #
 # Time complexity: O(m+n).
-#
 # Space complexity: O(1).
 
 class ListNode
