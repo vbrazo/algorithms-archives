@@ -56,41 +56,41 @@ print(sorted_squares([4, -1, -9, 2]))
 #
 
 def sorted_squares(nums)
-  left = 0
-  right = nums.length - 1
+  p1 = 0
+  p2 = nums.length - 1
 
   # since we're returing the result in ascending order,
   # we'll fill in the array from the end
-  max_index = nums.length - 1
+  max_index = p2
   output = []
 
-  while left < right
-    left_squared = nums[left] * nums[left]
-    right_squared = nums[right] * nums[right]
+  while p1 < p2
+    nums1_square = nums[p1] * nums[p1]
+    nums2_square = nums[p2] * nums[p2]
 
-    if left_squared > right_squared
-      output[max_index] = left_squared
-      left += 1
-    elsif right_squared > left_squared
-      output[max_index] = right_squared
-      right -= 1
+    if nums1_square < nums2_square
+      output[max_index] = nums2_square
+      p2 -= 1
+    elsif nums1_square > nums2_square
+      output[max_index] = nums1_square
+      p1 += 1
     else
-      output[max_index] = left_squared
+      output[max_index] = nums1_square
       max_index -= 1
-      output[max_index] = right_squared
-      left += 1
-      right -= 1
+      output[max_index] = nums2_square
+      p1 += 1
+      p2 -= 1
     end
 
     max_index -= 1
   end
 
   # to account for any remaining value left in the input array
-  if left == right
-    output[max_index] = nums[left] * nums[left]
+  if p1 == p2
+    output[max_index] = nums[p1] * nums[p2]
   end
 
-  return output
+  output
 end
 
 print(sorted_squares([4, -1, -9, 2]))
