@@ -63,3 +63,32 @@ def max_depth(root)
     right_height + 1
   end
 end
+
+# Approach 2: Tail Recursion + BFS
+
+# One might have noticed that the above recursion solution is probably not
+# the most optimal one in terms of the space complexity, and in the extreme case
+# the overhead of call stack might even lead to stack overflow.
+# To address the issue, one can tweak the solution a bit to make it tail recursion,
+# which is a specific form of recursion where the recursive call is the last action in the function.
+
+# The benefit of having tail recursion, is that for certain programming languages (e.g. C++)
+# the compiler could optimize the memory allocation of call stack by reusing the same space
+# for every recursive call, rather than creating the space for each one. As a result,
+# one could obtain the constant space complexity O(1) for the overhead of the recursive calls.
+
+# Complexity analysis
+
+# Time complexity: O(N), still we visit each node once and only once.
+# As one can see, this probably is not the best example to apply the tail recursion
+# technique. Because though we did gain the constant space complexity for the recursive calls,
+# we pay the price of \mathcal{O}(N)O(N) complexity to maintain the state information
+# for recursive calls. This defeats the purpose of applying tail recursion.
+# However, we would like to stress on the point that tail recursion is a useful form
+# of recursion that could eliminate the space overhead incurred by the recursive function calls.
+# Note: a function cannot be tail recursion if there are multiple occurrences of recursive calls
+# in the function, even if the last action is the recursive call.
+# Because the system has to maintain the function call stack for the sub-function calls
+# that occur within the same function.
+
+# TODO:
