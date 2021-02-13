@@ -41,7 +41,7 @@ end
 # Complexity analysis
 
 # Time complexity: we visit each node exactly once, thus the time complexity is O(N),
-# where NN is the number of nodes.
+# where N is the number of nodes.
 
 # Space complexity: in the worst case, the tree is completely unbalanced,
 # e.g. each node has only left child node, the recursion call would occur N times
