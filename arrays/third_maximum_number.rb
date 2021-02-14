@@ -37,60 +37,79 @@ puts(third_max(nums))
 # Output: 2
 
 
-# Approach 2: Seen-Maximums Set
+# Approach 2: Use a Set and Delete Maximums
 
-# Intuition
-
-# In the previous approach, we deleted the maximum and second maximum so that
-# we could easily find the third maximum. We had to convert the input Array into a
-# Set so that duplicates weren't super complicated to handle.
-# Instead of deleting items though, we could instead keep a Set of maximums
-# we've already seen. Then when we are searching for a maximum, we can ignore
-# any values that are already in the seen Set.
-# This will also handle duplicates elegantly—if for example we had the input
-# set [12, 12, 4, 2, 12, 1], then the first value we'd put into the seen maximums
-# Set would be 12. Then when we find the second maximum, the algorithm knows
-# to ignore all the 12s.
+# We'll work with the following example Array.
 #
+# [12, 3, 8, 9, 12, 12, 7, 8, 12, 4, 3, 8, 1]
+# If there were no duplicates in the Array,
+# then a logical strategy would be as follows:
+#
+# Find the maximum. Delete it.
+# Find the new maximum. Delete it.
+# Return the *new* maximum.
+#
+# However, the input Array we're working with could have duplicates.
+# To handle this, we can convert the input into a Set first to remove the duplicates.
+#
+# Converting our input Array example into a Set gives us the following:
+#
+# {12, 3, 8, 9, 7, 4, 1}
+# We then need to find the maximum in the Set. This can be done using a library
+# function, or if necessary, your own function that loops through the list keeping
+# track of the maximum seen so far, and then returns the maximum at the end.
+#
+# The maximum from our example is 12.
+#
+# Now, we need to delete 12 from the Set. This leaves us with:
+#
+# {3, 8, 9, 7, 4, 1}
+# We can then find and remove the second maximum, following the same process.
+#
+# The second maximum is 9 (the maximum of what's left in the Set).
+#
+# Removing it leaves us with the following:
+#
+# {3, 8, 7, 4, 1}
+# Finally, we can return the maximum of what's left, which is 8.
+#
+# Remember that if the third maximum doesn't exist, then we need to return the
+# maximum of the original Array. We can detect this situation as soon as we have
+# converted the input Array into a Set, because it will contain less than 3 values.
+
 # Complexity Analysis
+
+# Time Complexity: O(n)
+# Putting the input Array values into a HashSet has a cost of O(n), as each value
+# costs O(1) to place, and there are nn of them.
 #
-# Time Complexity: O(n).
+# Finding the maximum in a HashSet has a cost of O(n), as all the values need
+# to be looped through. We do this 33 times, giving O(3n) = O(n)O(3⋅n)=O(n)
+# as we drop constants in big-oh notation.
+# Deleting a value from a HashSet has a cost of O(1), so we can ignore this.
+# In total, we're left with O(n) + O(n) = O(n)+O(n)=O(n).
 #
-# For each of the three times we find the next maximum, we need to perform an O(n) scan.
-# Because there are only, at most, three scans the total time complexity is just O(n).
-# The Set operations are all O(1) because there are only at most 3 items in the Set.
-#
-# Space Complexity: O(1).
-#
-# Because seenMaximums can contain at most 3 items, the space complexity is only O(1).
+# Space Complexity: O(n)
+# In the worst case, the HashSet is the same size as the input Array,
+# and so requires O(n) space to store.
+
+
+# @param {Integer[]} nums
+# @return {Integer}
 require 'set'
 
-def maximum_ignoring_seen_maximums(nums, seen_maximums)
-  maximum = nil
-
-  nums.each do |num|
-    next if seen_maximums.include? num
-
-    if maximum.nil? || num > maximum
-      maximum = num
-    end
-  end
-
-  maximum
-end
-
 def third_max(nums)
-  seen_maximums = nums.to_set
+  nums = nums.to_set
+  maximum = nums.max
 
-  3.times do
-    current_maximum = maximum_ignoring_seen_maximums(nums, seen_maximums)
+  return maximum if nums.length < 3
 
-    return seen_maximums.max if current_maximum.nil?
+  nums.delete(maximum)
 
-    seen_maximums.add(current_maximum)
-  end
+  second_maximum = nums.max
+  nums.delete(second_maximum)
 
-  seen_maximums.min
+  return nums.max
 end
 
 nums = [3,2,1]
