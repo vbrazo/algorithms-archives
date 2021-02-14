@@ -1,14 +1,115 @@
 # Given integer array nums, return the third maximum number in this array.
 # If the third maximum does not exist, return the maximum number.
 
+# Approach 1: Sorting (not a good one)
+
+# Time complexity of sorting is O(n log n) (where n is the length of the input Array).
+
 # @param {Integer[]} nums
 # @return {Integer}
 def third_max(nums)
-  if nums.uniq.count <= 2
-    nums.uniq.sort.reverse[0]
+  nums = nums.uniq
+  if nums.count <= 2
+    nums.sort.reverse[0]
   else
-    nums.uniq.sort.reverse[2]
+    nums.sort.reverse[2]
   end
+end
+
+nums = [3,2,1]
+print(third_max(nums))
+# Output: 1
+# Explanation: The third maximum is 1.
+
+nums = [1,2]
+print(third_max(nums))
+# Output: 2
+# Explanation: The third maximum does not exist, so the maximum (2) is returned instead.
+
+nums = [2,2,3,1]
+puts(third_max(nums))
+# Output: 1
+# Explanation: Note that the third maximum here means the third maximum distinct number.
+# Both numbers with value 2 are both considered as second maximum.
+
+nums = [1,1,2]
+puts(third_max(nums))
+# Output: 2
+
+
+# Approach 2: Use a Set and Delete Maximums
+
+# We'll work with the following example Array.
+#
+# [12, 3, 8, 9, 12, 12, 7, 8, 12, 4, 3, 8, 1]
+# If there were no duplicates in the Array,
+# then a logical strategy would be as follows:
+#
+# Find the maximum. Delete it.
+# Find the new maximum. Delete it.
+# Return the *new* maximum.
+#
+# However, the input Array we're working with could have duplicates.
+# To handle this, we can convert the input into a Set first to remove the duplicates.
+#
+# Converting our input Array example into a Set gives us the following:
+#
+# {12, 3, 8, 9, 7, 4, 1}
+# We then need to find the maximum in the Set. This can be done using a library
+# function, or if necessary, your own function that loops through the list keeping
+# track of the maximum seen so far, and then returns the maximum at the end.
+#
+# The maximum from our example is 12.
+#
+# Now, we need to delete 12 from the Set. This leaves us with:
+#
+# {3, 8, 9, 7, 4, 1}
+# We can then find and remove the second maximum, following the same process.
+#
+# The second maximum is 9 (the maximum of what's left in the Set).
+#
+# Removing it leaves us with the following:
+#
+# {3, 8, 7, 4, 1}
+# Finally, we can return the maximum of what's left, which is 8.
+#
+# Remember that if the third maximum doesn't exist, then we need to return the
+# maximum of the original Array. We can detect this situation as soon as we have
+# converted the input Array into a Set, because it will contain less than 3 values.
+
+# Complexity Analysis
+
+# Time Complexity: O(n)
+# Putting the input Array values into a HashSet has a cost of O(n), as each value
+# costs O(1) to place, and there are nn of them.
+#
+# Finding the maximum in a HashSet has a cost of O(n), as all the values need
+# to be looped through. We do this 33 times, giving O(3n) = O(n)O(3⋅n)=O(n)
+# as we drop constants in big-oh notation.
+# Deleting a value from a HashSet has a cost of O(1), so we can ignore this.
+# In total, we're left with O(n) + O(n) = O(n)+O(n)=O(n).
+#
+# Space Complexity: O(n)
+# In the worst case, the HashSet is the same size as the input Array,
+# and so requires O(n) space to store.
+
+
+# @param {Integer[]} nums
+# @return {Integer}
+require 'set'
+
+def third_max(nums)
+  nums = nums.to_set
+  maximum = nums.max
+
+  return maximum if nums.length < 3
+
+  nums.delete(maximum)
+
+  second_maximum = nums.max
+  nums.delete(second_maximum)
+
+  return nums.max
 end
 
 nums = [3,2,1]
