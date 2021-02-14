@@ -18,6 +18,11 @@
 # Let's look at a formal algorithm based on this idea and then an animation
 # explaining the same with the help of a simple example.
 
+# Complexity Analysis
+
+# Time Complexity: O(N)
+# Space Complexity: O(N)
+
 # @param {Integer[]} nums
 # @return {Integer[]}
 def find_disappeared_numbers(nums)
