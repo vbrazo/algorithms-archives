@@ -1,3 +1,7 @@
+# 
+# Given a binary array, find the maximum number of consecutive 1s in this array, allowing at most one 0 within an otherwise consecutive run of 1s.
+# 
+
 # Intuition
 #
 # First, let's understand our problem.
