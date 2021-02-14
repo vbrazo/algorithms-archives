@@ -15,8 +15,6 @@
 # from 1 to N. However, some of the numbers are missing. All we have to do is
 # keep track of which numbers we encounter in the array and then iterate from 1 to N
 # and check which numbers did not appear in the hash table. Those will be our missing numbers.
-# Let's look at a formal algorithm based on this idea and then an animation
-# explaining the same with the help of a simple example.
 
 # Complexity Analysis
 
