@@ -50,7 +50,6 @@ print("#{algo.output_arr}\n")
 # Time complextiy: O(n). Assume that n is the length of array. Each of i and j traverses at most n steps.
 # Space complexity: O(1).
 
-
 class InPlaceAlgorithm
   def remove_duplicates(nums)
     return 0 if nums.length.zero?
