@@ -13,8 +13,8 @@
 #    1
 #   / \
 #  2  2
-#  \  \
-#  3  3
+#   \  \
+#    3  3
 
 # Definition for a binary tree node.
 class TreeNode
