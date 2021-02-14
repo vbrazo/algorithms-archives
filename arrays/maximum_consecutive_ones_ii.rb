@@ -33,7 +33,6 @@
 # Count how many 0's are in each sequence
 # If our sequence has one or fewer 0's, check if that's the longest consecutive sequence of 1's.
 
-
 # Complexity Analysis
 
 # Let n be equal to the length of the input nums array.
