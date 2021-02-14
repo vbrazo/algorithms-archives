@@ -72,3 +72,69 @@ def find_max_consecutive_ones(nums)
 
   longest_sequence
 end
+
+# Approach 2: Sliding Window
+
+# Intuition
+
+# The naive approach works but our interviewer is not convinced.
+# Let's see how we can optimize the code we just wrote.
+
+# The brute force solution had a time complexity of O(n^2).
+# What was the bottleneck? Checking every single consecutive sequence.
+# Intuitively, we know we're doing repeated work because sequences overlap.
+# We are checking consecutive sequence blindly.
+# We need to establish some rules on how to move our sequence forward.
+
+# If our sequence is valid, let's continue expanding our sequence
+# (because our goal is to get the largest sequence possible).
+# If our sequence is invalid, let's stop expanding and contract our sequence
+# (because an invalid sequence will never count towards our largest sequence).
+# The pattern that comes to mind for expanding/contracting sequences is
+# the sliding window. Let's define valid and invalid states.
+
+# Valid State = one or fewer 0's in our current sequence
+# Invalid State = two 0's in our current sequence
+
+# Complexity Analysis
+#
+# Let nn be equal to the length of the input nums array.
+#
+# Time complexity: O(n). Since both the pointers only move forward,
+# each of the left and right pointer traverse a maximum of n steps.
+# Therefore, the timecomplexity is O(n)O.
+#
+# Space complexity: O(1). Same as the previous approach. We don't store anything
+# other than variables. Thus, the space we use is constant because it is not
+# correlated to the length of the input array.
+
+# @param {Integer[]} nums
+# @return {Integer}
+def find_max_consecutive_ones(nums)
+  longest_sequence = 0
+  left, right = 0, 0
+  num_zeroes = 0
+
+  # while our window is in bounds
+  while right < nums.count
+    # add the right most element into our window
+    num_zeroes += 1 if nums[right] == 0
+
+    # if our window is invalid, contract our window
+    while num_zeroes == 2
+      num_zeroes -= 1 if nums[left] == 0
+
+      left += 1
+    end
+
+    # update our longest sequence answer
+    if longest_sequence > right - left + 1
+      longest_sequence = longest_sequence
+    else
+      longest_sequence = right - left + 1
+    end
+    right += 1   # expand our window
+  end
+
+  longest_sequence
+end
