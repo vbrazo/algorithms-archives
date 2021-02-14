@@ -163,16 +163,17 @@ def third_max(nums)
 
   nums.each do |num|
     maximums.add(num)
+
     if maximums.count > 3
       maximums.delete(maximums.min)
     end
   end
 
   if maximums.count == 3
-    return maximums.min
+    maximums.min
+  else
+    maximums.max
   end
-
-  maximums.max
 end
 
 
