@@ -66,7 +66,7 @@ end
 def detectCycle(head)
   visited = []
 
-  while head != nil
+  until head.nil?
     if visited.include?(head)
       return head
     else
@@ -75,9 +75,8 @@ def detectCycle(head)
     end
   end
 
-  return
+  nil
 end
-
 
 # Approach 2: Floyd's Tortoise and Hare
 #
@@ -119,30 +118,24 @@ def getIntersect(head)
 
   # A fast pointer will either loop around a cycle and meet the slow
   # pointer or reach the `null` at the end of a non-cyclic list.
-  while hare != nil and hare.next != nil
+  while !hare.nil? && !hare.next.nil?
     tortoise = tortoise.next
     hare = hare.next.next
 
-    if tortoise == hare
-      return tortoise
-    end
+    return tortoise if tortoise == hare
   end
 
-  return
+  nil
 end
 
 def detectCycle(head)
-  if head.nil?
-    return
-  end
+  return if head.nil?
 
   # If there is a cycle, the fast/slow pointers will intersect at some
   # node. Otherwise, there is no cycle, so we cannot find an entrance to
   # a cycle.
-  intersect = self.getIntersect(head)
-  if intersect.nil?
-    return
-  end
+  intersect = getIntersect(head)
+  return if intersect.nil?
 
   # To find the entrance to the cycle, we have two pointers traverse at
   # the same speed -- one from the front of the list, and the other from
@@ -154,5 +147,5 @@ def detectCycle(head)
     ptr2 = ptr2.next
   end
 
-  return ptr1
+  ptr1
 end

@@ -29,31 +29,25 @@ def valid_mountain_array(arr)
   i = 0
 
   # walk up
-  while i+1 < n and arr[i] < arr[i+1]
-    i += 1
-  end
+  i += 1 while (i + 1 < n) && (arr[i] < arr[i + 1])
 
   # peak can't be first or last
-  if i == 0 or i == n-1
-    return false
-  end
+  return false if (i == 0) || (i == n - 1)
 
   # walk down
-  while i+1 < n and arr[i] > arr[i+1]
-    i += 1
-  end
+  i += 1 while (i + 1 < n) && (arr[i] > arr[i + 1])
 
-  return i == n-1
+  i == n - 1
 end
 
-arr = [2,1]
+arr = [2, 1]
 valid_mountain_array(arr)
 # => false
 
-arr = [3,5,5]
+arr = [3, 5, 5]
 valid_mountain_array(arr)
 # => false
 
-arr = [0,3,2,1]
+arr = [0, 3, 2, 1]
 valid_mountain_array(arr)
 # => true

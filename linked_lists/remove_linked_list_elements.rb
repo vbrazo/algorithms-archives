@@ -9,7 +9,7 @@
 # insert and delete.
 
 # Algorithm
-# 
+#
 # Initiate sentinel node as ListNode(0) and set it to be the new head: sentinel.next = head.
 # Initiate two pointers to track the current node and its predecessor: curr and prev.
 # While curr is not a null pointer:
@@ -31,11 +31,11 @@ def remove_elements(head, val)
   prev = sentinel
   current = head
 
-  while current != nil
+  until current.nil?
     if current.val == val
-        prev.next = current.next
+      prev.next = current.next
     else
-        prev = current
+      prev = current
     end
     current = current.next
   end

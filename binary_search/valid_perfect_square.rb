@@ -1,7 +1,6 @@
 # Given a positive integer num, write a function which returns True
 # if num is a perfect square else False.
 
-
 # Approach 1:
 
 # For `num > 2` the square root a is always less than `num / 2` and greater than 1:
@@ -26,9 +25,7 @@
 # Space complexity: O(1).
 
 def is_perfect_square(num)
-  if num < 2
-    return true
-  end
+  return true if num < 2
 
   left = 2
   right = num / 2
@@ -36,9 +33,8 @@ def is_perfect_square(num)
   while left <= right
     x = left + (right - left) / 2
     guess_squared = x * x
-    if guess_squared == num
-      return true
-    end
+    return true if guess_squared == num
+
     if guess_squared > num
       right = x - 1
     else
@@ -46,7 +42,7 @@ def is_perfect_square(num)
     end
   end
 
-  return false
+  false
 end
 
 num = 16
@@ -62,16 +58,12 @@ puts(is_perfect_square(num))
 #
 
 def is_perfect_square(num)
-  if num < 2
-    return true
-  end
+  return true if num < 2
 
   x = num / 2
-  while x * x > num
-    x = (x + num / x) / 2
-  end
+  x = (x + num / x) / 2 while x * x > num
 
-  return x * x == num
+  x * x == num
 end
 
 num = 16
@@ -87,7 +79,7 @@ puts(is_perfect_square(num))
 #
 
 def is_perfect_square(num)
-  res = num ** 0.5
+  res = num**0.5
   res.to_i == res
 end
 

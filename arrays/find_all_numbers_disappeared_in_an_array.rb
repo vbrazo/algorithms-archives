@@ -33,18 +33,15 @@ def find_disappeared_numbers(nums)
   result = []
 
   (1..nums.length).each do |num|
-    unless hash_table[num]
-      result.append(num)
-    end
+    result.append(num) unless hash_table[num]
   end
 
   result
 end
 
-nums = [4,3,2,7,8,2,3,1]
+nums = [4, 3, 2, 7, 8, 2, 3, 1]
 puts(find_disappeared_numbers(nums))
 # Output: [5,6]
-
 
 # Approach 2: O(1) Space InPlace Modification Solution
 
@@ -79,7 +76,7 @@ def find_disappeared_numbers(nums)
   return [] if nums.count == 0
 
   # Iterate over each of the elements in the original array
-  (0..nums.count-1).each do |i|
+  (0..nums.count - 1).each do |i|
     # Treat the value as the new index
     new_index = nums[i].abs - 1
 
@@ -87,9 +84,7 @@ def find_disappeared_numbers(nums)
     # If the magnitude is positive, make it negative
     # thus indicating that the number nums[i] has
     # appeared or has been visited.
-    if nums[new_index] > 0
-      nums[new_index] *= -1
-    end
+    nums[new_index] *= -1 if nums[new_index] > 0
   end
 
   # Response array that would contain the missing numbers
@@ -98,9 +93,7 @@ def find_disappeared_numbers(nums)
   # Iterate over the numbers from 1 to N and add all those
   # that have positive magnitude in the array
   (1..nums.count).each do |i|
-    if nums[i-1] > 0
-      result.append(i)
-    end
+    result.append(i) if nums[i - 1] > 0
   end
 
   result

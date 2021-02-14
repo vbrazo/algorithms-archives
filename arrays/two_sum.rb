@@ -22,29 +22,26 @@
 def two_sum(nums, target)
   nums.each_with_index do |num1, i|
     nums.each_with_index do |num2, j|
-      if i != j && (num1 + num2 == target)
-        return [i,j]
-      end
+      return [i, j] if i != j && (num1 + num2 == target)
     end
   end
 end
 
-nums = [2,7,11,15]
+nums = [2, 7, 11, 15]
 target = 9
 print(two_sum(nums, target))
 # Output: [0,1]
 # Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
-nums = [3,2,4]
+nums = [3, 2, 4]
 target = 6
 print(two_sum(nums, target))
 # Output: [1,2]
 
-nums = [3,3]
+nums = [3, 3]
 target = 6
 print(two_sum(nums, target))
 # Output: [0,1]
-
 
 # Approach 2: Two-pass Hash Table
 
@@ -76,35 +73,32 @@ def two_sum(nums, target)
   value_indices = {}
 
   # create hash
-  for i in 0...nums.length
-    value_indices[nums[i]]= i
+  (0...nums.length).each do |i|
+    value_indices[nums[i]] = i
   end
 
   # iterate over nums and lookup missing target
-  for i in 0...nums.length
+  (0...nums.length).each do |i|
     missing_value = target - nums[i]
-    if value_indices[missing_value] && value_indices[missing_value] != i
-      return [i, value_indices[missing_value]]
-    end
+    return [i, value_indices[missing_value]] if value_indices[missing_value] && value_indices[missing_value] != i
   end
 end
 
-nums = [2,7,11,15]
+nums = [2, 7, 11, 15]
 target = 9
 print(two_sum(nums, target))
 # Output: [0,1]
 # Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
-nums = [3,2,4]
+nums = [3, 2, 4]
 target = 6
 print(two_sum(nums, target))
 # Output: [1,2]
 
-nums = [3,3]
+nums = [3, 3]
 target = 6
 print(two_sum(nums, target))
 # Output: [0,1]
-
 
 # Approach 3: One-pass Hash Table
 
@@ -122,31 +116,29 @@ print(two_sum(nums, target))
 # stored in the hash table, which stores at most nn elements.
 
 def two_sum(nums, target)
-  hash = Hash.new
+  hash = {}
 
-  for i in 0...nums.length
+  (0...nums.length).each do |i|
     complement = target - nums[i]
 
-    if hash[complement] && i != hash[complement]
-      return [i, hash[complement]]
-    end
+    return [i, hash[complement]] if hash[complement] && i != hash[complement]
 
     hash[nums[i]] = i
   end
 end
 
-nums = [2,7,11,15]
+nums = [2, 7, 11, 15]
 target = 9
 print(two_sum(nums, target))
 # Output: [0,1]
 # Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
-nums = [3,2,4]
+nums = [3, 2, 4]
 target = 6
 print(two_sum(nums, target))
 # Output: [1,2]
 
-nums = [3,3]
+nums = [3, 3]
 target = 6
 print(two_sum(nums, target))
 # Output: [0,1]

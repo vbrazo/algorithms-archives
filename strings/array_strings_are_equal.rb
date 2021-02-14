@@ -6,15 +6,15 @@ def array_strings_are_equal(word1, word2)
   word1.join == word2.join
 end
 
-a = ["abc", "d", "defg"]
-b = ["abcddefg"]
+a = %w[abc d defg]
+b = ['abcddefg']
 
 puts(array_strings_are_equal(a, b))
 
-word1 = ["a", "cb"]
-word2 = ["ab", "c"]
+word1 = %w[a cb]
+word2 = %w[ab c]
 puts(array_strings_are_equal(word1, word2))
 
-word1 = ["a", "ab"]
-word2 = ["a", "ab"]
+word1 = %w[a ab]
+word2 = %w[a ab]
 puts(array_strings_are_equal(word1, word2))

@@ -15,9 +15,7 @@
 # Need to assess if the remaining element meets the condition.
 
 def search(nums, target)
-  if nums.length == 0
-    return -1
-  end
+  return -1 if nums.length == 0
 
   left = 0
   right = nums.length
@@ -35,17 +33,17 @@ def search(nums, target)
 
   # Post-processing:
   # End Condition: left == right
-  if left != nums.length and nums[left] == target
-    return left
+  if (left != nums.length) && (nums[left] == target)
+    left
   else
-    return -1
+    -1
   end
 end
 
-nums = [-1,0,3,5,9,12]
+nums = [-1, 0, 3, 5, 9, 12]
 target = 9
 puts(search(nums, target))
 
-nums = [-1,0,3,5,9,12]
+nums = [-1, 0, 3, 5, 9, 12]
 target = 2
 puts(search(nums, target))

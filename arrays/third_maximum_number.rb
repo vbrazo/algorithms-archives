@@ -16,26 +16,25 @@ def third_max(nums)
   end
 end
 
-nums = [3,2,1]
+nums = [3, 2, 1]
 print(third_max(nums))
 # Output: 1
 # Explanation: The third maximum is 1.
 
-nums = [1,2]
+nums = [1, 2]
 print(third_max(nums))
 # Output: 2
 # Explanation: The third maximum does not exist, so the maximum (2) is returned instead.
 
-nums = [2,2,3,1]
+nums = [2, 2, 3, 1]
 puts(third_max(nums))
 # Output: 1
 # Explanation: Note that the third maximum here means the third maximum distinct number.
 # Both numbers with value 2 are both considered as second maximum.
 
-nums = [1,1,2]
+nums = [1, 1, 2]
 puts(third_max(nums))
 # Output: 2
-
 
 # Approach 2: Use a Set and Delete Maximums
 
@@ -93,7 +92,6 @@ puts(third_max(nums))
 # In the worst case, the HashSet is the same size as the input Array,
 # and so requires O(n) space to store.
 
-
 # @param {Integer[]} nums
 # @return {Integer}
 require 'set'
@@ -109,29 +107,28 @@ def third_max(nums)
   second_maximum = nums.max
   nums.delete(second_maximum)
 
-  return nums.max
+  nums.max
 end
 
-nums = [3,2,1]
+nums = [3, 2, 1]
 print(third_max(nums))
 # Output: 1
 # Explanation: The third maximum is 1.
 
-nums = [1,2]
+nums = [1, 2]
 print(third_max(nums))
 # Output: 2
 # Explanation: The third maximum does not exist, so the maximum (2) is returned instead.
 
-nums = [2,2,3,1]
+nums = [2, 2, 3, 1]
 puts(third_max(nums))
 # Output: 1
 # Explanation: Note that the third maximum here means the third maximum distinct number.
 # Both numbers with value 2 are both considered as second maximum.
 
-nums = [1,1,2]
+nums = [1, 1, 2]
 puts(third_max(nums))
 # Output: 2
-
 
 # Approach 3: Keep Track of 3 Maximums Using a Set
 # Intuition
@@ -164,9 +161,7 @@ def third_max(nums)
   nums.each do |num|
     maximums.add(num)
 
-    if maximums.count > 3
-      maximums.delete(maximums.min)
-    end
+    maximums.delete(maximums.min) if maximums.count > 3
   end
 
   if maximums.count == 3
@@ -176,23 +171,22 @@ def third_max(nums)
   end
 end
 
-
-nums = [3,2,1]
+nums = [3, 2, 1]
 print(third_max(nums))
 # Output: 1
 # Explanation: The third maximum is 1.
 
-nums = [1,2]
+nums = [1, 2]
 print(third_max(nums))
 # Output: 2
 # Explanation: The third maximum does not exist, so the maximum (2) is returned instead.
 
-nums = [2,2,3,1]
+nums = [2, 2, 3, 1]
 puts(third_max(nums))
 # Output: 1
 # Explanation: Note that the third maximum here means the third maximum distinct number.
 # Both numbers with value 2 are both considered as second maximum.
 
-nums = [1,1,2]
+nums = [1, 1, 2]
 puts(third_max(nums))
 # Output: 2

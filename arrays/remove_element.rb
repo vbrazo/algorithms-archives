@@ -21,13 +21,13 @@ def remove_element(nums, val)
   nums.each_with_index do |num, pointer2|
     if val != num
       nums[pointer1] = nums[pointer2]
-      pointer1 = pointer1 + 1
+      pointer1 += 1
     end
   end
   pointer1
 end
 
-puts "First Example:"
+puts 'First Example:'
 nums = [0, 1, 2, 2, 3, 0, 4, 2]
 nums.sort
 val = 2
@@ -46,7 +46,7 @@ puts(len)
 # Output: 2, nums = [2,2]
 
 puts "\nThird Example:"
-nums = [4,5]
+nums = [4, 5]
 nums.sort
 val = 4
 
@@ -88,16 +88,16 @@ def remove_element(nums, val)
   while pointer < n
     if nums[pointer] == val
       nums[pointer] = nums[n - 1]
-      n = n - 1
+      n -= 1
     else
-      pointer=pointer+1
+      pointer += 1
     end
   end
 
-  return pointer
+  pointer
 end
 
-puts "First Example:"
+puts 'First Example:'
 nums = [0, 1, 2, 2, 3, 0, 4, 2]
 nums.sort
 val = 2
@@ -116,7 +116,7 @@ puts(len)
 # Output: 2, nums = [2,2]
 
 puts "\nThird Example:"
-nums = [4,5]
+nums = [4, 5]
 nums.sort
 val = 4
 

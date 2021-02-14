@@ -12,14 +12,12 @@
 # Need to assess if the remaining elements meet the condition.
 
 def search(nums, target)
-  if nums.length == 0
-    return -1
-  end
+  return -1 if nums.length == 0
 
   left = 0
   right = nums.length - 1
 
-  while (left + 1 < right)
+  while left + 1 < right
     mid = left + (right - left) / 2
 
     if nums[mid] == target
@@ -35,13 +33,14 @@ def search(nums, target)
   # End Condition: left + 1 == right
   return left if nums[left] == target
   return right if nums[right] == target
-  return -1
+
+  -1
 end
 
-nums = [-1,0,3,5,9,12]
+nums = [-1, 0, 3, 5, 9, 12]
 target = 9
 puts(search(nums, target))
 
-nums = [-1,0,3,5,9,12]
+nums = [-1, 0, 3, 5, 9, 12]
 target = 2
 puts(search(nums, target))

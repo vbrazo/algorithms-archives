@@ -1,6 +1,6 @@
-# 
+#
 # Given a binary array, find the maximum number of consecutive 1s in this array, allowing at most one 0 within an otherwise consecutive run of 1s.
-# 
+#
 
 # Intuition
 #
@@ -51,25 +51,21 @@
 def find_max_consecutive_ones(nums)
   longest_sequence = 0
 
-  (0..nums.count-1).each do |left|
+  (0..nums.count - 1).each do |left|
     num_zeroes = 0
 
-    (left..nums.count-1).each do |right|
-      if num_zeroes == 2
-        num_zeroes += 1
-      end
+    (left..nums.count - 1).each do |right|
+      num_zeroes += 1 if num_zeroes == 2
 
-      if nums[right] == 0
-        num_zeroes += 1
-      end
+      num_zeroes += 1 if nums[right] == 0
 
-      if num_zeroes <= 1
-        if longest_sequence > right - left + 1
-          longest_sequence = longest_sequence
-        else
-          longest_sequence = right - left + 1
-        end
-      end
+      next unless num_zeroes <= 1
+
+      longest_sequence = if longest_sequence > right - left + 1
+                           longest_sequence
+                         else
+                           right - left + 1
+                         end
     end
   end
 
@@ -115,7 +111,8 @@ end
 # @return {Integer}
 def find_max_consecutive_ones(nums)
   longest_sequence = 0
-  left, right = 0, 0
+  left = 0
+  right = 0
   num_zeroes = 0
 
   # while our window is in bounds
@@ -131,11 +128,11 @@ def find_max_consecutive_ones(nums)
     end
 
     # update our longest sequence answer
-    if longest_sequence > right - left + 1
-      longest_sequence = longest_sequence
-    else
-      longest_sequence = right - left + 1
-    end
+    longest_sequence = if longest_sequence > right - left + 1
+                         longest_sequence
+                       else
+                         right - left + 1
+                       end
     right += 1   # expand our window
   end
 

@@ -60,7 +60,7 @@ end
 def is_mirror(t1, t2)
   return true if t1.nil? && t2.nil?
 
-  return (t1.val == t2.val) && is_mirror(t1.right, t2.left) && is_mirror(t1.left, t2.right)
+  (t1.val == t2.val) && is_mirror(t1.right, t2.left) && is_mirror(t1.left, t2.right)
 end
 
 # Approach 2: Iterative
@@ -97,10 +97,12 @@ def is_symmetric(root)
     return false unless right.val == left.val
 
     return false unless left.left.nil? == right.right.nil?
+
     stack << left.left   if left.left
     stack << right.right if right.right
 
     return false unless left.right.nil? == right.left.nil?
+
     stack << left.right  if left.right
     stack << right.left  if right.left
   end

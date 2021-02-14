@@ -128,7 +128,7 @@ def max_depth(root)
   depth = 0
 
   while node_queue.any?
-    depth +=1
+    depth += 1
     breadth = node_queue.size
     breadth.times do
       node = node_queue.shift

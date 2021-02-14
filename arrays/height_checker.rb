@@ -12,15 +12,13 @@ def height_checker(heights)
   moves = 0
 
   heights.each_with_index do |height, index|
-    unless height == sorted_heights[index]
-      moves = moves + 1
-    end
+    moves += 1 unless height == sorted_heights[index]
   end
 
   moves
 end
 
-heights = [1,1,4,2,1,3]
+heights = [1, 1, 4, 2, 1, 3]
 puts(height_checker(heights))
 # Output: 3
 # Explanation:
@@ -30,10 +28,10 @@ puts(height_checker(heights))
 # On index 4 (0-based) we have 1 vs 3 so we have to move this student.
 # On index 5 (0-based) we have 3 vs 4 so we have to move this student.
 
-heights = [5,1,2,3,4]
+heights = [5, 1, 2, 3, 4]
 puts(height_checker(heights))
 # Output: 5
 
-heights = [1,2,3,4,5]
+heights = [1, 2, 3, 4, 5]
 puts(height_checker(heights))
 # Output: 0

@@ -17,8 +17,8 @@ class OutPlaceAlgorithm
     length = 0
 
     nums.each_with_index do |value, index|
-      if (nums[index-1] != value)
-        length = length + 1
+      if nums[index - 1] != value
+        length += 1
         @output_arr << value
       end
     end
@@ -28,7 +28,7 @@ class OutPlaceAlgorithm
 end
 
 algo = OutPlaceAlgorithm.new
-nums = [1,1,2]
+nums = [1, 1, 2]
 len = algo.remove_duplicates(nums)
 
 puts(len)
@@ -57,11 +57,11 @@ class InPlaceAlgorithm
     pointer1 = 0
 
     nums.each_with_index do |_, pointer2|
-      if (nums[pointer2] != nums[pointer1])
-        pointer1 = pointer1 + 1
+      next unless nums[pointer2] != nums[pointer1]
 
-        nums[pointer1] = nums[pointer2] # swap values
-      end
+      pointer1 += 1
+
+      nums[pointer1] = nums[pointer2] # swap values
     end
 
     pointer1 + 1
@@ -69,22 +69,22 @@ class InPlaceAlgorithm
 end
 
 algo = InPlaceAlgorithm.new
-nums = [1,1,2]
+nums = [1, 1, 2]
 len = algo.remove_duplicates(nums)
 
 puts(len)
-puts("#{nums[0..len+1]}\n")
-print("#{nums[0..len-1]}\n")
+puts("#{nums[0..len + 1]}\n")
+print("#{nums[0..len - 1]}\n")
 
 # length = 2
 # [1, 2]
 
-nums = [0,0,1,1,1,2,2,3,3,4]
+nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
 len = algo.remove_duplicates(nums)
 
 puts(len)
-puts("#{nums[0..len+1]}\n")
-print("#{nums[0..len-1]}\n")
+puts("#{nums[0..len + 1]}\n")
+print("#{nums[0..len - 1]}\n")
 
 # length = 5
 # [0, 1, 2, 3, 4, 5]

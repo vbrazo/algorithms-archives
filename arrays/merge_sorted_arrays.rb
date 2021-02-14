@@ -14,19 +14,19 @@
 # Time complexit: O((n + m)log(n + m))
 # Space complexity: O(1)
 
-def merge(nums1, m, nums2, n)
+def merge(nums1, _m, nums2, _n)
   return nums1 if nums2.length == 0
 
   nums = (nums1 + nums2).select { |num| num.positive? }
   sorted_array = nums.sort
 
-  print("#{sorted_array}")
+  print(sorted_array.to_s)
 end
 
-nums1 = [1,2,3,0,0,0]
+nums1 = [1, 2, 3, 0, 0, 0]
 m = 3
 
-nums2 = [2,5,6]
+nums2 = [2, 5, 6]
 n = 3
 
 merge(nums1, m, nums2, n)
@@ -54,23 +54,23 @@ merge(nums1, m, nums2, n)
 # the elements of array nums1 while overwriting it starting from the beginning.
 
 def merge(nums1, m, nums2, n)
-  while m>0 && n>0 do
-    if nums2[n-1] > nums1[m-1]
-      n-=1
-      nums1[m+n] = nums2[n]
+  while m > 0 && n > 0
+    if nums2[n - 1] > nums1[m - 1]
+      n -= 1
+      nums1[m + n] = nums2[n]
     else
-      m-=1
-      nums1[m+n] = nums1[m]
+      m -= 1
+      nums1[m + n] = nums1[m]
     end
   end
-  nums1[0,n] = nums2[0,n] if n>0
+  nums1[0, n] = nums2[0, n] if n > 0
   nums1
 end
 
-nums1 = [1,2,3,0,0,0]
+nums1 = [1, 2, 3, 0, 0, 0]
 m = 3
 
-nums2 = [2,5,6]
+nums2 = [2, 5, 6]
 n = 3
 
 merge(nums1, m, nums2, n)

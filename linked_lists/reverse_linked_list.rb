@@ -20,7 +20,7 @@ def reverse_list(head)
   prev = nil
   current = head
 
-  while current != nil
+  until current.nil?
     next_temp = current.next
     current.next = prev
     prev = current
@@ -39,11 +39,9 @@ end
 # Space complexity: O(n). The extra space comes from implicit stack space due to recursion. The recursion could go up to nn levels deep.
 
 def reverse_list(head)
-  if (head == nil || head.next == nil)
-    return head
-  end
+  return head if head.nil? || head.next.nil?
 
-  p = reverse_list(head.next);
+  p = reverse_list(head.next)
   head.next.next = head
   head.next = nil
 

@@ -7,7 +7,6 @@
 
 # Return true if there is a cycle in the linked list. Otherwise, return false
 
-
 # Approach 1: Hash Table
 #
 # Intuition
@@ -32,6 +31,7 @@
 # to the hash table, which contains at most nn elements.
 class ListNode
   attr_accessor :val, :next
+
   def initialize(val)
     @val = val
     @next = nil
@@ -43,24 +43,24 @@ end
 def has_cycle(head)
   nodes_seen = []
 
-  while head != nil
+  until head.nil?
     return true if nodes_seen.include? head
 
     nodes_seen.push(head)
     head = head.next
   end
 
-  return false
+  false
 end
 
-head = [3,2,0,-4]
+head = [3, 2, 0, -4]
 pos = 1
 has_cycle(head)
 # => true
 # Explanation: There is a cycle in the linked list,
 # where the tail connects to the 1st node (0-indexed).
 
-head = [1,2]
+head = [1, 2]
 pos = 0
 has_cycle(head)
 # => true
@@ -72,8 +72,6 @@ pos = -1
 has_cycle(head)
 # => false
 # Explanation: There is no cycle in the linked list.
-
-
 
 # Approach 2: Floyd's Cycle Finding Algorithm
 # Intuition
@@ -119,6 +117,7 @@ has_cycle(head)
 
 class ListNode
   attr_accessor :val, :next
+
   def initialize(val)
     @val = val
     @next = nil
@@ -128,7 +127,8 @@ end
 # @param {ListNode} head
 # @return {Boolean}
 def has_cycle(head)
-  slower, faster = head, head
+  slower = head
+  faster = head
 
   while !slower.nil? && !faster.nil? && !faster.next.nil?
     slower = slower.next
@@ -137,17 +137,17 @@ def has_cycle(head)
     return true if slower == faster
   end
 
-  return false
+  false
 end
 
-head = [3,2,0,-4]
+head = [3, 2, 0, -4]
 pos = 1
 has_cycle(head)
 # => true
 # Explanation: There is a cycle in the linked list,
 # where the tail connects to the 1st node (0-indexed).
 
-head = [1,2]
+head = [1, 2]
 pos = 0
 has_cycle(head)
 # => true

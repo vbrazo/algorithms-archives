@@ -13,28 +13,27 @@ def duplicate_zeros(arr)
   arr.each do |value|
     if value == 0
       arr2[arr2_index] = 0
-      arr2_index = arr2_index + 1
+      arr2_index += 1
       arr2[arr2_index] = 0
     else
       arr2[arr2_index] = value
     end
 
-    arr2_index = arr2_index + 1
+    arr2_index += 1
   end
 
   print("#{arr2}\n")
 end
 
-duplicate_zeros([1,0,2,3,0,4,5,0])
+duplicate_zeros([1, 0, 2, 3, 0, 4, 5, 0])
 # Output: null
 # Explanation: After calling your function,
 # the input array is modified to: [1,0,0,2,3,0,0,4]
 
-duplicate_zeros([1,2,3])
+duplicate_zeros([1, 2, 3])
 # Output: null
 # Explanation: After calling your function,
 # the input array is modified to: [1,2,3]
-
 
 # Approach 2: In-place algorithm
 
@@ -65,20 +64,18 @@ def duplicate_zeros(arr)
         arr[pointer + zeros] = arr[pointer]
       end
 
-      if zeros > 0
-        arr[pointer] = 0
-      end
+      arr[pointer] = 0 if zeros > 0
     end
   end
   print("#{arr}\n")
 end
 
-duplicate_zeros([1,0,2,3,0,4,5,0])
+duplicate_zeros([1, 0, 2, 3, 0, 4, 5, 0])
 # Output: null
 # Explanation: After calling your function,
 # the input array is modified to: [1,0,0,2,3,0,0,4]
 
-duplicate_zeros([1,2,3])
+duplicate_zeros([1, 2, 3])
 # Output: null
 # Explanation: After calling your function,
 # the input array is modified to: [1,2,3]

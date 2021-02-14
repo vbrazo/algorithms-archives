@@ -47,7 +47,7 @@ def my_sqrt(x)
     end
   end
 
-  return right
+  right
 end
 
 x = 4
@@ -58,7 +58,6 @@ x = 8
 puts(my_sqrt(x))
 # => 2
 
-
 # Approach 2: Recursion + Bit Shifts
 
 # Time complexity: O(log n).
@@ -66,13 +65,13 @@ puts(my_sqrt(x))
 def my_sqrt(x)
   return x if x < 2
 
-  left = self.my_sqrt(x >> 2) << 1
+  left = my_sqrt(x >> 2) << 1
   right = left + 1
 
   if right * right > x
-    return left
+    left
   else
-    return right
+    right
   end
 end
 
