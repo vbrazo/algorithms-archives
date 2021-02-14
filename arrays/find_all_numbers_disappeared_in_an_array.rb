@@ -66,6 +66,13 @@ puts(find_disappeared_numbers(nums))
 # of the numbers for finding our missing numbers. We will be treating numbers
 # in the array as indices and mark corresponding locations in the array as negative.
 
+# Complexity Analysis
+#
+# Time Complexity: O(N)
+# Space Complexity: O(1) since we are reusing the input array itself as a
+# hash table and the space occupied by the output array doesn't count
+# toward the space complexity of the algorithm.
+
 # @param {Integer[]} nums
 # @return {Integer[]}
 def find_disappeared_numbers(nums)
