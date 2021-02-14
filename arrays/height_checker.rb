@@ -12,7 +12,7 @@ def height_checker(heights)
   moves = 0
 
   heights.each_with_index do |height, index|
-    if height != sorted_heights[index]
+    unless height == sorted_heights[index]
       moves = moves + 1
     end
   end
