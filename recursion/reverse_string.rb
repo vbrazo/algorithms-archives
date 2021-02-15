@@ -41,10 +41,10 @@ def helper(s, left, right)
   end
 end
 
-print(reverse_string(["h","e","l","l","o"]))
+print(reverse_string(%w[h e l l o]))
 # Output: ["o","l","l","e","h"]
 
-reverse_string(["H","a","n","n","a","h"])
+reverse_string(%w[H a n n a h])
 # Output: ["h","a","n","n","a","H"]
 
 # Approach 2: Two Pointers, Iteration, O(1) Space
@@ -72,12 +72,12 @@ end
 def helper(s, left, right)
   s[left], s[right] = s[right], s[left]
 
-  left = left + 1
-  right = right - 1
+  left += 1
+  right -= 1
 end
 
-print(reverse_string(["h","e","l","l","o"]))
+print(reverse_string(%w[h e l l o]))
 # Output: ["o","l","l","e","h"]
 
-reverse_string(["H","a","n","n","a","h"])
+reverse_string(%w[H a n n a h])
 # Output: ["h","a","n","n","a","H"]
