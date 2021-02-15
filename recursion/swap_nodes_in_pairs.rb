@@ -68,8 +68,8 @@ def swap_pairs(head)
 
   while head and head.next
     # Nodes to be swapped
-    first_node = head;
-    second_node = head.next;
+    first_node = head
+    second_node = head.next
 
     # Swapping
     prev_node.next = second_node
@@ -81,6 +81,15 @@ def swap_pairs(head)
     head = first_node.next
   end
 
-  # Return the new head node.
+  # Return the new head node
   dummy.next
 end
+
+# Input: head = [1,2,3,4]
+# Output: [2,1,4,3]
+
+# Input: head = []
+# Output: []
+
+# Input: head = [1]
+# Output: [1]
