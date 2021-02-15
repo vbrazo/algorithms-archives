@@ -36,7 +36,8 @@ end
 # Approach #2 (Recursive)
 
 # Time complexity: O(n). Assume that nn is the list's length, the time complexity is O(n).
-# Space complexity: O(n). The extra space comes from implicit stack space due to recursion. The recursion could go up to nn levels deep.
+# Space complexity: O(n). The extra space comes from implicit stack space due to recursion.
+# The recursion could go up to nn levels deep.
 
 def reverse_list(head)
   return head if head.nil? || head.next.nil?

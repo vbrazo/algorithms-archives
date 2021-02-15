@@ -110,7 +110,8 @@ end
 #
 # Space complexity: O(1)
 #
-# Floyd's Tortoise and Hare algorithm allocates only pointers, so it runs with constant overall memory usage.
+# Floyd's Tortoise and Hare algorithm allocates only pointers,
+# so it runs with constant overall memory usage.
 
 def getIntersect(head)
   tortoise = head

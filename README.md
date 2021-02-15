@@ -24,7 +24,7 @@ This is my personal algorithms archives and it's where I store my algorithms res
 
 Backtracking is an effective technique for solving algorithmic problems. In backtracking, we perform a depth-first search for solutions, jumping back to the last valid path as soon as we hit a dead end.
 
-The benefit of backtracking is that when it is properly implemented, we are guaranteed to find a solution, if one exists. Further, the solution will be more efficient than a brute-force solution exploration, since we weed out paths that are known to be invalid, a process knwon as prunning.
+The benefit of backtracking is that when it is properly implemented, we are guaranteed to find a solution, if one exists. Further, the solution will be more efficient than a brute-force solution exploration, since we weed out paths that are known to be invalid, a process known as prunning.
 
 On the other hand, backtracking cannot guarantee that we will find an optimal solution, and it often leads to factorial or exponential time complexity if we are required to choose one of M paths at each of N steps.
 
@@ -40,9 +40,9 @@ To illustrate this concept, we will walk through one of the most common example 
 
 Yes, we can tentatively place queens on the board.
 
-- Can we verify if th epartial solution is invalid?
+- Can we verify if the partial solution is invalid?
 
-Yes, we can check a solution is invalid if two queens threaten each other. To speed this up, we can ssume that all queens already placed so far do not threaten each other, so we only need to check if the last queen we added attacks any other quee.
+Yes, we can check a solution is invalid if two queens threaten each other. To speed this up, we can assume that all queens already placed so far do not threaten each other, so we only need to check if the last queen we added attacks any other queue.
 
 - Can we verify if the solution is complete?
 
@@ -174,13 +174,13 @@ Reference: https://en.wikipedia.org/wiki/Linear_search
 
 Binary Search is one of the most fundamental and useful algorithms in Computer Science. It describes the process of searching for a specific value in an ordered collection.
 
-In its simplest form, Binary Search operates on a contiguous sequence with a specified left and right index. This is called the Search Space. Binary Search maintains the left, right, and middle indicies of the search space and compares the search target or applies the search condition to the middle value of the collection; if the condition is unsatisfied or values unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful. If the search ends with an empty half, the condition cannot be fulfilled and target is not found.
+In its simplest form, Binary Search operates on a contiguous sequence with a specified left and right index. This is called the Search Space. Binary Search maintains the left, right, and middle indices of the search space and compares the search target or applies the search condition to the middle value of the collection; if the condition is unsatisfied or values unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful. If the search ends with an empty half, the condition cannot be fulfilled and target is not found.
 
 Terminology used in Binary Search:
 
 - Target - the value that you are searching for
 - Index - the current location that you are searching
-- Left, Right - the indicies from which we use to maintain our search Space
+- Left, Right - the indices from which we use to maintain our search Space
 - Mid - the index that we use to apply a condition to determine if we should search left or right
 
 Reference: https://en.wikipedia.org/wiki/Binary_search_algorithm
@@ -193,7 +193,7 @@ An in-place algorithm is an algorithm which transforms input using no auxiliary 
 
 Reference: https://en.wikipedia.org/wiki/In-place_algorithm
 
-### Bubble Sort
+### Bubble Sort (slow)
 
 Bubble Sort is one of the most basic sorting algorithms. It is not used very often in practice other than explaining sorting to beginners. Selection sort, in a way, is a variation of bubble sort used where write to disk is costly.
 
@@ -203,7 +203,7 @@ The time complexity of a bubble sort is `O(n^2)`.
 
 Reference: https://en.wikipedia.org/wiki/Bubble_sort
 
-### Selection Sort
+### Selection Sort (slow)
 
 Selection Sort is a variation of Bubble Sort where swapping happens only once per pass.
 Each pass identify largest element in current array and swap it with element
@@ -227,7 +227,7 @@ the time taken by Bubble Sort.
 
 Reference: https://en.wikipedia.org/wiki/Selection_sort
 
-### Merge Sort
+### Merge Sort (fast)
 
 Merge Sort divides the array in half, sorts each of those halves, and then merges them back
 together. Each of those halves has the same sorting algorithm applied to it. Eventually,
@@ -242,7 +242,7 @@ target array.
 
 Reference: https://en.wikipedia.org/wiki/Merge_sort
 
-### Quick Sort
+### Quick Sort (fast)
 
 In Quick Sort, we pick a random element and partition the array, such all numbers that
 are less than the partitioning element come before all elements that are great than it.
@@ -255,7 +255,7 @@ for the `O(n^2)` worst case scenario.
 
 Reference: https://pt.wikipedia.org/wiki/Quicksort
 
-### Radix Sort
+### Radix Sort (special purpose)
 
 Radix sort is a sorting algorithm for integers (and some other data types) that takes
 advantage of the fact that integers have a finite number of bits. In radix sort, we iterate
