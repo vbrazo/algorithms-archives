@@ -193,7 +193,7 @@ An in-place algorithm is an algorithm which transforms input using no auxiliary 
 
 Reference: https://en.wikipedia.org/wiki/In-place_algorithm
 
-### Bubble Sort (slow)
+### Bubble Sort
 
 Bubble Sort is one of the most basic sorting algorithms. It is not used very often in practice other than explaining sorting to beginners. Selection sort, in a way, is a variation of bubble sort used where write to disk is costly.
 
@@ -201,9 +201,11 @@ Each iteration in bubble sort compares adjacent elements successively and move t
 
 The time complexity of a bubble sort is `O(n^2)`.
 
+** it's considered a slow search technique
+
 Reference: https://en.wikipedia.org/wiki/Bubble_sort
 
-### Selection Sort (slow)
+### Selection Sort
 
 Selection Sort is a variation of Bubble Sort where swapping happens only once per pass.
 Each pass identify largest element in current array and swap it with element
@@ -225,9 +227,11 @@ The recursive implementation takes `O(n)` extra memory.
 Common implementation of Selection Sort is observed to be taking almost half
 the time taken by Bubble Sort.
 
+** it's considered a slow search technique
+
 Reference: https://en.wikipedia.org/wiki/Selection_sort
 
-### Merge Sort (fast)
+### Merge Sort
 
 Merge Sort divides the array in half, sorts each of those halves, and then merges them back
 together. Each of those halves has the same sorting algorithm applied to it. Eventually,
@@ -240,9 +244,11 @@ be (helperLeft and helperRight). We then iterate through helper, copying the sma
 element from each half into the array. At the end, we copy an remaining elements into the
 target array.
 
+** it's considered a fast search technique
+
 Reference: https://en.wikipedia.org/wiki/Merge_sort
 
-### Quick Sort (fast)
+### Quick Sort
 
 In Quick Sort, we pick a random element and partition the array, such all numbers that
 are less than the partitioning element come before all elements that are great than it.
@@ -253,9 +259,11 @@ will eventually become sorted. However, as the partitioned element is not guaran
 the median (or anywhere near the median), our sorting could be very slow. This is the reason
 for the `O(n^2)` worst case scenario.
 
+** it's considered a fast search technique
+
 Reference: https://pt.wikipedia.org/wiki/Quicksort
 
-### Radix Sort (special purpose)
+### Radix Sort
 
 Radix sort is a sorting algorithm for integers (and some other data types) that takes
 advantage of the fact that integers have a finite number of bits. In radix sort, we iterate
@@ -267,5 +275,7 @@ sorting by each subsequent digit, until finally the whole array is sorted.
 Unlike comparison sorting algorithms, which cannot perform better than `O(n log(n))` in the
 average case, radix sort has a runtime of `O(kn)`, where `n` is number of elements and `k`
 is the number of passes of the sorting algorithm.
+
+** it's considered a special purpose
 
 Reference: https://pt.wikipedia.org/wiki/Radix_sort
