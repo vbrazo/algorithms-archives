@@ -161,3 +161,74 @@ puts(missing_number(nums))
 #         = 2
 ​
 # TODO:
+
+
+# Approach #4 Gauss' Formula [Accepted]
+#
+# Intuition
+#
+# One of the most well-known stories in mathematics is of a young Gauss,
+# forced to find the sum of the first 100 natural numbers by a lazy teacher.
+# Rather than add the numbers by hand, he deduced a closed-form expression
+# for the sum, or so the story goes. You can see the formula: n(n+1)/2
+#
+# Algorithm
+#
+# We can compute the sum of nums in linear time, and by Gauss' formula,
+# we can compute the sum of the first nn natural numbers in constant time.
+# Therefore, the number that is missing is simply the result of Gauss'
+# formula minus the sum of nums, as nums consists of the first n natural
+# numbers minus some number.
+
+# Complexity Analysis
+
+# Time complexity: O(n)
+
+# Although Gauss' formula can be computed in O(1) time,
+# summing nums costs us O(n) time, so the algorithm is
+# overall linear. Because we have no information about which number is missing,
+# an adversary could always design an input for which any algorithm that
+# examines fewer than nn numbers fails. Therefore, this solution is
+# asymptotically optimal.
+
+# Space complexity: O(1)
+
+# This approach only pushes a few integers around,
+# so it has constant memory usage.
+
+def missing_number(nums)
+  n = nums.count
+
+  expected_sum = n * (n + 1) / 2
+  actual_sum = nums.sum
+
+  expected_sum - actual_sum
+end
+
+nums = [3,0,1]
+puts(missing_number(nums))
+# Output: 2
+# Explanation: n = 3 since there are 3 numbers,
+# so all numbers are in the range [0,3].
+# 2 is the missing number in the range since it does not appear in nums.
+
+nums = [0,1]
+puts(missing_number(nums))
+# Output: 2
+# Explanation: n = 2 since there are 2 numbers, so all numbers are
+# in the range [0,2]. 2 is the missing number in the range since
+# it does not appear in nums.
+
+nums = [9,6,4,2,3,5,7,0,1]
+puts(missing_number(nums))
+# Output: 8
+# Explanation: n = 9 since there are 9 numbers, so all numbers are
+# in the range [0,9]. 8 is the missing number in the range since
+# it does not appear in nums.
+
+nums = [0]
+puts(missing_number(nums))
+# Output: 1
+# Explanation: n = 1 since there is 1 number, so all numbers are
+# in the range [0,1]. 1 is the missing number in the range since
+# it does not appear in nums.
