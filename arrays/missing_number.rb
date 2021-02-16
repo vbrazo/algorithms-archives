@@ -81,3 +81,59 @@ puts(missing_number(nums))
 # Explanation: n = 1 since there is 1 number, so all numbers are
 # in the range [0,1]. 1 is the missing number in the range since
 # it does not appear in nums.
+
+
+# Approach #2 HashSet
+#
+# Intuition
+#
+# A brute force method for solving this problem would be to simply
+# check for the presence of each number that we expect to be present.
+# The naive implementation might use a linear scan of the array to check
+# for containment, but we can use a HashSet to get constant time containment
+# queries and overall linear runtime.
+#
+# Algorithm
+#
+# This algorithm is almost identical to the brute force approach,
+# except we first insert each element of nums into a set, allowing us
+# to later query for containment in O(1) time.
+require 'set'
+
+def missing_number(nums)
+  set_nums = nums.to_set
+
+  set_nums.count.times do |i|
+    unless set_nums.include? i
+      return i
+    end
+  end
+end
+
+nums = [3,0,1]
+puts(missing_number(nums))
+# Output: 2
+# Explanation: n = 3 since there are 3 numbers,
+# so all numbers are in the range [0,3].
+# 2 is the missing number in the range since it does not appear in nums.
+
+nums = [0,1]
+puts(missing_number(nums))
+# Output: 2
+# Explanation: n = 2 since there are 2 numbers, so all numbers are
+# in the range [0,2]. 2 is the missing number in the range since
+# it does not appear in nums.
+
+nums = [9,6,4,2,3,5,7,0,1]
+puts(missing_number(nums))
+# Output: 8
+# Explanation: n = 9 since there are 9 numbers, so all numbers are
+# in the range [0,9]. 8 is the missing number in the range since
+# it does not appear in nums.
+
+nums = [0]
+puts(missing_number(nums))
+# Output: 1
+# Explanation: n = 1 since there is 1 number, so all numbers are
+# in the range [0,1]. 1 is the missing number in the range since
+# it does not appear in nums.
