@@ -116,7 +116,7 @@ print(two_sum(nums, target))
 # stored in the hash table, which stores at most nn elements.
 
 def two_sum(nums, target)
-  hash = {}
+  hash = nums
 
   (0...nums.length).each do |i|
     complement = target - nums[i]
