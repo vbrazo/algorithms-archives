@@ -60,3 +60,45 @@ puts(str_str("heawello","ll"))
 
 puts(str_str("heawello","ll23"))
 # => -1
+
+# Approach 2: Two Pointers: Linear Time Slice
+
+# Drawback of the previous algorithm is that one compares absolutely
+# all substrings of length L with the needle. There is no need to that.
+
+# Complexity Analysis
+
+# Time complexity: O((N−L)L) in the worst case of numerous almost complete false
+# matches, and O(N) in the best case of one single match.
+
+# Space complexity: O(1).
+
+def str_str(haystack, needle)
+  if haystack == needle || (haystack.length == 1 && needle.empty?)
+    return 0
+  end
+
+  i = 0
+  j = 0
+
+  while i < haystack.length && j < haystack.length
+    if haystack[i..j] == needle
+      return i
+    elsif haystack[i..j].length > needle.length
+      i += 1
+    else
+      j += 1
+    end
+  end
+
+  -1
+end
+
+puts(str_str("hello","ll"))
+# => 2
+
+puts(str_str("heawello","ll"))
+# => 5
+
+puts(str_str("heawello","ll23"))
+# => -1
