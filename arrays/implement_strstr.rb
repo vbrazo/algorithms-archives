@@ -74,21 +74,35 @@ puts(str_str("heawello","ll23"))
 # Space complexity: O(1).
 
 def str_str(haystack, needle)
-  if haystack == needle || (haystack.length == 1 && needle.empty?)
-    return 0
-  end
+  l = needle.length
+  n = haystack.length
 
-  i = 0
-  j = 0
+  return 0 if l == 0
 
-  while i < haystack.length && j < haystack.length
-    if haystack[i..j] == needle
-      return i
-    elsif haystack[i..j].length > needle.length
-      i += 1
-    else
-      j += 1
+  pn = 0
+
+  while pn < n - l + 1
+    # find the position of the first needle character
+    # in the haystack string
+    while pn < n - l + 1 and haystack[pn] != needle[0]
+      pn += 1
     end
+
+    # compute the max match string
+    curr_len = pL = 0
+
+    while pL < l and pn < n and haystack[pn] == needle[pL]
+      pn += 1
+      pL += 1
+      curr_len += 1
+    end
+
+    # if the whole needle string is found,
+    # return its start position
+    return pn - l if curr_len == l
+
+    # otherwise, backtrack
+    pn = pn - curr_len + 1
   end
 
   -1
