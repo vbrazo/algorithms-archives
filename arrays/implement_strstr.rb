@@ -116,3 +116,55 @@ puts(str_str("heawello","ll"))
 
 puts(str_str("heawello","ll23"))
 # => -1
+
+# Approach 3: Rabin Karp: Constant Time Slice
+
+# Complexity Analysis
+
+# Time complexity: O(N), one computes the reference hash of the needle string
+# in O(L) time, and then runs a loop of (N - L) steps with constant
+# time operations in it.
+
+# Space complexity: O(1).
+
+def str_str(txt, pat)
+  return 0 if pat.empty?
+
+  m = pat.length
+  n = txt.length
+  return -1 if m > n
+
+  p = 0
+  t = 0
+  h = 1
+  q = 97
+  d = 256
+
+  (0..m-2).each do
+    h = (h*d)%q
+  end
+
+  (0..m-1).each do |i|
+    p = (p*d+pat[i].ord)%q
+    t = (t*d+txt[i].ord)%q
+  end
+
+  (0..n-m).each do |i|
+    if t == p && pat == txt[i..i+m-1]
+      return i
+    else
+      t = (d*(t-h*txt[i].ord)+txt[i+m].ord)%q if i != n-m
+    end
+  end
+
+  -1
+end
+
+puts(str_str("hello","ll"))
+# => 2
+
+puts(str_str("heawello","ll"))
+# => 5
+
+puts(str_str("heawello","ll23"))
+# => -1
