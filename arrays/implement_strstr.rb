@@ -25,7 +25,6 @@
 # - Rabin-Karp = constant-time slice using rolling hash algorithm.
 # - Bit manipulation = constant-time slice using bitmasks.
 
-
 # Approach 1: Substring: Linear Time Slice
 # Quite straightforward approach - move sliding window along the string and
 # compare substring in the window with the needle.
@@ -52,13 +51,13 @@ def str_str(haystack, needle)
   -1
 end
 
-puts(str_str("hello","ll"))
+puts(str_str('hello', 'll'))
 # => 2
 
-puts(str_str("heawello","ll"))
+puts(str_str('heawello', 'll'))
 # => 5
 
-puts(str_str("heawello","ll23"))
+puts(str_str('heawello', 'll23'))
 # => -1
 
 # Approach 2: Two Pointers: Linear Time Slice
@@ -84,14 +83,12 @@ def str_str(haystack, needle)
   while pn < n - l + 1
     # find the position of the first needle character
     # in the haystack string
-    while pn < n - l + 1 and haystack[pn] != needle[0]
-      pn += 1
-    end
+    pn += 1 while (pn < n - l + 1) && (haystack[pn] != needle[0])
 
     # compute the max match string
     curr_len = pL = 0
 
-    while pL < l and pn < n and haystack[pn] == needle[pL]
+    while (pL < l) && (pn < n) && (haystack[pn] == needle[pL])
       pn += 1
       pL += 1
       curr_len += 1
@@ -108,13 +105,13 @@ def str_str(haystack, needle)
   -1
 end
 
-puts(str_str("hello","ll"))
+puts(str_str('hello', 'll'))
 # => 2
 
-puts(str_str("heawello","ll"))
+puts(str_str('heawello', 'll'))
 # => 5
 
-puts(str_str("heawello","ll23"))
+puts(str_str('heawello', 'll23'))
 # => -1
 
 # Approach 3: Rabin Karp: Constant Time Slice
@@ -140,31 +137,31 @@ def str_str(txt, pat)
   q = 97
   d = 256
 
-  (0..m-2).each do
-    h = (h*d)%q
+  (0..m - 2).each do
+    h = (h * d) % q
   end
 
-  (0..m-1).each do |i|
-    p = (p*d+pat[i].ord)%q
-    t = (t*d+txt[i].ord)%q
+  (0..m - 1).each do |i|
+    p = (p * d + pat[i].ord) % q
+    t = (t * d + txt[i].ord) % q
   end
 
-  (0..n-m).each do |i|
-    if t == p && pat == txt[i..i+m-1]
+  (0..n - m).each do |i|
+    if t == p && pat == txt[i..i + m - 1]
       return i
     else
-      t = (d*(t-h*txt[i].ord)+txt[i+m].ord)%q if i != n-m
+      t = (d * (t - h * txt[i].ord) + txt[i + m].ord) % q if i != n - m
     end
   end
 
   -1
 end
 
-puts(str_str("hello","ll"))
+puts(str_str('hello', 'll'))
 # => 2
 
-puts(str_str("heawello","ll"))
+puts(str_str('heawello', 'll'))
 # => 5
 
-puts(str_str("heawello","ll23"))
+puts(str_str('heawello', 'll23'))
 # => -1
