@@ -46,8 +46,8 @@ puts(calculate_products_of_all_other_elements([1, 2, 3]))
 # Complexity analysis
 #
 # Time complexity: O(N) where N represents the number of elements in the input
-# array. We use one iteration to construct the array L, one to construct
-# the array R and one last to construct the answeranswer array using L and R.
+# array. We use one iteration to construct the array prefix_products, one to construct
+# the array suffix_products and one last to construct the answeranswer array using L and R.
 # Space complexity: O(N) used up by the two intermediate arrays that
 # we constructed to keep track of product of elements to the left and right.
 
