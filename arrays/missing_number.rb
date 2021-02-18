@@ -39,36 +39,34 @@ def missing_number(nums)
   nums = nums.sort
 
   # Ensure that n is at the last index
-  if nums[nums.count-1] != nums.count
+  if nums[nums.count - 1] != nums.count
     return nums.count
   elsif nums[0] != 0
     return 0
   end
 
   # If we get here, then the missing number is on the range (0, n)
-  for index in 1..nums.count
-    expected_num = nums[index-1] + 1
-    if nums[index] != expected_num
-      return expected_num
-    end
+  (1..nums.count).each do |index|
+    expected_num = nums[index - 1] + 1
+    return expected_num if nums[index] != expected_num
   end
 end
 
-nums = [3,0,1]
+nums = [3, 0, 1]
 puts(missing_number(nums))
 # Output: 2
 # Explanation: n = 3 since there are 3 numbers,
 # so all numbers are in the range [0,3].
 # 2 is the missing number in the range since it does not appear in nums.
 
-nums = [0,1]
+nums = [0, 1]
 puts(missing_number(nums))
 # Output: 2
 # Explanation: n = 2 since there are 2 numbers, so all numbers are
 # in the range [0,2]. 2 is the missing number in the range since
 # it does not appear in nums.
 
-nums = [9,6,4,2,3,5,7,0,1]
+nums = [9, 6, 4, 2, 3, 5, 7, 0, 1]
 puts(missing_number(nums))
 # Output: 8
 # Explanation: n = 9 since there are 9 numbers, so all numbers are
@@ -81,7 +79,6 @@ puts(missing_number(nums))
 # Explanation: n = 1 since there is 1 number, so all numbers are
 # in the range [0,1]. 1 is the missing number in the range since
 # it does not appear in nums.
-
 
 # Approach #2 HashSet
 #
@@ -104,27 +101,25 @@ def missing_number(nums)
   set_nums = nums.to_set
 
   set_nums.count.times do |i|
-    unless set_nums.include? i
-      return i
-    end
+    return i unless set_nums.include? i
   end
 end
 
-nums = [3,0,1]
+nums = [3, 0, 1]
 puts(missing_number(nums))
 # Output: 2
 # Explanation: n = 3 since there are 3 numbers,
 # so all numbers are in the range [0,3].
 # 2 is the missing number in the range since it does not appear in nums.
 
-nums = [0,1]
+nums = [0, 1]
 puts(missing_number(nums))
 # Output: 2
 # Explanation: n = 2 since there are 2 numbers, so all numbers are
 # in the range [0,2]. 2 is the missing number in the range since
 # it does not appear in nums.
 
-nums = [9,6,4,2,3,5,7,0,1]
+nums = [9, 6, 4, 2, 3, 5, 7, 0, 1]
 puts(missing_number(nums))
 # Output: 8
 # Explanation: n = 9 since there are 9 numbers, so all numbers are
@@ -137,7 +132,6 @@ puts(missing_number(nums))
 # Explanation: n = 1 since there is 1 number, so all numbers are
 # in the range [0,1]. 1 is the missing number in the range since
 # it does not appear in nums.
-
 
 # Approach #3 Bit Manipulation
 
@@ -161,7 +155,6 @@ puts(missing_number(nums))
 #         = 2
 ​
 # TODO:
-
 
 # Approach #4 Gauss' Formula [Accepted]
 #
@@ -205,21 +198,21 @@ def missing_number(nums)
   expected_sum - actual_sum
 end
 
-nums = [3,0,1]
+nums = [3, 0, 1]
 puts(missing_number(nums))
 # Output: 2
 # Explanation: n = 3 since there are 3 numbers,
 # so all numbers are in the range [0,3].
 # 2 is the missing number in the range since it does not appear in nums.
 
-nums = [0,1]
+nums = [0, 1]
 puts(missing_number(nums))
 # Output: 2
 # Explanation: n = 2 since there are 2 numbers, so all numbers are
 # in the range [0,2]. 2 is the missing number in the range since
 # it does not appear in nums.
 
-nums = [9,6,4,2,3,5,7,0,1]
+nums = [9, 6, 4, 2, 3, 5, 7, 0, 1]
 puts(missing_number(nums))
 # Output: 8
 # Explanation: n = 9 since there are 9 numbers, so all numbers are

@@ -20,9 +20,7 @@ end
 # @param {ListNode} head
 # @return {ListNode}
 def swap_pairs(head)
-  if !head || !head.next
-    return head
-  end
+  return head if !head || !head.next
 
   first_node = head
   second_node = head.next
@@ -66,7 +64,7 @@ def swap_pairs(head)
 
   prev_node = dummy
 
-  while head and head.next
+  while head && head.next
     # Nodes to be swapped
     first_node = head
     second_node = head.next
