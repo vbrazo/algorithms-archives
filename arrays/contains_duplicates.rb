@@ -17,10 +17,8 @@
 
 def contains_duplicate(nums)
   nums.length.times do |i|
-    for j in 0..i-1 do
-      if nums[j] == nums[i]
-        return true
-      end
+    (0..i - 1).each do |j|
+      return true if nums[j] == nums[i]
     end
   end
 
@@ -115,7 +113,7 @@ puts(contains_duplicate(nums))
 # Space complexity: O(n). The space used by a hash table is linear with
 # the number of elements in it.
 
-require "set"
+require 'set'
 
 def contains_duplicate(nums)
   set_nums = [].to_set
