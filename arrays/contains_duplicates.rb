@@ -1,8 +1,9 @@
 # 217. Contains Duplicate
-# 
+#
 # Given an array of integers, find if the array contains any duplicates.
 #
-# Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+# Your function should return true if any value appears at least twice
+# in the array, and it should return false if every element is distinct.
 #
 #
 # Approach #2 (Sorting) [Accepted]
@@ -24,7 +25,7 @@
 # The entire algorithm is dominated by the sorting step, which is O(nlogn).
 #
 # Space complexity: O(1). Space depends on the sorting implementation which,
-# usually, costs O(1)O(1) auxiliary space if heapsort is used.
+# usually, costs O(1) auxiliary space if heapsort is used.
 #
 # Note
 #
@@ -47,3 +48,15 @@ def contains_duplicate(nums)
 
   false
 end
+
+nums = [1,2,3,1]
+puts(contains_duplicate(nums))
+# => true
+
+nums = [1,2,3,4]
+puts(contains_duplicate(nums))
+# => false
+
+nums = [1,1,1,3,3,4,3,2,4,2]
+puts(contains_duplicate(nums))
+# => true
