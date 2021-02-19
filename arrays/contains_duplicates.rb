@@ -6,6 +6,39 @@
 # in the array, and it should return false if every element is distinct.
 #
 #
+# Approach #1 (Naive Linear Search) [Time Limit Exceeded]
+
+# Complexity Analysis
+
+# Time complexity : O(n^2). In the worst case, there are n(n+1)/2 pairs
+# of integers to check. Therefore, the time complexity is O(n^2).
+
+# Space complexity: O(1). We only used constant extra space.
+
+def contains_duplicate(nums)
+  nums.length.times do |i|
+    for j in 0..i-1 do
+      if nums[j] == nums[i]
+        return true
+      end
+    end
+  end
+
+  false
+end
+
+nums = [1, 2, 3, 1]
+puts(contains_duplicate(nums))
+# => true
+
+nums = [1, 2, 3, 4]
+puts(contains_duplicate(nums))
+# => false
+
+nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
+puts(contains_duplicate(nums))
+# => true
+
 # Approach #2 (Sorting) [Accepted]
 #
 # Intuition
@@ -21,7 +54,7 @@
 #
 # Complexity Analysis
 #
-# Time complexity: O(nlogn). Sorting is O(n logn) and the sweeping is O(n).
+# Time complexity: O(nlogn). Sorting is O(nlogn) and the sweeping is O(n).
 # The entire algorithm is dominated by the sorting step, which is O(nlogn).
 #
 # Space complexity: O(1). Space depends on the sorting implementation which,
@@ -38,25 +71,24 @@
 # @return {Boolean}
 def contains_duplicate(nums)
   return false if nums.count < 2
+
   nums = nums.sort
 
-  nums.each_with_index do |value, i|
-    if nums[i] == nums[i+1]
-      return true
-    end
+  nums.each_with_index do |_value, i|
+    return true if nums[i] == nums[i + 1]
   end
 
   false
 end
 
-nums = [1,2,3,1]
+nums = [1, 2, 3, 1]
 puts(contains_duplicate(nums))
 # => true
 
-nums = [1,2,3,4]
+nums = [1, 2, 3, 4]
 puts(contains_duplicate(nums))
 # => false
 
-nums = [1,1,1,3,3,4,3,2,4,2]
+nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
 puts(contains_duplicate(nums))
 # => true
