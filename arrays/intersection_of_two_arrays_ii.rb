@@ -8,7 +8,7 @@
 
 # Complexity Analysis
 
-# Time Complexity:  O(nlogn+mlogm), where nn and mm are the lengths of the arrays.
+# Time Complexity: O(nlogn+mlogm), where nn and m are the lengths of the arrays.
 # We sort two arrays independently, and then do a linear scan.
 
 # Space Complexity: from O(logn+logm) to O(n+m), depending on the implementation of the
@@ -66,7 +66,7 @@ intersect(nums1, nums2)
 
 # Complexity Analysis
 
-# Time Complexity: O(n+m), where nn and mm are the lengths of the arrays.
+# Time Complexity: O(n+m), where n and m are the lengths of the arrays.
 # We iterate through the first, and then through the second array; insert
 # and lookup operations in the hash map take a constant time.
 
