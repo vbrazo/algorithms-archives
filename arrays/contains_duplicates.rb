@@ -39,7 +39,7 @@ nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
 puts(contains_duplicate(nums))
 # => true
 
-# Approach #2 (Sorting) [Accepted]
+# Approach #2 (Sorting)
 #
 # Intuition
 #
@@ -74,8 +74,57 @@ def contains_duplicate(nums)
 
   nums = nums.sort
 
-  nums.each_with_index do |_value, i|
+  nums.each_with_index do |_, i|
     return true if nums[i] == nums[i + 1]
+  end
+
+  false
+end
+
+nums = [1, 2, 3, 1]
+puts(contains_duplicate(nums))
+# => true
+
+nums = [1, 2, 3, 4]
+puts(contains_duplicate(nums))
+# => false
+
+nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
+puts(contains_duplicate(nums))
+# => true
+
+# Approach #3 (Hash Table)
+#
+# Intuition
+#
+# Utilize a dynamic data structure that supports fast search
+# and insert operations.
+#
+# Algorithm
+#
+# From Approach #1 we know that search operations is O(n) in an unsorted array
+# and we did so repeatedly. Utilizing a data structure with faster search time
+# will speed up the entire algorithm.
+#
+
+# Complexity Analysis
+
+# Time complexity: O(n). We do search() and insert() for nn times and
+# each operation takes constant time.
+
+# Space complexity: O(n). The space used by a hash table is linear with
+# the number of elements in it.
+require "set"
+
+def contains_duplicate(nums)
+  set_nums = [].to_set
+
+  nums.each do |num|
+    if set_nums.include? num
+      return true
+    else
+      set_nums.add(num)
+    end
   end
 
   false
