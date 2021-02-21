@@ -28,6 +28,20 @@
 # Now they have all been set to zero. We then append the digit 1
 # in front of the other digits and return the result.
 
+# Complexity Analysis
+
+# Let N be the number of elements in the input list.
+
+# Time complexity: O(N) since it's not more than one pass along
+# the input list.
+
+# Space complexity: O(N)
+# Although we perform the operation in-place (i.e. on the input
+# list itself), in the worst scenario, we would need to allocate
+# an intermediate space to hold the result, which contains the
+# N+1 elements. Hence the overall space complexity of the
+# algorithm is O(N).
+
 # @param {Integer[]} digits
 # @return {Integer[]}
 def plus_one(digits)
