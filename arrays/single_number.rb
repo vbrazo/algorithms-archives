@@ -91,3 +91,35 @@ puts(single_number(nums))
 nums = [1]
 puts(single_number(nums))
 # Output: 1
+
+
+# Approach 3: Math
+
+# Concept
+
+# 2 * (a + b + c) - (a + a + b + b + c) = c
+
+# Complexity Analysis
+
+# Time complexity: O(n + n) = O(n). sum will call next to iterate through nums.
+# We can see it as sum(list(i, for i in nums)) which means the time complexity is O(n)
+# because of the number of elements(n) in nums.
+
+# Space complexity: O(n + n) = O(n). set needs space for the elements in nums
+require 'set'
+
+def single_number(nums)
+  return 2 * nums.to_set.sum - nums.sum
+end
+
+nums = [2,2,1]
+puts(single_number(nums))
+# Output: 1
+
+nums = [4,1,2,1,2]
+puts(single_number(nums))
+# Output: 4
+
+nums = [1]
+puts(single_number(nums))
+# Output: 1
