@@ -29,19 +29,17 @@ def single_number(nums)
   no_duplicate_list.pop
 end
 
-nums = [2,2,1]
+nums = [2, 2, 1]
 puts(single_number(nums))
 # Output: 1
 
-nums = [4,1,2,1,2]
+nums = [4, 1, 2, 1, 2]
 puts(single_number(nums))
 # Output: 4
 
 nums = [1]
 puts(single_number(nums))
 # Output: 1
-
-
 
 # Approach 2: Hash Table
 
@@ -66,32 +64,29 @@ def single_number(nums)
   hash_table = {}
 
   nums.each do |num|
-    if hash_table[num]
-      hash_table[num] = hash_table[num] + 1
-    else
-      hash_table[num] = 1
-    end
+    hash_table[num] = if hash_table[num]
+                        hash_table[num] + 1
+                      else
+                        1
+                      end
   end
 
-  hash_table.each do |key, val|
-    if hash_table[key] == 1
-      return key
-    end
+  hash_table.each do |key, _val|
+    return key if hash_table[key] == 1
   end
 end
 
-nums = [2,2,1]
+nums = [2, 2, 1]
 puts(single_number(nums))
 # Output: 1
 
-nums = [4,1,2,1,2]
+nums = [4, 1, 2, 1, 2]
 puts(single_number(nums))
 # Output: 4
 
 nums = [1]
 puts(single_number(nums))
 # Output: 1
-
 
 # Approach 3: Math
 
@@ -111,14 +106,14 @@ puts(single_number(nums))
 require 'set'
 
 def single_number(nums)
-  return 2 * nums.to_set.sum - nums.sum
+  2 * nums.to_set.sum - nums.sum
 end
 
-nums = [2,2,1]
+nums = [2, 2, 1]
 puts(single_number(nums))
 # Output: 1
 
-nums = [4,1,2,1,2]
+nums = [4, 1, 2, 1, 2]
 puts(single_number(nums))
 # Output: 4
 
@@ -139,7 +134,6 @@ puts(single_number(nums))
 
 # So we can XOR all bits together to find the unique number.
 
-
 # Complexity Analysis
 
 # Time complexity: O(n). We only iterate through nums, so the time complexity is
@@ -155,11 +149,11 @@ def singleNumber(nums)
   a
 end
 
-nums = [2,2,1]
+nums = [2, 2, 1]
 puts(single_number(nums))
 # Output: 1
 
-nums = [4,1,2,1,2]
+nums = [4, 1, 2, 1, 2]
 puts(single_number(nums))
 # Output: 4
 
