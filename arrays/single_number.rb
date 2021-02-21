@@ -30,13 +30,64 @@ def single_number(nums)
 end
 
 nums = [2,2,1]
-single_number(nums)
+puts(single_number(nums))
 # Output: 1
 
 nums = [4,1,2,1,2]
-single_number(nums)
+puts(single_number(nums))
 # Output: 4
 
 nums = [1]
-single_number(nums)
+puts(single_number(nums))
+# Output: 1
+
+
+
+# Approach 2: Hash Table
+
+# Algorithm
+
+# We use hash table to avoid the O(n) time required for searching
+# the elements.
+
+# Iterate through all elements in nums and set up key/value pair.
+# Return the element which appeared only once.
+
+# Complexity Analysis
+#
+# Time complexity: O(n⋅1)=O(n). Time complexity of for loop is O(n).
+# Time complexity of hash table(dictionary in python)
+# operation pop is O(1).
+#
+# Space complexity: O(n). The space required by hash_table
+# is equal to the number of elements in nums
+
+def single_number(nums)
+  hash_table = {}
+
+  nums.each do |num|
+    if hash_table[num]
+      hash_table[num] = hash_table[num] + 1
+    else
+      hash_table[num] = 1
+    end
+  end
+
+  hash_table.each do |key, val|
+    if hash_table[key] == 1
+      return key
+    end
+  end
+end
+
+nums = [2,2,1]
+puts(single_number(nums))
+# Output: 1
+
+nums = [4,1,2,1,2]
+puts(single_number(nums))
+# Output: 4
+
+nums = [1]
+puts(single_number(nums))
 # Output: 1
