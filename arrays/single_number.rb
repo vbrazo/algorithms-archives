@@ -4,7 +4,9 @@
 # Follow up: Could you implement a solution with a linear runtime
 # complexity and without using extra memory?
 
+#
 # Approach 1: List operation
+#
 
 # Complexity Analysis
 
@@ -41,7 +43,9 @@ nums = [1]
 puts(single_number(nums))
 # Output: 1
 
+#
 # Approach 2: Hash Table
+#
 
 # Algorithm
 
@@ -71,7 +75,7 @@ def single_number(nums)
                       end
   end
 
-  hash_table.each do |key, _val|
+  hash_table.each do |key|
     return key if hash_table[key] == 1
   end
 end
@@ -88,7 +92,9 @@ nums = [1]
 puts(single_number(nums))
 # Output: 1
 
+#
 # Approach 3: Math
+#
 
 # Concept
 
@@ -121,7 +127,9 @@ nums = [1]
 puts(single_number(nums))
 # Output: 1
 
+#
 # Approach 4: Bit Manipulation
+#
 
 # Concept
 
