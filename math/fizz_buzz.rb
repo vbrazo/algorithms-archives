@@ -152,22 +152,18 @@ puts(fizz_buzz(n))
 def fizz_buzz(n)
   str = []
   fizz_buzz = {}
-  fizz_buzz[3] = "Fizz"
-  fizz_buzz[5] = "Buzz"
+  fizz_buzz[3] = 'Fizz'
+  fizz_buzz[5] = 'Buzz'
 
   n.times do |i|
     i += 1
     num_str = ''
 
     fizz_buzz.each do |key, value|
-      if i % key == 0
-        num_str = num_str + value
-      end
+      num_str += value if i % key == 0
     end
 
-    if num_str == ""
-      num_str = i.to_s
-    end
+    num_str = i.to_s if num_str == ''
 
     str.push(num_str)
   end
