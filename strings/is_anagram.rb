@@ -46,3 +46,8 @@ s = "rat"
 t = "car"
 puts(is_anagram(s, t))
 # => false
+
+s = "a"
+t = "ab"
+puts(is_anagram(s, t))
+# => false
