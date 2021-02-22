@@ -43,6 +43,8 @@ puts(reverse(x))
 INT_BIT = 32
 INT_MAX = 2**(INT_BIT - 1) - 1
 
+# @param {Integer} x
+# @return {Integer}
 def reverse(x)
   result = 0
   x_remaining = x.abs
