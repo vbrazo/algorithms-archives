@@ -4,7 +4,9 @@
 # For numbers which are multiples of both three and five output
 # “FizzBuzz”.
 
+# 
 # Approach 1: Naive Approach
+# 
 
 # Complexity Analysis
 
@@ -53,7 +55,9 @@ fizz_buzz(n)
 #     "FizzBuzz"
 # ]
 
+# 
 # Approach 2: String Concatenation
+# 
 
 # Intuition
 #
@@ -125,7 +129,9 @@ end
 n = 15
 puts(fizz_buzz(n))
 
+# 
 # Approach 3: Hash it!
+# 
 
 # Intuition
 #
