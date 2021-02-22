@@ -44,3 +44,57 @@ n = 4
 # Output: 3
 # Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 puts(fib(n))
+
+# Approach 2: Bottom-Up Approach using Memoization
+
+# Intuition
+
+# Improve upon the recursive option by using iteration,
+# still solving for all of the sub-problems and returning the
+# answer for N, using already computed Fibonacci values.
+# In using a bottom-up approach, we can iteratively compute
+# and store the values, only returning once we reach the result.
+
+# Complexity Analysis
+#
+# Time complexity: O(N). Each number, starting at 2 up to and
+# including N, is visited, computed and then stored for O(1)
+# access later on.
+#
+# Space complexity: O(N). The size of the data structure is
+# proportionate to N.
+
+def fib(n)
+  return n if n <= 1
+
+  memoize(n)
+end
+
+def memoize(n)
+  cache = {}
+  cache[0] = 0
+  cache[1] = 1
+
+  # Since range is exclusive and we want to include N,
+  # we need to put N+1.
+  (2..n + 1).each do |i|
+    cache[i] = cache[i - 1] + cache[i - 2]
+  end
+
+  cache[n]
+end
+
+n = 2
+# Output: 1
+# Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+puts(fib(n))
+
+n = 3
+# Output: 2
+# Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
+puts(fib(n))
+
+n = 4
+# Output: 3
+# Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
+puts(fib(n))
