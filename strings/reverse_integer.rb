@@ -12,11 +12,12 @@
 # @return {Integer}
 def reverse(x)
   return 0 if (x.to_s.reverse.to_i) > (2**31)
-  if x<0
-    y = -1*(x.to_s.reverse.to_i)
-  else
-   y = x.to_s.reverse.to_i
-  end
+
+  y = if x < 0
+        -1 * x.to_s.reverse.to_i
+      else
+        x.to_s.reverse.to_i
+      end
 end
 
 x = 123
@@ -35,16 +36,16 @@ x = 0
 puts(reverse(x))
 # => 0
 
-
 # Approach 2: using INT_BIT and INT_MAX
 
 # Time Complexity: O(n)
 
 INT_BIT = 32
-INT_MAX = 2 ** (INT_BIT - 1) - 1
+INT_MAX = 2**(INT_BIT - 1) - 1
 
 def reverse(x)
-  result, x_remaining = 0, x.abs
+  result = 0
+  x_remaining = x.abs
 
   while x_remaining > 0
     result = result * 10 + x_remaining % 10
