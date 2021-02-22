@@ -57,10 +57,14 @@ fizz_buzz(n)
 
 # Intuition
 #
-# This approach won't reduce the asymptotic complexity, but proves to be a neater solution when FizzBuzz comes with a twist. What if FizzBuzz is now FizzBuzzJazz i.e.
-#
-# 3 ---> "Fizz" , 5 ---> "Buzz", 7 ---> "Jazz"
-# If you try to solve this with the previous approach the program would have too many conditions to check:
+# This approach won't reduce the asymptotic complexity,
+# but proves to be a neater solution when FizzBuzz comes with a twist.
+# 
+# What if FizzBuzz is now FizzBuzzJazz
+# i.e. 3 ---> "Fizz" , 5 ---> "Buzz", 7 ---> "Jazz"
+# 
+# If you try to solve this with the previous approach the program would
+# have too many conditions to check:
 #
 # Divisible by 3
 # Divisible by 5
@@ -70,7 +74,9 @@ fizz_buzz(n)
 # Divisible by 7 and 3
 # Divisible by 3 and 5 and 7
 # Not divisible by 3 or 5 or 7.
-# This way if the FizzBuzz mappings increase, the conditions would grow exponentially in your program.
+# 
+# This way if the FizzBuzz mappings increase, the conditions would
+# grow exponentially in your program.
 #
 # Algorithm
 #
@@ -84,6 +90,7 @@ fizz_buzz(n)
 # Condition 1: 15 % 3 == 0 , num_ans_str = "Fizz"
 # Condition 2: 15 % 5 == 0 , num_ans_str += "Buzz"
 # => num_ans_str = "FizzBuzz"
+# 
 # So for FizzBuzz we just check for two conditions instead of three
 # conditions as in the first approach.
 #
