@@ -6,7 +6,6 @@
 # F(n) = F(n - 1) + F(n - 2), for n > 1.
 # Given n, calculate F(n).
 
-
 # Complexity Analysis
 #
 # Time complexity : O(2^N). This is the slowest way to solve the
@@ -14,7 +13,7 @@
 # of operations needed, for each level of recursion, grows
 # exponentially as the depth approaches N.
 #
-# Space complexity : O(N)O(N). We need space proportionate to N to
+# Space complexity : O(N). We need space proportionate to N to
 # account for the max size of the stack, in memory. This stack keeps
 # track of the function calls to fib(N). This has the potential
 # to be bad in cases that there isn't enough physical memory to
@@ -28,7 +27,7 @@
 def fib(n)
   return n if n <= 1
 
-  return fib(n-1) + fib(n-2)
+  fib(n - 1) + fib(n - 2)
 end
 
 n = 2
