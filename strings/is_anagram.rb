@@ -1,10 +1,12 @@
-# Given two strings s and t , write a function to determine if t is an anagram of s.
+# Given two strings s and t , write a function to determine
+# if t is an anagram of s.
 
 # Note:
 # You may assume the string contains only lowercase alphabets.
 #
 # Follow up:
-# What if the inputs contain unicode characters? How would you adapt your solution to such case?
+# What if the inputs contain unicode characters?
+# How would you adapt your solution to such case?
 
 # Approach #1 (Sorting)
 
@@ -18,7 +20,9 @@
 
 # Complexity analysis
 #
-# Time complexity: O(nlogn). Assume that nn is the length of ss, sorting costs O(n \log n)O(nlogn) and comparing two strings costs O(n)O(n). Sorting time dominates and the overall time complexity is O(n \log n)O(nlogn).
+# Time complexity: O(nlogn). Assume that nn is the length of s,
+# sorting costs O(nlogn) and comparing two strings costs O(n).
+# Sorting time dominates and the overall time complexity is O(nlogn).
 #
 # Space complexity: O(1). Space depends on the sorting
 # implementation which, usually, costs O(1) auxiliary space
