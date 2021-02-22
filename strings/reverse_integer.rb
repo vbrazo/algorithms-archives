@@ -34,3 +34,44 @@ puts(reverse(x))
 x = 0
 puts(reverse(x))
 # => 0
+
+
+# Approach 2: using INT_BIT and INT_MAX
+
+# Time Complexity: O(n)
+
+INT_BIT = 32
+INT_MAX = 2 ** (INT_BIT - 1) - 1
+
+def reverse(x)
+  result, x_remaining = 0, x.abs
+
+  while x_remaining > 0
+    result = result * 10 + x_remaining % 10
+    x_remaining /= 10
+  end
+
+  result = x < 0 ? -result : result
+
+  if result < 0
+    result < -INT_MAX ? 0 : result
+  else
+    result > INT_MAX ? 0 : result
+  end
+end
+
+x = 123
+puts(reverse(x))
+# => 321
+
+x = -123
+puts(reverse(x))
+# => -321
+
+x = 120
+puts(reverse(x))
+# => 21
+
+x = 0
+puts(reverse(x))
+# => 0
