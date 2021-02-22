@@ -76,7 +76,7 @@ end
 
 # Intuition
 
-# The naive approach works but our interviewer is not convinced.
+# The naive approach works but we are still not convinced.
 # Let's see how we can optimize the code we just wrote.
 
 # The brute force solution had a time complexity of O(n^2).
