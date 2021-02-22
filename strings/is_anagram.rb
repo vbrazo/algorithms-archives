@@ -6,6 +6,60 @@
 # Follow up:
 # What if the inputs contain unicode characters? How would you adapt your solution to such case?
 
+# Approach #1 (Sorting)
+
+# Algorithm
+
+# An anagram is produced by rearranging the letters of ss into t.
+# Therefore, if t is an anagram of ss, sorting both strings will
+# result in two identical strings. Furthermore, if s and t have
+# different lengths, tt must not be an anagram of s and we can
+# return early.
+
+# Complexity analysis
+#
+# Time complexity: O(nlogn). Assume that nn is the length of ss, sorting costs O(n \log n)O(nlogn) and comparing two strings costs O(n)O(n). Sorting time dominates and the overall time complexity is O(n \log n)O(nlogn).
+#
+# Space complexity: O(1). Space depends on the sorting
+# implementation which, usually, costs O(1) auxiliary space
+# if heapsort is used. Note that in Java, toCharArray()
+# makes a copy of the string so it costs O(n) extra space,
+# but we ignore this for complexity analysis because:
+#
+# It is a language dependent detail.
+# It depends on how the function is designed. For example,
+# the function parameter types can be changed to char[].
+
+# @param {String} s
+# @param {String} t
+# @return {Boolean}
+def is_anagram(s, t)
+  s = s.chars.sort
+  t = t.chars.sort
+
+  return false if s.count != t.count
+
+  if s == t
+    true
+  else
+    false
+  end
+end
+
+s = "anagram"
+t = "nagaram"
+puts(is_anagram(s, t))
+# => true
+
+s = "rat"
+t = "car"
+puts(is_anagram(s, t))
+# => false
+
+s = "a"
+t = "ab"
+puts(is_anagram(s, t))
+# => false
 
 # Approach #2 (Hash Table)
 
@@ -32,7 +86,10 @@
 # @param {String} t
 # @return {Boolean}
 def is_anagram(s, t)
-  return false if s.chars.count != t.chars.count
+  s = s.chars
+  t = t.chars
+
+  return false if s.count != t.count
 
   hash1 = {}
   s.chars.each do |value|
