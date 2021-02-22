@@ -13,11 +13,11 @@
 def reverse(x)
   return 0 if (x.to_s.reverse.to_i) > (2**31)
 
-  y = if x < 0
-        -1 * x.to_s.reverse.to_i
-      else
-        x.to_s.reverse.to_i
-      end
+  if x < 0
+    -1 * x.to_s.reverse.to_i
+  else
+    x.to_s.reverse.to_i
+  end
 end
 
 x = 123
