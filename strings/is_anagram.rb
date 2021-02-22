@@ -10,6 +10,8 @@
 # @param {String} t
 # @return {Boolean}
 def is_anagram(s, t)
+  return false if s.chars.count != t.chars.count
+
   hash1 = {}
   s.chars.each do |value|
     hash1[value] = if hash1[value]
