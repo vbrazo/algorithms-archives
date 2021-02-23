@@ -6,6 +6,10 @@
 # F(n) = F(n - 1) + F(n - 2), for n > 1.
 # Given n, calculate F(n).
 
+# 
+# Approach 1
+# 
+
 # Complexity Analysis
 #
 # Time complexity : O(2^N). This is the slowest way to solve the
@@ -45,7 +49,9 @@ n = 4
 # Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 puts(fib(n))
 
+# 
 # Approach 2: Bottom-Up Approach using Memoization
+# 
 
 # Intuition
 
