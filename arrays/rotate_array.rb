@@ -25,7 +25,7 @@
 # @param {Integer} k
 # @return {Void} Do not return anything, modify nums in-place instead.
 def rotate(nums, k)
-  k.times do |i|
+  k.times do |_i|
     previous = nums.last
 
     nums.count.times do |j|
@@ -36,7 +36,7 @@ def rotate(nums, k)
   print(nums)
 end
 
-nums = [1,2,3,4,5,6,7]
+nums = [1, 2, 3, 4, 5, 6, 7]
 k = 3
 rotate(nums, k)
 # => [5,6,7,1,2,3,4]
@@ -46,7 +46,7 @@ rotate(nums, k)
 # rotate 2 steps to the right: [6,7,1,2,3,4,5]
 # rotate 3 steps to the right: [5,6,7,1,2,3,4]
 
-nums = [-1,-100,3,99]
+nums = [-1, -100, 3, 99]
 k = 2
 rotate(nums, k)
 # => [3,99,-1,-100]
@@ -54,7 +54,6 @@ rotate(nums, k)
 # Explanation:
 # rotate 1 steps to the right: [99,-1,-100,3]
 # rotate 2 steps to the right: [3,99,-1,-100]
-
 
 # Approach 2: Using Extra Array
 
@@ -81,11 +80,11 @@ def rotate(nums, k)
   new_array = []
   start = nums.length - k
 
-  for i in (start...nums.length) do
+  (start...nums.length).each do |i|
     new_array.push(nums[i])
   end
 
-  for i in (0...start) do
+  (0...start).each do |i|
     new_array.push(nums[i])
   end
 
@@ -94,7 +93,7 @@ def rotate(nums, k)
   end
 end
 
-nums = [1,2,3,4,5,6,7]
+nums = [1, 2, 3, 4, 5, 6, 7]
 k = 3
 rotate(nums, k)
 # => [5,6,7,1,2,3,4]
@@ -104,7 +103,63 @@ rotate(nums, k)
 # rotate 2 steps to the right: [6,7,1,2,3,4,5]
 # rotate 3 steps to the right: [5,6,7,1,2,3,4]
 
-nums = [-1,-100,3,99]
+nums = [-1, -100, 3, 99]
+k = 2
+rotate(nums, k)
+# => [3,99,-1,-100]
+
+# Explanation:
+# rotate 1 steps to the right: [99,-1,-100,3]
+# rotate 2 steps to the right: [3,99,-1,-100]
+
+#
+# Approach 3: Using Cyclic Replacements
+#
+
+# Complexity Analysis
+
+# Time complexity: O(n). Only one pass is used.
+# Space complexity: O(1). Constant extra space is used.
+
+def rotate(nums, k)
+  remaining_cycles = nums.length
+  k = k % nums.length
+
+  start_idx = 0
+
+  while remaining_cycles > 0
+    curr_idx = start_idx
+    curr_element = nums[curr_idx]
+
+    loop do
+      next_idx = (curr_idx + k) % nums.length
+      next_element = nums[next_idx]
+
+      nums[next_idx] = curr_element
+
+      curr_element = next_element
+      curr_idx = next_idx
+
+      remaining_cycles -= 1
+
+      break if curr_idx == start_idx || remaining_cycles <= 0
+    end
+
+    start_idx += 1
+  end
+end
+
+nums = [1, 2, 3, 4, 5, 6, 7]
+k = 3
+rotate(nums, k)
+# => [5,6,7,1,2,3,4]
+
+# Explanation:
+# rotate 1 steps to the right: [7,1,2,3,4,5,6]
+# rotate 2 steps to the right: [6,7,1,2,3,4,5]
+# rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+nums = [-1, -100, 3, 99]
 k = 2
 rotate(nums, k)
 # => [3,99,-1,-100]
