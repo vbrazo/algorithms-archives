@@ -54,3 +54,56 @@ rotate(nums, k)
 # Explanation:
 # rotate 1 steps to the right: [99,-1,-100,3]
 # rotate 2 steps to the right: [3,99,-1,-100]
+
+
+# Approach 2: Using Extra Array
+
+# Algorithm
+
+# We use an extra array in which we place every element of the
+# array at its correct position i.e. the number at index i
+# in the original array is placed at the index (i + k) length
+# of array. Then, we copy the new array to the original one.
+
+# Complexity Analysis
+
+# Time complexity: O(n). One pass is used to put the numbers
+# in the new array. And another pass to copy the new array
+# to the original one.
+
+# Space complexity: O(n). Another array of the same size is used.
+
+# @param {Integer[]} nums
+# @param {Integer} k
+# @return {Void} Do not return anything, modify nums in-place instead.
+def rotate(nums, k)
+  count = nums.count
+  new_array = [0] * count
+
+  count.times do |i|
+    new_array[(i + k) % count] = nums[i]
+  end
+
+  nums = new_array
+
+  print(nums)
+end
+
+nums = [1,2,3,4,5,6,7]
+k = 3
+rotate(nums, k)
+# => [5,6,7,1,2,3,4]
+
+# Explanation:
+# rotate 1 steps to the right: [7,1,2,3,4,5,6]
+# rotate 2 steps to the right: [6,7,1,2,3,4,5]
+# rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+nums = [-1,-100,3,99]
+k = 2
+rotate(nums, k)
+# => [3,99,-1,-100]
+
+# Explanation:
+# rotate 1 steps to the right: [99,-1,-100,3]
+# rotate 2 steps to the right: [3,99,-1,-100]
