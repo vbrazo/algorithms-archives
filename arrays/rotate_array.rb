@@ -196,22 +196,25 @@ rotate(nums, k)
 # Time complexity: O(n). n elements are reversed a total of three times.
 # Space complexity: O(1). No extra space is used.
 
-def reverse(nums, start, _end)
-  while start < _end
-    nums[start], nums[_end] = nums[_end], nums[start]
-    start += 1
-    _end -= 1
-  end
+def rotate(nums, k)
+  mod_k = k % nums.length
+  return if k == 0
+
+  # reverse the whole array
+  reverse(nums, 0, nums.length - 1)
+  reverse(nums, 0, mod_k - 1)
+  reverse(nums, mod_k, nums.length - 1)
 end
 
-def rotate(nums, k)
-  n = nums.count
+def reverse(nums, start, len)
+  itr = start
 
-  reverse(nums, 0, n - 1)
-  reverse(nums, 0, k - 1)
-  reverse(nums, k, n - 1)
+  while itr <= (start + len) / 2
+    nums[itr], nums[len - itr + start] = nums[len - itr + start], nums[itr]
+    itr += 1
+  end
 
-  print nums
+  nums
 end
 
 nums = [1, 2, 3, 4, 5, 6, 7]
