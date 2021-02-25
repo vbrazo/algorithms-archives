@@ -77,16 +77,21 @@ rotate(nums, k)
 # @param {Integer} k
 # @return {Void} Do not return anything, modify nums in-place instead.
 def rotate(nums, k)
-  count = nums.count
-  new_array = [0] * count
+  k = k % nums.length
+  new_array = []
+  start = nums.length - k
 
-  count.times do |i|
-    new_array[(i + k) % count] = nums[i]
+  for i in (start...nums.length) do
+    new_array.push(nums[i])
   end
 
-  nums = new_array
+  for i in (0...start) do
+    new_array.push(nums[i])
+  end
 
-  print(nums)
+  new_array.each_with_index do |value, index|
+    nums[index] = value
+  end
 end
 
 nums = [1,2,3,4,5,6,7]
