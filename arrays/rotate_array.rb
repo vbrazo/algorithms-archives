@@ -8,11 +8,32 @@
 # Could you do it in-place with O(1) extra space?
 #
 
+#
+# Approach 1: Brute Force
+#
+
+# The simplest approach is to rotate all the elements of the
+# array in k steps by rotating the elements by 1 unit in each step.
+
+# Complexity Analysis
+
+# Time complexity: O(n×k).
+# All the numbers are shifted by one O(n) k times.
+# Space complexity: O(1). No extra space is used.
+
 # @param {Integer[]} nums
 # @param {Integer} k
 # @return {Void} Do not return anything, modify nums in-place instead.
 def rotate(nums, k)
+  k.times do |i|
+    previous = nums.last
 
+    nums.count.times do |j|
+      nums[j], previous = previous, nums[j]
+    end
+  end
+
+  print(nums)
 end
 
 nums = [1,2,3,4,5,6,7]
