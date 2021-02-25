@@ -193,7 +193,7 @@ rotate(nums, k)
 
 # Complexity Analysis
 
-# Time complexity: O(n). nn elements are reversed a total of three times.
+# Time complexity: O(n). n elements are reversed a total of three times.
 # Space complexity: O(1). No extra space is used.
 
 def reverse(nums, start, _end)
