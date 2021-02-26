@@ -129,3 +129,60 @@ print(max_profit(prices))
 # => 0
 # Explanation: In this case, no transaction is done, i.e.,
 # max profit = 0.
+
+#
+# Approach 3: Simple One Pass
+#
+
+# Algorithm:
+#
+# This solution follows the logic used in Approach 2 itself,
+# but with only a slight variation. In this case, instead of looking
+# for every peak following a valley, we can simply go on crawling
+# over the slope and keep on adding the profit obtained from every
+# consecutive transaction. In the end,we will be using the peaks
+# and valleys effectively, but we need not track the costs
+# corresponding to the peaks and valleys along with the maximum
+# profit, but we can directly keep on adding the difference between
+# the consecutive numbers of the array if the second number is larger
+# than the first one, and at the total sum we obtain will be the
+# maximum profit. This approach will simplify the solution. This
+# can be made clearer by taking this example:
+# [1, 7, 2, 3, 6, 7, 6, 7]
+
+# Complexity Analysis
+
+# Time complexity: O(n)
+# Space complexity: O(1)
+
+# @param {Integer[]} prices
+# @return {Integer}
+def max_profit(prices)
+  profit = 0
+
+  (1...prices.length).each do |i|
+    difference = prices[i] - prices[i - 1]
+    profit += difference if difference > 0
+  end
+
+  profit
+end
+
+prices = [7, 1, 5, 3, 6, 4]
+print(max_profit(prices))
+# => 7
+# Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5),
+# profit = 5-1 = 4. Then buy on day 4 (price = 3) and sell on day 5
+# (price = 6), profit = 6-3 = 3.
+
+prices = [1, 2, 3, 4, 5]
+print(max_profit(prices))
+# => 4
+# Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+# Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.
+
+prices = [7, 6, 4, 3, 1]
+print(max_profit(prices))
+# => 0
+# Explanation: In this case, no transaction is done, i.e.,
+# max profit = 0.
