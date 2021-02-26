@@ -158,15 +158,6 @@ Linear search is the simplest algorithm used to search sequentially in a collect
 
 Only thing required is a logic to traverse given collection linearly. Some data structures like array, linked list, queue, stack, etc are sequential in the way they arrange data within themselves. Traversing such data structures linearly is natural and easy. For example, an array can be traversed linearly from either left-to-right or right-to-left, the sequence is deterministic and very intuitive. But if collection is a Binary tree, we can traverse the nodes sequentially in multiple ways, in-order, pre-order, post-order, level-order, reverse-level-order, etc.
 
-In this section, I'm reviewing different collection where we apply linear search algorithms.
-
-- [Linear Search](algorithms/searching/linear-search/README.md)
-  - [Linear search in an Array](algorithms/searching/linear-search/README.md#linear-search-in-an-array)
-  - [Linear search in a Linked List](algorithms/searching/linear-search/README.md#linear-search-in-a-linked-list)
-  - [Linear search in a Binary Tree](algorithms/searching/linear-search/README.md#linear-search-in-a-binary-tree)
-  - [Linear search in a Graph](algorithms/searching/linear-search/README.md#linear-search-in-a-graph)
-  - [Naive search in a string](algorithms/searching/linear-search/README.md#naive-search-in-a-string)
-
 Reference: https://en.wikipedia.org/wiki/Linear_search
 
 ### Binary Search
