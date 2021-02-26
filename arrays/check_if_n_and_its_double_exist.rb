@@ -1,7 +1,7 @@
 # Given an array arr of integers, check if there exists two integers N and M such
 # that N is the double of M (i.e. N = 2 * M).
 
-# Time complexity: O(n2)
+# Time complexity: O(n^2)
 
 def check_if_exist(arr)
   return false if arr.length == 0
