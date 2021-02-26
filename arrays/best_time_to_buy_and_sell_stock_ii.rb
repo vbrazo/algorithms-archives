@@ -23,22 +23,23 @@ def calculate(prices, s)
   return 0 if s >= prices.length
 
   max = 0
-  start = s
 
-  while start < prices.length
+  while s < prices.length
     maxprofit = 0
-    i = start + 1
+    i = s + 1
+
     while i < prices.length
-      if prices[start] < prices[i]
-        profit = calculate(prices, i + 1) + prices[i] - prices[start]
+      if prices[s] < prices[i]
+        profit = calculate(prices, i + 1) + prices[i] - prices[s]
         maxprofit = profit if profit > maxprofit
       end
+
       i += 1
     end
 
     max = maxprofit if maxprofit > max
 
-    start += 1
+    s += 1
   end
 
   max
@@ -63,7 +64,6 @@ print(max_profit(prices))
 # Explanation: In this case, no transaction is done, i.e.,
 # max profit = 0.
 
-
 #
 # Approach 2: Peak Valley Approach
 #
@@ -74,7 +74,7 @@ print(max_profit(prices))
 
 # If we analyze the graph, we notice that the points of interest are the consecutive
 # valleys and peaks. Mathematically speaking:
-# Total Profit=∑(height(peak_i)-height(valley_i)).
+# Total Profit = ∑(height(peak_i) - height(valley_i)).
 # The key point is we need to consider every peak immediately following a valley
 # to maximize the profit. In case we skip one of the peaks (trying to obtain more
 # profit), we will end up losing the profit over one of the transactions leading
