@@ -149,8 +149,8 @@ def str_str(txt, pat)
   (0..n - m).each do |i|
     if t == p && pat == txt[i..i + m - 1]
       return i
-    else
-      t = (d * (t - h * txt[i].ord) + txt[i + m].ord) % q if i != n - m
+    elsif i != n - m
+      t = (d * (t - h * txt[i].ord) + txt[i + m].ord) % q
     end
   end
 
