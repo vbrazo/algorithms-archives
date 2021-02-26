@@ -105,7 +105,9 @@ n = 4
 # Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 puts(fib(n))
 
+#
 # Approach 3: Top-Down Approach using Memoization
+#
 
 # Intuition
 #
@@ -163,8 +165,10 @@ n = 4
 # Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 puts(fib(n))
 
+#
 # Approach 4: Iterative Top-Down Approach
 #
+
 # Intuition
 #
 # Let's get rid of the need to use all of that space and instead
@@ -223,6 +227,43 @@ def fib(n)
   end
 
   current
+end
+
+n = 2
+# Output: 1
+# Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+puts(fib(n))
+
+n = 3
+# Output: 2
+# Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
+puts(fib(n))
+
+n = 4
+# Output: 3
+# Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
+puts(fib(n))
+
+#
+# Approach 5: Math
+#
+
+# Intuition Using the golden ratio, a.k.a Binet's forumula
+
+# Here's a link to find out more about how the Fibonacci sequence
+# and the golden ratio work:
+# https://demonstrations.wolfram.com/GeneralizedFibonacciSequenceAndTheGoldenRatio/
+#
+# We can derive the most efficient solution to this problem using
+# only constant time and constant space!
+#
+# Algorithm
+#
+# Use the golden ratio formula to calculate the Nth Fibonacci number.
+
+def fib(n)
+  golden_ratio = (1 + 5 ** 0.5) / 2
+  return ((golden_ratio ** n + 1) / 5 ** 0.5).to_i
 end
 
 n = 2
