@@ -189,6 +189,20 @@ def fib(self, N):
   return recur_fib(N)
 ```
 
+Here is an example of Fibonacci without memoization:
+
+```python
+def fibonacci(n):
+  """
+  :type n: int
+  :rtype: int
+  """
+  if n < 2:
+    return n
+  else:
+    return fibonacci(n-1) + fibonacci(n-2)
+```
+
 Reference: https://en.wikipedia.org/wiki/Memoization
 
 ## Searching
