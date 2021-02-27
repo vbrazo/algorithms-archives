@@ -105,3 +105,50 @@ print(climb_stairs(n))
 # 1. 1 step + 1 step + 1 step
 # 2. 1 step + 2 steps
 # 3. 2 steps + 1 step
+
+#
+# Approach 3: Fibonacci Number
+#
+
+# Algorithm
+#
+# In the above approach we have used dpdp array where dp[i]=dp[i-1]+dp[i-2].
+# It can be easily analysed that dp[i] is nothing but ith fibonacci number.
+#
+# Fib(n) = Fib(n−1) + Fib(n−2)
+#
+# Now we just have to find nth number of the fibonacci series
+# having 11 and 22 their first and second term respectively,
+# i.e. Fib(1)=1 and Fib(2)=2.
+#
+
+# Complexity Analysis
+#
+# Time complexity: O(n). Single loop upto n is required to calculate nth
+# fibonacci number.
+# Space complexity : O(1). Constant space is used.
+
+def climb_starts(n)
+  return 1 if n == 1
+
+  first = 1
+  second = 2
+
+  (3..n).times do |i|
+    third = first + second
+    first = second
+    second = third
+  end
+
+  second
+end
+
+n = 2
+print(climb_stairs(n))
+# => 2
+# Explanation: There are two ways to climb to the top.
+# 1. 1 step + 1 step
+# 2. 2 steps
+
+n = 3
+print(climb_stairs(n))
