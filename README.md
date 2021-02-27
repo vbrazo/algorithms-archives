@@ -7,6 +7,9 @@ This is my personal algorithms archives and it's where I store my algorithms res
   - [Bit Manipulation](#bit-manipulation)
   - [Dynamic Programming](#dynamic-programming)
   - [Recursion](#recursion)
+    - [Parts of a Recursive Algorithm](#parts-of-a-recursive-algorithm)
+    - [Why Recursion Works](#why-recursion-works)
+    - [Memoization](#memoization)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
@@ -149,6 +152,44 @@ In a recursive algorithm, the computer "remembers" every previous state of the p
 Every function has its own workspace PER CALL of the function.
 
 Reference: https://en.wikipedia.org/wiki/Recursion
+
+### Memoization
+
+Memoization stores the intermediate results in the cache so that we can reuse them later without re-calculation.
+
+Memoization is a technique that is frequently used together with recursion and used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. (Source: wikipedia)
+
+To solve the Fibonacci algorithm F(n), we could use a hash table to keep track of the result of each F(n) with `n` as the key. The hash table serves as a cache that saves us from duplicate calculations. The memoization technique is a good example that demonstrates how one can reduce compute time in exchange for some additional space.
+
+For the sake of comparison, we provide the implementation of Fibonacci number solution with memoization below.
+
+As an exercise, it's possible to make memoization more general and non-intrusive, i.e. applying memoization without changing the original function. (Hint: one can refer to a design pattern called `decorator`).
+
+```python
+def fib(self, N):
+  """
+  :type N: int
+  :rtype: int
+  """
+  cache = {}
+
+  def recur_fib(N):
+    if N in cache:
+      return cache[N]
+
+    if N < 2:
+      result = N
+    else:
+      result = recur_fib(N-1) + recur_fib(N-2)
+
+    # put result in cache for later reference.
+    cache[N] = result
+    return result
+
+  return recur_fib(N)
+```
+
+Reference: https://en.wikipedia.org/wiki/Memoization
 
 ## Searching
 
