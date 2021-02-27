@@ -13,7 +13,7 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Memoization](#memoization)
       - [Optimizing Time Complexity](#optimizing-time-complexity)
     - [Space Complexity](#space-complexity)
-      - [Recursion Related Space](#Recursion Related Space)
+      - [Recursion Related Space](#recursion-related-space)
       - [Non-Recursion Related Space](#non-recursion-related-space)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
