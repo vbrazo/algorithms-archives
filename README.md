@@ -135,6 +135,12 @@ Recursion is an important concept in computer science. It is a foundation for ma
 
 Recursion is the process of defining a problem (or the solution to a problem) in terms of (a simpler version of) itself.
 
+### Time Complexity
+
+Given a recursion algorithm, its time complexity `O(T)` is typically the product of the number of recursion invocations (denoted as `R`) and the time complexity of calculation (denoted as `O(s)`) that incurs along with each recursion call:
+
+`O(T) = R * O(s)`
+
 ### Parts of a Recursive Algorithm
 
 All recursive algorithms must have the following:
@@ -159,7 +165,7 @@ Memoization stores the intermediate results in the cache so that we can reuse th
 
 Memoization is a technique that is frequently used together with recursion and used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. (Source: wikipedia)
 
-To solve the Fibonacci algorithm F(n), we could use a hash table to keep track of the result of each F(n) with `n` as the key. The hash table serves as a cache that saves us from duplicate calculations. The memoization technique is a good example that demonstrates how one can reduce compute time in exchange for some additional space.
+To solve the Fibonacci algorithm `F(n)`, we could use a hash table to keep track of the result of each `F(n)` with `n` as the key. The hash table serves as a cache that saves us from duplicate calculations. The memoization technique is a good example that demonstrates how one can reduce compute time in exchange for some additional space.
 
 For the sake of comparison, we provide the implementation of Fibonacci number solution with memoization below.
 
@@ -252,22 +258,16 @@ Reference: https://en.wikipedia.org/wiki/Bubble_sort
 
 ### Selection Sort
 
-Selection Sort is a variation of Bubble Sort where swapping happens only once per pass.
-Each pass identify largest element in current array and swap it with element
+Selection Sort is a variation of Bubble Sort where swapping happens only once per pass. Each pass identify largest element in current array and swap it with element
 at last position. Number of comparison are same as that of Bubble Sort,
 but number of swaps are `O(n)`.
 
-An important observation about selection sort is that for an array of
-size `n`, it performs only `O(n)` swap operations in worst case.
-This makes Selection Sort a sorting algorithm that makes minimum number of writes
-on the disk. If write operation is expensive, selection sort is a good choice.
+An important observation about selection sort is that for an array of size `n`, it performs only `O(n)` swap operations in worst case. This makes Selection Sort a sorting algorithm that makes minimum number of writes on the disk. If write operation is expensive, selection sort is a good choice.
 
-The most optimal sorting algorithm in terms of number of write operations is `cycle sort`.
-But, it is not a stable sorting algorithm.
+The most optimal sorting algorithm in terms of number of write operations is `cycle sort`. But, it is not a stable sorting algorithm.
 
 The time complexity of a selection sort is `O(n^2)` time in best, worst and average
-case. The extra memory taken is constant, because our implementation is non-recursive.
-The recursive implementation takes `O(n)` extra memory.
+case. The extra memory taken is constant, because our implementation is non-recursive. The recursive implementation takes `O(n)` extra memory.
 
 Common implementation of Selection Sort is observed to be taking almost half
 the time taken by Bubble Sort.
@@ -278,16 +278,10 @@ Reference: https://en.wikipedia.org/wiki/Selection_sort
 
 ### Merge Sort
 
-Merge Sort divides the array in half, sorts each of those halves, and then merges them back
-together. Each of those halves has the same sorting algorithm applied to it. Eventually,
-you are merging just two single element arrays. It is the "merge" part that does
-all the heavy lifting.
+Merge Sort divides the array in half, sorts each of those halves, and then merges them back together. Each of those halves has the same sorting algorithm applied to it. Eventually, you are merging just two single element arrays. It is the "merge" part that does all the heavy lifting.
 
 The merge method operates by copying all the elements from the target array segment
-into a helper array, keeping track of where the start of the left and right halves should
-be (helperLeft and helperRight). We then iterate through helper, copying the smaller
-element from each half into the array. At the end, we copy an remaining elements into the
-target array.
+into a helper array, keeping track of where the start of the left and right halves should be (helperLeft and helperRight). We then iterate through helper, copying the smaller element from each half into the array. At the end, we copy an remaining elements into the target array.
 
 ** it's considered a fast search technique
 
@@ -317,9 +311,7 @@ an array of integers, we might first sort by the first digit, so that the 0s are
 together. Then, we sort each of these groupings by the next digits. we repeat this process
 sorting by each subsequent digit, until finally the whole array is sorted.
 
-Unlike comparison sorting algorithms, which cannot perform better than `O(n log(n))` in the
-average case, radix sort has a runtime of `O(kn)`, where `n` is number of elements and `k`
-is the number of passes of the sorting algorithm.
+Unlike comparison sorting algorithms, which cannot perform better than `O(nlog(n))` in the average case, radix sort has a runtime of `O(kn)`, where `n` is number of elements and `k` is the number of passes of the sorting algorithm.
 
 ** it's considered a special purpose
 
