@@ -262,8 +262,8 @@ puts(fib(n))
 # Use the golden ratio formula to calculate the Nth Fibonacci number.
 
 def fib(n)
-  golden_ratio = (1 + 5 ** 0.5) / 2
-  return ((golden_ratio ** n + 1) / 5 ** 0.5).to_i
+  golden_ratio = (1 + 5**0.5) / 2
+  ((golden_ratio**n + 1) / 5**0.5).to_i
 end
 
 n = 2
