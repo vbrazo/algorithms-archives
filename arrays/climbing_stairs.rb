@@ -128,19 +128,17 @@ print(climb_stairs(n))
 # fibonacci number.
 # Space complexity : O(1). Constant space is used.
 
-def climb_starts(n)
-  return 1 if n == 1
+def climb_stairs(n)
+  return 0 if n == 0
 
-  first = 1
-  second = 2
+  a = 0
+  b = 1
 
-  (3..n).times do |i|
-    third = first + second
-    first = second
-    second = third
+  n.times do
+    a, b = b, b + a
   end
 
-  second
+  b
 end
 
 n = 2
