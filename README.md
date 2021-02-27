@@ -15,6 +15,7 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Space Complexity](#space-complexity)
       - [Recursion Related Space](#recursion-related-space)
       - [Non-Recursion Related Space](#non-recursion-related-space)
+    - [Tail Recursion](#tail-recursion)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
@@ -247,11 +248,11 @@ For recursive algorithms, the function calls chain up successively until they re
 
 For a recursive algorithm, if there is no other memory consumption, then this recursion incurred space will be the space upper-bound of the algorithm.
 
-For example, in the exercise of printReverse, we don't have extra memory usage outside the recursive call, since we simply print a character. For each recursive call, let's assume it can use space up to a constant value. And the recursive calls will chain up to n times, where n is the size of the input string. So the space complexity of this recursive algorithm is `O(n)`.
+For example, in the exercise of [Reverse String](https://github.com/vbrazo/algorithms-archives/blob/main/recursion/reverse_string.rb), we don't have extra memory usage outside the recursive call, since we simply print a character. For each recursive call, let's assume it can use space up to a constant value. And the recursive calls will chain up to n times, where n is the size of the input string. So the space complexity of this recursive algorithm is `O(n)`.
 
 A space in the stack will be allocated for `f(x1)` in order to call `f(x2)`. Similarly in `f(x2)`, the system will allocate another space for the call to `f(x3)`. Finally in `f(x3)`, we reach the base case, therefore there is no further recursive call within `f(x3)`.
 
-It is due to recursion-related space consumption that sometimes one might run into a situation called stack overflow, where the stack allocated for a program reaches its maximum space limit and the program crashes. Therefore, when designing a recursive algorithm, one should carefully check if there is a possibility of stack overflow when the input scales up.
+It is due to recursion-related space consumption that sometimes one might run into a situation called [stack overflow](https://en.wikipedia.org/wiki/Stack_overflow), where the stack allocated for a program reaches its maximum space limit and the program crashes. Therefore, when designing a recursive algorithm, one should carefully check if there is a possibility of stack overflow when the input scales up.
 
 #### Non-Recursion Related Space
 
@@ -260,6 +261,49 @@ As suggested by the name, the non-recursion related space refers to the memory s
 Recursion or not, you might need to store the input of the problem as global variables, before any subsequent function calls. And you might need to save the intermediate results from the recursive calls as well. The latter is also known as memoization as we saw in the previous chapters. For example, in the recursive algorithm with `memoization` to solve the Fibonacci number problem, we used a map to keep track of all intermediate Fibonacci numbers that occurred during the recursive calls. Therefore, in the space complexity analysis, we must take the space cost incurred by the memoization into consideration.
 
 Reference: https://en.wikipedia.org/wiki/Memoization
+
+### Tail Recursion
+
+This section goal is to help us identify a special case of recursion called tail recursion, which is exempted from this space overhead.
+
+`Tail recursion` is a recursion where the recursive call is the final instruction in the recursion function. And there should be only one recursive call in the function.
+
+We have already seen an example of tail recursion in the solution of [Reverse String](https://github.com/vbrazo/algorithms-archives/blob/main/recursion/reverse_string.rb). Here is another example that shows the difference between `non-tail-recursion` and `tail-recursion`. Notice that in the non-tail-recursion example there is an extra computation after the very last recursive call.
+
+```python
+def sum_non_tail_recursion(ls):
+  """
+  :type ls: List[int]
+  :rtype: int, the sum of the input list.
+  """
+  if len(ls) == 0:
+    return 0
+
+  # not a tail recursion because it does some computation
+  # after the recursive call returned.
+  return ls[0] + sum_non_tail_recursion(ls[1:])
+
+
+def sum_tail_recursion(ls):
+  """
+  :type ls: List[int]
+  :rtype: int, the sum of the input list.
+  """
+  def helper(ls, acc):
+    if len(ls) == 0:
+      return acc
+    # this is a tail recursion because the final
+    # instruction is a recursive call.
+    return helper(ls[1:], ls[0] + acc)
+
+  return helper(ls, 0)
+```
+
+The benefit of having tail recursion is that it could avoid the accumulation of stack overheads during the recursive calls, since the system could reuse a fixed amount space in the stack for each recursive call.
+
+A tail recursion function can be executed as non-tail-recursion functions, i.e. with piles of call stacks, without impact on the result. Often, the compiler recognizes tail recursion pattern, and optimizes its execution. However, not all programming languages support this optimization. For instance, C, C++ support the optimization of tail recursion functions. On the other hand, Java and Python do not support tail recursion optimization.
+
+Reference: https://en.wikipedia.org/wiki/Tail_call
 
 ## Searching
 
