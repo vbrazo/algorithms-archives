@@ -7,10 +7,14 @@ This is my personal algorithms archives and it's where I store my algorithms res
   - [Bit Manipulation](#bit-manipulation)
   - [Dynamic Programming](#dynamic-programming)
   - [Recursion](#recursion)
+    - [Time Complexity](#time-complexity)
     - [Parts of a Recursive Algorithm](#parts-of-a-recursive-algorithm)
     - [Why Recursion Works](#why-recursion-works)
     - [Memoization](#memoization)
       - [Optimizing Time Complexity](#optimizing-time-complexity)
+    - [Space Complexity](#space-complexity)
+      - [Recursion Related Space](#Recursion Related Space)
+      - [Non-Recursion Related Space](#non-recursion-related-space)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
@@ -28,7 +32,7 @@ This is my personal algorithms archives and it's where I store my algorithms res
 
 Backtracking is an effective technique for solving algorithmic problems. In backtracking, we perform a depth-first search for solutions, jumping back to the last valid path as soon as we hit a dead end.
 
-The benefit of backtracking is that when it is properly implemented, we are guaranteed to find a solution, if one exists. Further, the solution will be more efficient than a brute-force solution exploration, since we weed out paths that are known to be invalid, a process known as prunning.
+The benefit of backtracking is that when it is properly implemented, we are guaranteed to find a solution, if one exists. Further, the solution will be more efficient than a brute-force solution exploration, since we weed out paths that are known to be invalid, a process known as `prunning`.
 
 On the other hand, backtracking cannot guarantee that we will find an optimal solution, and it often leads to factorial or exponential time complexity if we are required to choose one of M paths at each of N steps.
 
@@ -146,9 +150,9 @@ Given a recursion algorithm, its time complexity `O(T)` is typically the product
 
 All recursive algorithms must have the following:
 
-1. Base Case (i.e., when to stop)
-2. Work toward Base Case
-3. Recursive Call (i.e., call ourselves)
+1. Base Case (i.e., when to stop).
+2. Work toward Base Case.
+3. Recursive Call (i.e., call ourselves).
 
 The "work toward base case" is where we make the problem simpler (e.g., divide list into two parts, each smaller than the original). The recursive call, is where we use the same algorithm to solve a simpler version of the problem. The base case is the solution to the "simplest" possible problem (For example, the base case in the problem 'find the largest number in a list' would be if the list had only one number and by definition if there is only one number, it is the largest).
 
@@ -180,9 +184,9 @@ In this case, it is better resort to the execution tree, which is a tree that is
 
 The execution tree of a recursive function would form an `n-ary tree`, with `n` as the number of times recursion appears in the recurrence relation. For instance, the execution of the Fibonacci function would form a binary tree, as one can see from the following graph which shows the execution tree for the calculation of Fibonacci number `f(4)`.
 
-In a full binary tree with n levels, the total number of nodes would be `2^n-1`. Therefore, the upper bound (though not tight) for the number of recursion in f(n) would be `2^n−1`, as well. As a result, we can estimate that the time complexity for `f(n)` would be `O(2n)`.
+In a full binary tree with n levels, the total number of nodes would be `2^n-1`. Therefore, the upper bound (though not tight) for the number of recursion in `f(n)` would be `2^n−1`, as well. As a result, we can estimate that the time complexity for `f(n)` would be `O(2n)`.
 
-#### Optimizing time complexity
+#### Optimizing Time Complexity
 
 In order to optimize the time complexity of recursion algorithms, we use a technique called Memoization.
 
@@ -226,6 +230,35 @@ With memoization, we save the result of Fibonacci number for each index `n`. We 
 
 Now, we can simply apply the formula we introduced in the beginning of this chapter to calculate the time complexity, which is `O(1) * n = O(n)`. Memoization not only optimizes the time complexity of algorithm, but also simplifies the calculation of time complexity.
 
+### Space Complexity
+
+There are mainly two parts of the space consumption that one should bear in mind when calculating the space complexity of a recursive algorithm: `recursion related` and `non-recursion related space`.
+
+#### Recursion Related Space
+
+The recursion related space refers to the memory cost that is incurred directly by the recursion, i.e. the stack to keep track of recursive function calls. In order to complete a typical function call, the system allocates some space in the stack to hold three important pieces of information:
+
+1. The returning address of the function call. Once the function call is completed, the program must know where to return to, i.e. the line of code after the function call.
+2. The parameters that are passed to the function call.
+3. The local variables within the function call.
+4. This space in the stack is the minimal cost that is incurred during a function call. However, once the function call is done, this space is freed.
+
+For recursive algorithms, the function calls chain up successively until they reach a base case (a.k.a. bottom case). This implies that the space that is used for each function call is accumulated.
+
+For a recursive algorithm, if there is no other memory consumption, then this recursion incurred space will be the space upper-bound of the algorithm.
+
+For example, in the exercise of printReverse, we don't have extra memory usage outside the recursive call, since we simply print a character. For each recursive call, let's assume it can use space up to a constant value. And the recursive calls will chain up to n times, where n is the size of the input string. So the space complexity of this recursive algorithm is `O(n)`.
+
+A space in the stack will be allocated for `f(x1)` in order to call `f(x2)`. Similarly in `f(x2)`, the system will allocate another space for the call to `f(x3)`. Finally in `f(x3)`, we reach the base case, therefore there is no further recursive call within `f(x3)`.
+
+It is due to recursion-related space consumption that sometimes one might run into a situation called stack overflow, where the stack allocated for a program reaches its maximum space limit and the program crashes. Therefore, when designing a recursive algorithm, one should carefully check if there is a possibility of stack overflow when the input scales up.
+
+#### Non-Recursion Related Space
+
+As suggested by the name, the non-recursion related space refers to the memory space that is not directly related to recursion, which typically includes the space (normally in heap) that is allocated for the global variables.
+
+Recursion or not, you might need to store the input of the problem as global variables, before any subsequent function calls. And you might need to save the intermediate results from the recursive calls as well. The latter is also known as memoization as we saw in the previous chapters. For example, in the recursive algorithm with `memoization` to solve the Fibonacci number problem, we used a map to keep track of all intermediate Fibonacci numbers that occurred during the recursive calls. Therefore, in the space complexity analysis, we must take the space cost incurred by the memoization into consideration.
+
 Reference: https://en.wikipedia.org/wiki/Memoization
 
 ## Searching
@@ -246,10 +279,10 @@ In its simplest form, Binary Search operates on a contiguous sequence with a spe
 
 Terminology used in Binary Search:
 
-- Target - the value that you are searching for
-- Index - the current location that you are searching
-- Left, Right - the indices from which we use to maintain our search Space
-- Mid - the index that we use to apply a condition to determine if we should search left or right
+- Target - the value that you are searching for.
+- Index - the current location that you are searching.
+- Left, Right - the indices from which we use to maintain our search Space.
+- Mid - the index that we use to apply a condition to determine if we should search left or right.
 
 Reference: https://en.wikipedia.org/wiki/Binary_search_algorithm
 
@@ -306,14 +339,9 @@ Reference: https://en.wikipedia.org/wiki/Merge_sort
 
 ### Quick Sort
 
-In Quick Sort, we pick a random element and partition the array, such all numbers that
-are less than the partitioning element come before all elements that are great than it.
-The partitioning can be performed efficiently through a series of swaps.
+In Quick Sort, we pick a random element and partition the array, such all numbers that are less than the partitioning element come before all elements that are great than it. The partitioning can be performed efficiently through a series of swaps.
 
-If we repeatedly partition the array (and its sub-arrays) around and element, the array
-will eventually become sorted. However, as the partitioned element is not guaranteed to be
-the median (or anywhere near the median), our sorting could be very slow. This is the reason
-for the `O(n^2)` worst case scenario.
+If we repeatedly partition the array (and its sub-arrays) around and element, the array will eventually become sorted. However, as the partitioned element is not guaranteed to be the median (or anywhere near the median), our sorting could be very slow. This is the reason for the `O(n^2)` worst case scenario.
 
 ** it's considered a fast search technique
 
@@ -321,12 +349,7 @@ Reference: https://pt.wikipedia.org/wiki/Quicksort
 
 ### Radix Sort
 
-Radix sort is a sorting algorithm for integers (and some other data types) that takes
-advantage of the fact that integers have a finite number of bits. In radix sort, we iterate
-through each digit of the number, grouping numbers by each digit. For example, if we have
-an array of integers, we might first sort by the first digit, so that the 0s are grouped
-together. Then, we sort each of these groupings by the next digits. we repeat this process
-sorting by each subsequent digit, until finally the whole array is sorted.
+Radix sort is a sorting algorithm for integers (and some other data types) that takes advantage of the fact that integers have a finite number of bits. In radix sort, we iterate through each digit of the number, grouping numbers by each digit. For example, if we have an array of integers, we might first sort by the first digit, so that the 0s are grouped together. Then, we sort each of these groupings by the next digits. we repeat this process sorting by each subsequent digit, until finally the whole array is sorted.
 
 Unlike comparison sorting algorithms, which cannot perform better than `O(nlog(n))` in the average case, radix sort has a runtime of `O(kn)`, where `n` is number of elements and `k` is the number of passes of the sorting algorithm.
 
