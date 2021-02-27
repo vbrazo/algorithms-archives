@@ -248,7 +248,7 @@ For recursive algorithms, the function calls chain up successively until they re
 
 For a recursive algorithm, if there is no other memory consumption, then this recursion incurred space will be the space upper-bound of the algorithm.
 
-For example, in the exercise of [reverse_string](https://github.com/vbrazo/algorithms-archives/blob/main/recursion/reverse_string.rb), we don't have extra memory usage outside the recursive call, since we simply print a character. For each recursive call, let's assume it can use space up to a constant value. And the recursive calls will chain up to n times, where n is the size of the input string. So the space complexity of this recursive algorithm is `O(n)`.
+For example, in the exercise of [Reverse String](https://github.com/vbrazo/algorithms-archives/blob/main/recursion/reverse_string.rb), we don't have extra memory usage outside the recursive call, since we simply print a character. For each recursive call, let's assume it can use space up to a constant value. And the recursive calls will chain up to n times, where n is the size of the input string. So the space complexity of this recursive algorithm is `O(n)`.
 
 A space in the stack will be allocated for `f(x1)` in order to call `f(x2)`. Similarly in `f(x2)`, the system will allocate another space for the call to `f(x3)`. Finally in `f(x3)`, we reach the base case, therefore there is no further recursive call within `f(x3)`.
 
@@ -268,7 +268,7 @@ This section goal is to help us identify a special case of recursion called tail
 
 `Tail recursion` is a recursion where the recursive call is the final instruction in the recursion function. And there should be only one recursive call in the function.
 
-We have already seen an example of tail recursion in the solution of Reverse String. Here is another example that shows the difference between non-tail-recursion and tail-recursion. Notice that in the non-tail-recursion example there is an extra computation after the very last recursive call.
+We have already seen an example of tail recursion in the solution of [Reverse String](https://github.com/vbrazo/algorithms-archives/blob/main/recursion/reverse_string.rb). Here is another example that shows the difference between `non-tail-recursion` and `tail-recursion`. Notice that in the non-tail-recursion example there is an extra computation after the very last recursive call.
 
 ```python
 def sum_non_tail_recursion(ls):
