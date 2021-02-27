@@ -10,6 +10,7 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Parts of a Recursive Algorithm](#parts-of-a-recursive-algorithm)
     - [Why Recursion Works](#why-recursion-works)
     - [Memoization](#memoization)
+      - [Optimizing Time Complexity](#optimizing-time-complexity)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
@@ -161,15 +162,39 @@ Reference: https://en.wikipedia.org/wiki/Recursion
 
 ### Memoization
 
-Memoization stores the intermediate results in the cache so that we can reuse them later without re-calculation.
+Before starting to discuss about memoization, let's take a look at the Fibonacci recursive solution as follows:
 
-Memoization is a technique that is frequently used together with recursion and used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. (Source: wikipedia)
+```python
+def fibonacci(n):
+  """
+  :type n: int
+  :rtype: int
+  """
+  if n < 2:
+    return n
+  else:
+    return fibonacci(n-1) + fibonacci(n-2)
+```
+
+In this case, it is better resort to the execution tree, which is a tree that is used to denote the execution flow of a recursive function in particular. Each node in the tree represents an invocation of the recursive function. Therefore, the total number of nodes in the tree corresponds to the number of recursion calls during the execution.
+
+The execution tree of a recursive function would form an `n-ary tree`, with `n` as the number of times recursion appears in the recurrence relation. For instance, the execution of the Fibonacci function would form a binary tree, as one can see from the following graph which shows the execution tree for the calculation of Fibonacci number `f(4)`.
+
+In a full binary tree with n levels, the total number of nodes would be `2^n-1`. Therefore, the upper bound (though not tight) for the number of recursion in f(n) would be `2^n−1`, as well. As a result, we can estimate that the time complexity for `f(n)` would be `O(2n)`.
+
+#### Optimizing time complexity
+
+In order to optimize the time complexity of recursion algorithms, we use a technique called Memoization.
+
+Memoization stores the intermediate results in the cache so that we can reuse them later without re-calculation. It is a technique that is frequently used together with recursion and used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
 
 To solve the Fibonacci algorithm `F(n)`, we could use a hash table to keep track of the result of each `F(n)` with `n` as the key. The hash table serves as a cache that saves us from duplicate calculations. The memoization technique is a good example that demonstrates how one can reduce compute time in exchange for some additional space.
 
 For the sake of comparison, we provide the implementation of Fibonacci number solution with memoization below.
 
 As an exercise, it's possible to make memoization more general and non-intrusive, i.e. applying memoization without changing the original function. (Hint: one can refer to a design pattern called `decorator`).
+
+Here is an example of Fibonacci with memoization:
 
 ```python
 def fib(self, N):
@@ -195,19 +220,11 @@ def fib(self, N):
   return recur_fib(N)
 ```
 
-Here is an example of Fibonacci without memoization:
+By caching and reusing the intermediate results, memoization can greatly reduce the number of recursion calls, i.e. reducing the number of branches in the execution tree. One should take this reduction into account when analyzing the time complexity of recursion algorithms with memoization.
 
-```python
-def fibonacci(n):
-  """
-  :type n: int
-  :rtype: int
-  """
-  if n < 2:
-    return n
-  else:
-    return fibonacci(n-1) + fibonacci(n-2)
-```
+With memoization, we save the result of Fibonacci number for each index `n`. We are assured that the calculation for each Fibonacci number would occur only once. And we know, from the recurrence relation, the Fibonacci number `f(n)` would depend on all `n-1` precedent Fibonacci numbers. As a result, the recursion to calculate `f(n)` would be invoked `n-1` times to calculate all the precedent numbers that it depends on.
+
+Now, we can simply apply the formula we introduced in the beginning of this chapter to calculate the time complexity, which is `O(1) * n = O(n)`. Memoization not only optimizes the time complexity of algorithm, but also simplifies the calculation of time complexity.
 
 Reference: https://en.wikipedia.org/wiki/Memoization
 
