@@ -5,7 +5,10 @@
 # Do the above modifications to the input array in place,
 # do not return anything from your function.
 
+#
 # Approach 1: a brute force solution using a supporting array
+#
+
 def duplicate_zeros(arr)
   arr2 = []
   arr2_index = 0
@@ -35,7 +38,9 @@ duplicate_zeros([1, 2, 3])
 # Explanation: After calling your function,
 # the input array is modified to: [1,2,3]
 
+#
 # Approach 2: In-place algorithm
+#
 
 # 1. count the number of zeros
 # 2. Iterate the array from the end and copy a non-zero element once and zero element twice.

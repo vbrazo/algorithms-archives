@@ -16,7 +16,9 @@ end
 
 print(sorted_squares([4, -1, -9, 2]))
 
+#
 # Approach 2: is using bubble sort
+#
 
 def bubble_sort(array)
   array_length = array.size

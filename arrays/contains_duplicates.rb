@@ -7,6 +7,7 @@
 #
 #
 # Approach #1 (Naive Linear Search) [Time Limit Exceeded]
+#
 
 # Complexity Analysis
 
@@ -37,6 +38,7 @@ nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
 puts(contains_duplicate(nums))
 # => true
 
+#
 # Approach #2 (Sorting)
 #
 # Intuition
@@ -91,8 +93,10 @@ nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
 puts(contains_duplicate(nums))
 # => true
 
+#
 # Approach #3 (Hash Table)
 #
+
 # Intuition
 #
 # Utilize a dynamic data structure that supports fast search

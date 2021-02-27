@@ -78,8 +78,10 @@ def detectCycle(head)
   nil
 end
 
+#
 # Approach 2: Floyd's Tortoise and Hare
 #
+
 # Intuition
 #
 # What happens when a fast runner (a hare) races a slow runner (a tortoise)

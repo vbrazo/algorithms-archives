@@ -8,7 +8,9 @@
 # What if the inputs contain unicode characters?
 # How would you adapt your solution to such case?
 
+#
 # Approach #1 (Sorting)
+#
 
 # Algorithm
 
@@ -61,7 +63,9 @@ t = 'ab'
 puts(is_anagram(s, t))
 # => false
 
+#
 # Approach #2 (Hash Table)
+#
 
 # Algorithm
 #

@@ -8,6 +8,7 @@
 #
 # Approach 1: Brute force solution
 #
+
 def calculate_products_of_all_other_elements(nums)
   product_of_other_elements = Array.new(nums.length, 1)
 
@@ -22,7 +23,9 @@ end
 
 puts(calculate_products_of_all_other_elements([1, 2, 3]))
 
+#
 # Approach 2: Left and Right product lists
+#
 
 # It's much easier to build an intuition for solving this problem without
 # division once you visualize how the different products except self look like

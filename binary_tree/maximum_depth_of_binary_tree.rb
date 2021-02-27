@@ -26,7 +26,9 @@ class TreeNode
   end
 end
 
+#
 # Approach 1: Recursion (DFS)
+#
 
 # Intuition By definition, the maximum depth of a binary tree is
 # the maximum number of steps to reach a leaf node from the root node.
@@ -64,7 +66,9 @@ def max_depth(root)
   end
 end
 
+#
 # Approach 2: Tail Recursion + BFS
+#
 
 # One might have noticed that the above recursion solution is probably not
 # the most optimal one in terms of the space complexity, and in the extreme case
@@ -93,8 +97,10 @@ end
 
 # TODO:
 
+#
 # Approach 3: Iteration
 #
+
 # Intuition
 #
 # We could also convert the above recursion into iteration, with the help of the stack data

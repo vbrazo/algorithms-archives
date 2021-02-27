@@ -1,6 +1,8 @@
 # Given two arrays, write a function to compute their intersection.
 
+#
 # Approach 1: Sort
+#
 
 # You can recommend this method when the input is sorted, or when the output
 # needs to be sorted. Here, we sort both arrays (assuming they are not sorted)
@@ -54,7 +56,9 @@ nums2 = [9, 4, 9, 8, 4]
 intersect(nums1, nums2)
 # => [4,9]
 
+#
 # Approach 2: Hash Map
+#
 
 # For the previous problem, we used a hash set to achieve a linear time complexity.
 # Here, we need to use a hash map to track the count for each number.

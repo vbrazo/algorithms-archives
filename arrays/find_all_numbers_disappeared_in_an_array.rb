@@ -6,7 +6,9 @@
 # Could you do it without extra space and in O(n) runtime? You may assume
 # the returned list does not count as extra space.
 
+#
 # Approach 1: Using Hash Map
+#
 
 # Intuition
 
@@ -43,7 +45,9 @@ nums = [4, 3, 2, 7, 8, 2, 3, 1]
 puts(find_disappeared_numbers(nums))
 # Output: [5,6]
 
+#
 # Approach 2: O(1) Space InPlace Modification Solution
+#
 
 # Intuition
 #

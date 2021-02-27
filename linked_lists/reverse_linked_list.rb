@@ -7,7 +7,9 @@
 #     end
 # end
 
+#
 # Approach #1 (Iterative)
+#
 
 # Time complexity: O(n). Assume that nn is the list's length, the time complexity is O(n).
 # Space complexity: O(1).
@@ -33,7 +35,9 @@ end
 # Input: 1->2->3->4->5->NULL
 # Output: 5->4->3->2->1->NULL
 
+#
 # Approach #2 (Recursive)
+#
 
 # Time complexity: O(n). Assume that nn is the list's length, the time complexity is O(n).
 # Space complexity: O(n). The extra space comes from implicit stack space due to recursion.

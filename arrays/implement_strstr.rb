@@ -60,7 +60,9 @@ puts(str_str('heawello', 'll'))
 puts(str_str('heawello', 'll23'))
 # => -1
 
+#
 # Approach 2: Two Pointers: Linear Time Slice
+#
 
 # Drawback of the previous algorithm is that one compares absolutely
 # all substrings of length L with the needle. There is no need to that.
@@ -114,7 +116,9 @@ puts(str_str('heawello', 'll'))
 puts(str_str('heawello', 'll23'))
 # => -1
 
+#
 # Approach 3: Rabin Karp: Constant Time Slice
+#
 
 # Complexity Analysis
 

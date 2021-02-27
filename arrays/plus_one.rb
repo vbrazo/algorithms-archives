@@ -8,7 +8,9 @@
 # You may assume the integer does not contain any leading zero,
 # except the number 0 itself.
 
+#
 # Approach 1: Schoolbook Addition with Carry
+#
 
 # Intuition
 

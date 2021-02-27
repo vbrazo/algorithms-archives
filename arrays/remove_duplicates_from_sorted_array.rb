@@ -40,6 +40,7 @@ print("#{algo.output_arr}\n")
 #
 # Approach: Two Pointers
 #
+
 # Since the array is already sorted, we can keep two pointers i and j,
 # where i is the slow-runner while j is the fast-runner.
 # As long as nums[i] = nums[i] = nums[j], we increment j to skip the duplicate.

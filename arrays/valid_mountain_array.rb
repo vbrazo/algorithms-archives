@@ -9,8 +9,10 @@
 #   - arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
 #
 
+#
 # Approach 1: One Pass
 #
+
 # Intuition
 # If we walk along the mountain from left to right, we have to move strictly up, then strictly down.
 #

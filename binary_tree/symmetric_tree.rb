@@ -16,7 +16,9 @@
 #   \   \
 #    3   3
 
+#
 # Approach 1: Recursive
+#
 
 # A tree is symmetric if the left subtree is a mirror reflection of the right subtree.
 # Therefore, the question is: when are two trees a mirror reflection of each other?
@@ -63,7 +65,9 @@ def is_mirror(t1, t2)
   (t1.val == t2.val) && is_mirror(t1.right, t2.left) && is_mirror(t1.left, t2.right)
 end
 
+#
 # Approach 2: Iterative
+#
 
 # Instead of recursion, we can also use iteration with the aid of a queue.
 # Each two consecutive nodes in the queue should be equal, and their subtrees

@@ -55,7 +55,9 @@ rotate(nums, k)
 # rotate 1 steps to the right: [99,-1,-100,3]
 # rotate 2 steps to the right: [3,99,-1,-100]
 
+#
 # Approach 2: Using Extra Array
+#
 
 # Algorithm
 

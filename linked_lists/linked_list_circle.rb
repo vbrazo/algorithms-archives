@@ -7,8 +7,10 @@
 
 # Return true if there is a cycle in the linked list. Otherwise, return false
 
+#
 # Approach 1: Hash Table
 #
+
 # Intuition
 #
 # To detect if a list is cyclic, we can check whether a node had been visited before.
@@ -73,7 +75,10 @@ has_cycle(head)
 # => false
 # Explanation: There is no cycle in the linked list.
 
+#
 # Approach 2: Floyd's Cycle Finding Algorithm
+#
+
 # Intuition
 #
 # Imagine two runners running on a track at different speed.

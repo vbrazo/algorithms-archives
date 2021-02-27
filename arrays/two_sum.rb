@@ -4,7 +4,9 @@
 #
 # You can return the answer in any order.
 
+#
 # Approach 1: Brute Force
+#
 
 # The brute force approach is simple. Loop through each element xx and find if
 # there is another value that equals to target - x.
@@ -43,7 +45,9 @@ target = 6
 print(two_sum(nums, target))
 # Output: [0,1]
 
+#
 # Approach 2: Two-pass Hash Table
+#
 
 # To improve our run time complexity, we need a more efficient way to check
 # if the complement exists in the array. If the complement exists, we need to
@@ -100,7 +104,9 @@ target = 6
 print(two_sum(nums, target))
 # Output: [0,1]
 
+#
 # Approach 3: One-pass Hash Table
+#
 
 # It turns out we can do it in one-pass. While we iterate and inserting elements
 # into the table, we also look back to check if current element's complement

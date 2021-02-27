@@ -1,8 +1,10 @@
 # Write a program to find the node at which the intersection of
 # two singly linked lists begins.
 
+#
 # Approach 1: Brute Force
 #
+
 # For each node ai in list A, traverse the entire list B and
 # check if any node in list B coincides with ai.
 #
@@ -11,7 +13,9 @@
 # Time complexity: O(m*n).
 # Space complexity: O(1).
 
+#
 # Approach 2: Hash Table
+#
 
 # Traverse list A and store the address / reference to each node in a hash set.
 # Then check every node bi in list B: if bi appears in the hash set,
@@ -23,7 +27,9 @@
 #
 # Space complexity: O(m) or O(n).
 
+#
 # Approach 3: Two Pointers
+#
 
 # Maintain two pointers pA and pB initialized at the head of A and B,
 # respectively. Then let them both traverse through the lists, one node

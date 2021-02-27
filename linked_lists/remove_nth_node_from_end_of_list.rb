@@ -11,7 +11,9 @@
 # Output: [1]
 #
 
+#
 # Approach 1: Two pass algorithm
+#
 
 # Intuition
 
@@ -83,7 +85,9 @@ def remove_nth_from_end(head, n)
   head
 end
 
+#
 # Approach 2: One pass algorithm
+#
 
 # Algorithm
 

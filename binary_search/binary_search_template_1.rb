@@ -8,7 +8,9 @@
 # use when they first teach students computer science. Template #1 is used to search
 # for an element or condition which can be determined by accessing a single index in the array.
 
+#
 # Approach 1:
+#
 
 # Algorithm
 #
@@ -52,7 +54,9 @@ nums = [-1, 0, 3, 5, 9, 12]
 target = 2
 puts(search(nums, target))
 
+#
 # Approach 2:
+#
 
 # Time complexity: O(n) implementation
 

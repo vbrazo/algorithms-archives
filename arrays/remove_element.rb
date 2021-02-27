@@ -53,8 +53,10 @@ val = 4
 len = remove_element(nums, val)
 puts(len)
 
+#
 # Approach 2: Two Pointers - when elements to remove are rare
 #
+
 # Intuition
 #
 # Now consider cases where the array contains few elements to remove.

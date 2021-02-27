@@ -1,6 +1,8 @@
 # Remove all elements from a linked list of integers that have value val.
 
+#
 # Approach 1: Sentinel Node
+#
 
 # Sentinel nodes are widely used in trees and linked lists as pseudo-heads,
 # pseudo-tails, markers of level end, etc. They are purely functional, and

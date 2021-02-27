@@ -5,7 +5,9 @@
 # You may assume that nums1 has enough space (size that is equal to m + n)
 # to hold additional elements from nums2.
 
+#
 # Approach 1: The naive approach
+#
 
 # would be to merge both lists into one and then to sort.
 # It can be a one line solution with a pretty bad time complexity O((n + m)log(n + m))

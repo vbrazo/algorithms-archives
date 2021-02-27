@@ -25,7 +25,9 @@
 # "Given a binary array, find the maximum number of consecutive 1s in this array,
 # allowing at most one 0 within an otherwise consecutive run of 1s"
 
+#
 # Approach 1: Brute Force
+#
 
 # Algorithm
 #
@@ -72,7 +74,9 @@ def find_max_consecutive_ones(nums)
   longest_sequence
 end
 
+#
 # Approach 2: Sliding Window
+#
 
 # Intuition
 

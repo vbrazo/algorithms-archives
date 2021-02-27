@@ -1,7 +1,9 @@
 # Given a positive integer num, write a function which returns True
 # if num is a perfect square else False.
 
+#
 # Approach 1:
+#
 
 # For `num > 2` the square root a is always less than `num / 2` and greater than 1:
 # `1 < x < num/2`. Since x is an integer, the problem goes down to the search in

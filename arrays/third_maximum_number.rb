@@ -1,7 +1,9 @@
 # Given integer array nums, return the third maximum number in this array.
 # If the third maximum does not exist, return the maximum number.
 
+#
 # Approach 1: Sorting (not a good one)
+#
 
 # Time complexity of sorting is O(n log n) (where n is the length of the input Array).
 
@@ -36,7 +38,9 @@ nums = [1, 1, 2]
 puts(third_max(nums))
 # Output: 2
 
+#
 # Approach 2: Use a Set and Delete Maximums
+#
 
 # We'll work with the following example Array.
 #
@@ -130,7 +134,10 @@ nums = [1, 1, 2]
 puts(third_max(nums))
 # Output: 2
 
+#
 # Approach 3: Keep Track of 3 Maximums Using a Set
+#
+
 # Intuition
 #
 # So far, our approaches have required multiple parses through the input array. While this is still O(n)O(n) in big-oh notation, it'd be good if we could solve it in a single parse. One way is to simply use a Set to keep track of the 3 maximum values we've seen so far. While you could achieve something similar using 3 variables (maximum, secondMaximum, and thirdMaximum), this is messy to work with and is poor programming practice.

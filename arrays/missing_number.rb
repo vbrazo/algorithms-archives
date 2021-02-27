@@ -4,8 +4,10 @@
 # Follow up: Could you implement a solution using only O(1) extra space
 # complexity and O(n) runtime complexity?
 
+#
 # Approach #1 Sorting
 #
+
 # Intuition
 #
 # If nums were in order, it would be easy to see which number is missing.
@@ -80,8 +82,10 @@ puts(missing_number(nums))
 # in the range [0,1]. 1 is the missing number in the range since
 # it does not appear in nums.
 
+#
 # Approach #2 HashSet
 #
+
 # Intuition
 #
 # A brute force method for solving this problem would be to simply
@@ -133,7 +137,9 @@ puts(missing_number(nums))
 # in the range [0,1]. 1 is the missing number in the range since
 # it does not appear in nums.
 
+#
 # Approach #3 Bit Manipulation
+#
 
 # Intuition
 #
