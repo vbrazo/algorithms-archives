@@ -3,19 +3,20 @@
 This is my personal algorithms archives and it's where I store my algorithms research that aims to provide resources to better interview developers in my engineering management journey.
 
 - [Algorithms](#algorithms)
-  - [Backtracking](#backtracking)
   - [Bit Manipulation](#bit-manipulation)
   - [Dynamic Programming](#dynamic-programming)
   - [Recursion](#recursion)
-    - [Time Complexity](#time-complexity)
     - [Parts of a Recursive Algorithm](#parts-of-a-recursive-algorithm)
     - [Why Recursion Works](#why-recursion-works)
+    - [Complexity Analysis](#complexity-analysis)
+      - [Time Complexity](#time-complexity)
+      - [Space Complexity](#space-complexity)
+        - [Recursion Related Space](#recursion-related-space)
+        - [Non-Recursion Related Space](#non-recursion-related-space)
     - [Memoization](#memoization)
       - [Optimizing Time Complexity](#optimizing-time-complexity)
-    - [Space Complexity](#space-complexity)
-      - [Recursion Related Space](#recursion-related-space)
-      - [Non-Recursion Related Space](#non-recursion-related-space)
     - [Tail Recursion](#tail-recursion)
+    - [Backtracking](#backtracking)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
@@ -28,60 +29,6 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Radix Sort](#radix-sort)
 
 # Algorithms
-
-## Backtracking
-
-Backtracking is an effective technique for solving algorithmic problems. In backtracking, we perform a depth-first search for solutions, jumping back to the last valid path as soon as we hit a dead end.
-
-The benefit of backtracking is that when it is properly implemented, we are guaranteed to find a solution, if one exists. Further, the solution will be more efficient than a brute-force solution exploration, since we weed out paths that are known to be invalid, a process known as `prunning`.
-
-On the other hand, backtracking cannot guarantee that we will find an optimal solution, and it often leads to factorial or exponential time complexity if we are required to choose one of M paths at each of N steps.
-
-There are three core questions to ask in order to determine whether backtracking is the right algorithm to use for a problem.
-
-1. Can you construct a partial solution?
-2. Can you verify if the partial solution is invalid?
-3. Can you verify if the solution is complete?
-
-To illustrate this concept, we will walk through one of the most common example of backtracking: the N queens puzzle. In this problem, you are given a N x N board and asked to find the number of way N queens can be placed on the board without threatening each other. More explicitly, no two queens are allowed to share the same row, column, or diagonal.
-
-- Can we construct a partial solution?
-
-Yes, we can tentatively place queens on the board.
-
-- Can we verify if the partial solution is invalid?
-
-Yes, we can check a solution is invalid if two queens threaten each other. To speed this up, we can assume that all queens already placed so far do not threaten each other, so we only need to check if the last queen we added attacks any other queue.
-
-- Can we verify if the solution is complete?
-
-Yes, we know a solution is complete if all N queens have been placed.
-
-```python
-def n_queens(n, board=[]):
-  if n == len(board):
-    return 1
-
-  count = 0
-  for col in range(n):
-    board.append(col)
-    if is_valid(board):
-      count += n_queens(n, board)
-     board.pop()
-   return count
-
-def is_valid(board):
-  current_queen_row, current_queen_col = len(board) - 1, board[-1]
-
-  # check if any queens can attack the last queen
-  for row, col in enumerate(board[:-1]):
-    diff = abs(current_queen_col - 1)
-    if diff == 0 or diff = current_queen_row - row:
-      return False
-  return True
-```
-
-Reference: https://en.wikipedia.org/wiki/Backtracking
 
 ## Bit Manipulation
 
@@ -141,12 +88,6 @@ Recursion is an important concept in computer science. It is a foundation for ma
 
 Recursion is the process of defining a problem (or the solution to a problem) in terms of (a simpler version of) itself.
 
-### Time Complexity
-
-Given a recursion algorithm, its time complexity `O(T)` is typically the product of the number of recursion invocations (denoted as `R`) and the time complexity of calculation (denoted as `O(s)`) that incurs along with each recursion call:
-
-`O(T) = R * O(s)`
-
 ### Parts of a Recursive Algorithm
 
 All recursive algorithms must have the following:
@@ -164,6 +105,45 @@ In a recursive algorithm, the computer "remembers" every previous state of the p
 Every function has its own workspace PER CALL of the function.
 
 Reference: https://en.wikipedia.org/wiki/Recursion
+
+### Complexity Analysis
+
+#### Time Complexity
+
+Given a recursion algorithm, its time complexity `O(T)` is typically the product of the number of recursion invocations (denoted as `R`) and the time complexity of calculation (denoted as `O(s)`) that incurs along with each recursion call:
+
+`O(T) = R * O(s)`
+
+#### Space Complexity
+
+There are mainly two parts of the space consumption that one should bear in mind when calculating the space complexity of a recursive algorithm: `recursion related` and `non-recursion related space`.
+
+##### Recursion Related Space
+
+The recursion related space refers to the memory cost that is incurred directly by the recursion, i.e. the stack to keep track of recursive function calls. In order to complete a typical function call, the system allocates some space in the stack to hold three important pieces of information:
+
+1. The returning address of the function call. Once the function call is completed, the program must know where to return to, i.e. the line of code after the function call.
+2. The parameters that are passed to the function call.
+3. The local variables within the function call.
+4. This space in the stack is the minimal cost that is incurred during a function call. However, once the function call is done, this space is freed.
+
+For recursive algorithms, the function calls chain up successively until they reach a base case (a.k.a. bottom case). This implies that the space that is used for each function call is accumulated.
+
+For a recursive algorithm, if there is no other memory consumption, then this recursion incurred space will be the space upper-bound of the algorithm.
+
+For example, in the exercise of [Reverse String](https://github.com/vbrazo/algorithms-archives/blob/main/recursion/reverse_string.rb), we don't have extra memory usage outside the recursive call, since we simply print a character. For each recursive call, let's assume it can use space up to a constant value. And the recursive calls will chain up to n times, where n is the size of the input string. So the space complexity of this recursive algorithm is `O(n)`.
+
+A space in the stack will be allocated for `f(x1)` in order to call `f(x2)`. Similarly in `f(x2)`, the system will allocate another space for the call to `f(x3)`. Finally in `f(x3)`, we reach the base case, therefore there is no further recursive call within `f(x3)`.
+
+It is due to recursion-related space consumption that sometimes one might run into a situation called [stack overflow](https://en.wikipedia.org/wiki/Stack_overflow), where the stack allocated for a program reaches its maximum space limit and the program crashes. Therefore, when designing a recursive algorithm, one should carefully check if there is a possibility of stack overflow when the input scales up.
+
+##### Non-Recursion Related Space
+
+As suggested by the name, the non-recursion related space refers to the memory space that is not directly related to recursion, which typically includes the space (normally in heap) that is allocated for the global variables.
+
+Recursion or not, you might need to store the input of the problem as global variables, before any subsequent function calls. And you might need to save the intermediate results from the recursive calls as well. The latter is also known as memoization as we saw in the previous chapters. For example, in the recursive algorithm with `memoization` to solve the Fibonacci number problem, we used a map to keep track of all intermediate Fibonacci numbers that occurred during the recursive calls. Therefore, in the space complexity analysis, we must take the space cost incurred by the memoization into consideration.
+
+Reference: https://en.wikipedia.org/wiki/Memoization
 
 ### Memoization
 
@@ -231,37 +211,6 @@ With memoization, we save the result of Fibonacci number for each index `n`. We 
 
 Now, we can simply apply the formula we introduced in the beginning of this chapter to calculate the time complexity, which is `O(1) * n = O(n)`. Memoization not only optimizes the time complexity of algorithm, but also simplifies the calculation of time complexity.
 
-### Space Complexity
-
-There are mainly two parts of the space consumption that one should bear in mind when calculating the space complexity of a recursive algorithm: `recursion related` and `non-recursion related space`.
-
-#### Recursion Related Space
-
-The recursion related space refers to the memory cost that is incurred directly by the recursion, i.e. the stack to keep track of recursive function calls. In order to complete a typical function call, the system allocates some space in the stack to hold three important pieces of information:
-
-1. The returning address of the function call. Once the function call is completed, the program must know where to return to, i.e. the line of code after the function call.
-2. The parameters that are passed to the function call.
-3. The local variables within the function call.
-4. This space in the stack is the minimal cost that is incurred during a function call. However, once the function call is done, this space is freed.
-
-For recursive algorithms, the function calls chain up successively until they reach a base case (a.k.a. bottom case). This implies that the space that is used for each function call is accumulated.
-
-For a recursive algorithm, if there is no other memory consumption, then this recursion incurred space will be the space upper-bound of the algorithm.
-
-For example, in the exercise of [Reverse String](https://github.com/vbrazo/algorithms-archives/blob/main/recursion/reverse_string.rb), we don't have extra memory usage outside the recursive call, since we simply print a character. For each recursive call, let's assume it can use space up to a constant value. And the recursive calls will chain up to n times, where n is the size of the input string. So the space complexity of this recursive algorithm is `O(n)`.
-
-A space in the stack will be allocated for `f(x1)` in order to call `f(x2)`. Similarly in `f(x2)`, the system will allocate another space for the call to `f(x3)`. Finally in `f(x3)`, we reach the base case, therefore there is no further recursive call within `f(x3)`.
-
-It is due to recursion-related space consumption that sometimes one might run into a situation called [stack overflow](https://en.wikipedia.org/wiki/Stack_overflow), where the stack allocated for a program reaches its maximum space limit and the program crashes. Therefore, when designing a recursive algorithm, one should carefully check if there is a possibility of stack overflow when the input scales up.
-
-#### Non-Recursion Related Space
-
-As suggested by the name, the non-recursion related space refers to the memory space that is not directly related to recursion, which typically includes the space (normally in heap) that is allocated for the global variables.
-
-Recursion or not, you might need to store the input of the problem as global variables, before any subsequent function calls. And you might need to save the intermediate results from the recursive calls as well. The latter is also known as memoization as we saw in the previous chapters. For example, in the recursive algorithm with `memoization` to solve the Fibonacci number problem, we used a map to keep track of all intermediate Fibonacci numbers that occurred during the recursive calls. Therefore, in the space complexity analysis, we must take the space cost incurred by the memoization into consideration.
-
-Reference: https://en.wikipedia.org/wiki/Memoization
-
 ### Tail Recursion
 
 This section goal is to help us identify a special case of recursion called tail recursion, which is exempted from this space overhead.
@@ -304,6 +253,60 @@ The benefit of having tail recursion is that it could avoid the accumulation of 
 A tail recursion function can be executed as non-tail-recursion functions, i.e. with piles of call stacks, without impact on the result. Often, the compiler recognizes tail recursion pattern, and optimizes its execution. However, not all programming languages support this optimization. For instance, C, C++ support the optimization of tail recursion functions. On the other hand, Java and Python do not support tail recursion optimization.
 
 Reference: https://en.wikipedia.org/wiki/Tail_call
+
+### Backtracking
+
+Backtracking is an effective technique for solving algorithmic problems. In backtracking, we perform a depth-first search for solutions, jumping back to the last valid path as soon as we hit a dead end.
+
+The benefit of backtracking is that when it is properly implemented, we are guaranteed to find a solution, if one exists. Further, the solution will be more efficient than a brute-force solution exploration, since we weed out paths that are known to be invalid, a process known as `prunning`.
+
+On the other hand, backtracking cannot guarantee that we will find an optimal solution, and it often leads to factorial or exponential time complexity if we are required to choose one of M paths at each of N steps.
+
+There are three core questions to ask in order to determine whether backtracking is the right algorithm to use for a problem.
+
+1. Can you construct a partial solution?
+2. Can you verify if the partial solution is invalid?
+3. Can you verify if the solution is complete?
+
+To illustrate this concept, we will walk through one of the most common example of backtracking: the N queens puzzle. In this problem, you are given a N x N board and asked to find the number of way N queens can be placed on the board without threatening each other. More explicitly, no two queens are allowed to share the same row, column, or diagonal.
+
+- Can we construct a partial solution?
+
+Yes, we can tentatively place queens on the board.
+
+- Can we verify if the partial solution is invalid?
+
+Yes, we can check a solution is invalid if two queens threaten each other. To speed this up, we can assume that all queens already placed so far do not threaten each other, so we only need to check if the last queen we added attacks any other queue.
+
+- Can we verify if the solution is complete?
+
+Yes, we know a solution is complete if all N queens have been placed.
+
+```python
+def n_queens(n, board=[]):
+  if n == len(board):
+    return 1
+
+  count = 0
+  for col in range(n):
+    board.append(col)
+    if is_valid(board):
+      count += n_queens(n, board)
+     board.pop()
+   return count
+
+def is_valid(board):
+  current_queen_row, current_queen_col = len(board) - 1, board[-1]
+
+  # check if any queens can attack the last queen
+  for row, col in enumerate(board[:-1]):
+    diff = abs(current_queen_col - 1)
+    if diff == 0 or diff = current_queen_row - row:
+      return False
+  return True
+```
+
+Reference: https://en.wikipedia.org/wiki/Backtracking
 
 ## Searching
 
