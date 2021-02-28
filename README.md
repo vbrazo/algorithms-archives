@@ -18,7 +18,6 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Tail Recursion](#tail-recursion)
     - [Divide and Conquer](#divide-and-conquer)
     - [Backtracking](#backtracking)
-    - [Master Theorem](#master-theorem)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
@@ -325,8 +324,6 @@ def is_valid(board):
 ```
 
 Reference: https://en.wikipedia.org/wiki/Backtracking
-
-### Master Theorem
 
 ## Searching
 
