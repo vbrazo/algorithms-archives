@@ -65,3 +65,44 @@ puts(max_profit(prices))
 
 prices = [7,6,4,3,1]
 puts(max_profit(prices))
+
+#
+# Approach 2: One Pass
+#
+
+# Algorithm
+#
+# Say the given array is:
+# [7, 1, 5, 3, 6, 4]
+# If we plot the numbers of the given array on a graph, we get:
+# The points of interest are the peaks and valleys in the given graph.
+# We need to find the largest peak following the smallest valley.
+# We can maintain two variables - minprice and maxprofit corresponding to the
+# smallest valley and maximum profit (maximum difference between selling price
+# and minprice) obtained so far respectively.
+
+# Complexity Analysis
+
+# Time complexity: O(n). Only a single pass is needed.
+# Space complexity: O(1). Only two variables are used.
+
+def max_profit(prices)
+  max_profit = 0
+  min_price = 1000000
+
+  0.upto(prices.length-1) do |i|
+    if prices[i] < min_price
+      min_price = prices[i]
+    elsif prices[i] - min_price > max_profit
+      max_profit = prices[i] - min_price
+    end
+  end
+
+  max_profit
+end
+
+prices = [7,1,5,3,6,4]
+puts(max_profit(prices))
+
+prices = [7,6,4,3,1]
+puts(max_profit(prices))
