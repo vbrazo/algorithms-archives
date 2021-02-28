@@ -22,7 +22,7 @@ This is my personal algorithms archives and it's where I store my algorithms res
       - [Risk of Stackoverflow](#risk-of-stackoverflow)
       - [Efficiency](#efficiency)
       - [Complexity](#complexity)
-      - [How to convert from recursion to iteration approach](#how-to-convert-recursion-to-iteration)
+      - [How to convert recursion to iteration](#how-to-convert-recursion-to-iteration)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
