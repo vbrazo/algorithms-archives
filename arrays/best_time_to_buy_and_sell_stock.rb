@@ -38,8 +38,8 @@
 
 # Complexity Analysis
 #
-# Time complexity: O(n^2) n(n−1)/2 times.
-# Space complexity: O(1). Only two variables - maxprofit and profit are used
+# Time complexity: O(n^2). Loop runs n(n−1)/2 times.
+# Space complexity: O(1). Only two variables - maxprofit and profit are used.
 #
 # @param {Integer[]} prices
 # @return {Integer}
