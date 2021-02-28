@@ -46,8 +46,8 @@
 def max_profit(prices)
   max_profit = 0
 
-  for i in (0...prices.length) do
-    for j in (i+1...prices.length) do
+  (0...prices.length).each do |i|
+    (i + 1...prices.length).each do |j|
       buy_price = prices[i]
       sell_price = prices[j]
 
@@ -60,10 +60,10 @@ def max_profit(prices)
   max_profit
 end
 
-prices = [7,1,5,3,6,4]
+prices = [7, 1, 5, 3, 6, 4]
 puts(max_profit(prices))
 
-prices = [7,6,4,3,1]
+prices = [7, 6, 4, 3, 1]
 puts(max_profit(prices))
 
 #
@@ -88,9 +88,9 @@ puts(max_profit(prices))
 
 def max_profit(prices)
   max_profit = 0
-  min_price = 1000000
+  min_price = 1_000_000
 
-  0.upto(prices.length-1) do |i|
+  0.upto(prices.length - 1) do |i|
     if prices[i] < min_price
       min_price = prices[i]
     elsif prices[i] - min_price > max_profit
@@ -101,8 +101,8 @@ def max_profit(prices)
   max_profit
 end
 
-prices = [7,1,5,3,6,4]
+prices = [7, 1, 5, 3, 6, 4]
 puts(max_profit(prices))
 
-prices = [7,6,4,3,1]
+prices = [7, 6, 4, 3, 1]
 puts(max_profit(prices))

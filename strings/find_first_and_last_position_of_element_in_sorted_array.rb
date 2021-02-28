@@ -37,8 +37,8 @@
 # @param {Integer} target
 # @return {Integer[]}
 def search_range(nums, target)
-  left_idx=-1
-  right_idx=-1
+  left_idx = -1
+  right_idx = -1
 
   nums.each_with_index do |num, i|
     if num == target
@@ -47,7 +47,7 @@ def search_range(nums, target)
     end
   end
 
-  (nums.count-1).downto(0) do |i|
+  (nums.count - 1).downto(0) do |i|
     if nums[i] == target
       right_idx = i
       break
@@ -57,12 +57,12 @@ def search_range(nums, target)
   [left_idx, right_idx]
 end
 
-nums = [5,7,7,8,8,10]
+nums = [5, 7, 7, 8, 8, 10]
 target = 8
 puts(search_range(nums, target))
 # Output: [3,4]
 
-nums = [5,7,7,8,8,10]
+nums = [5, 7, 7, 8, 8, 10]
 target = 6
 puts(search_range(nums, target))
 # Output: [-1,-1]
@@ -114,16 +114,14 @@ puts(search_range(nums, target))
 # @param {Integer[]} nums
 # @param {Integer} target
 # @return {Integer[]}
-def search_range(nums, target)
+def search_range(nums, target); end
 
-end
-
-nums = [5,7,7,8,8,10]
+nums = [5, 7, 7, 8, 8, 10]
 target = 8
 puts(search_range(nums, target))
 # Output: [3,4]
 
-nums = [5,7,7,8,8,10]
+nums = [5, 7, 7, 8, 8, 10]
 target = 6
 puts(search_range(nums, target))
 # Output: [-1,-1]

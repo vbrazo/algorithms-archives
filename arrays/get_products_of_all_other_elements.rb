@@ -41,7 +41,7 @@ puts(calculate_products_of_all_other_elements([1, 2, 3]))
 # Multiplying these two individual products would give us the desired result
 # as well.
 #
-# For every given index, ii, we will make use of the product of all the numbers
+# For every given index, i, we will make use of the product of all the numbers
 # to the left of it and multiply it by the product of all the numbers to the right.
 # This will give us the product of all the numbers except the one at the given
 # index i. Let's look at a formal algorithm describing this idea more concretely.
