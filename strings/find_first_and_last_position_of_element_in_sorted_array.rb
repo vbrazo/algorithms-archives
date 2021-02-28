@@ -71,3 +71,64 @@ nums = []
 target = 0
 puts(search_range(nums, target))
 # Output: [-1,-1]
+
+#
+# Approach 2: Binary Search
+#
+
+# Intuition
+#
+# Because the array is sorted, we can use binary search to locate the left and
+# rightmost indices.
+#
+# Algorithm
+#
+# The overall algorithm works fairly similarly to the linear scan approach,
+# except for the subroutine used to find the left and rightmost indices
+# themselves. Here, we use a modified binary search to search a sorted array,
+# with a few minor adjustments. First, because we are locating the leftmost
+# (or rightmost) index containing target (rather than returning true iff we
+# find target), the algorithm does not terminate as soon as we find a match.
+# Instead, we continue to search until lo == hi and they contain some index at
+# which target can be found.
+#
+# The other change is the introduction of the left parameter, which is a boolean
+# indicating what to do in the event that target == nums[mid]; if left is true,
+# then we "recurse" on the left subarray on ties. Otherwise, we go right.
+# To see why this is correct, consider the situation where we find target at
+# index i. The leftmost target cannot occur at any index greater than i, so we
+# never need to consider the right subarray. The same argument applies to the
+# rightmost index.
+#
+# The first animation below shows the process for finding the leftmost index,
+# and the second shows the process for finding the index right of the rightmost
+# index.
+
+# Complexity Analysis
+
+# Time complexity: O(logN)
+# Space complexity: O(1)
+
+# All work is done in place, so the overall memory usage is constant.
+
+# @param {Integer[]} nums
+# @param {Integer} target
+# @return {Integer[]}
+def search_range(nums, target)
+
+end
+
+nums = [5,7,7,8,8,10]
+target = 8
+puts(search_range(nums, target))
+# Output: [3,4]
+
+nums = [5,7,7,8,8,10]
+target = 6
+puts(search_range(nums, target))
+# Output: [-1,-1]
+
+nums = []
+target = 0
+puts(search_range(nums, target))
+# Output: [-1,-1]
