@@ -18,6 +18,11 @@ This is my personal algorithms archives and it's where I store my algorithms res
     - [Tail Recursion](#tail-recursion)
     - [Divide and Conquer](#divide-and-conquer)
     - [Backtracking](#backtracking)
+    - [Unfold Recursion](#unfold-recursion)
+      - [Risk of Stackoverflow](#risk-of-stackoverflow)
+      - [Efficiency](#efficiency)
+      - [Complexity](#complexity)
+      - [How to convert from recursion to iteration approach](#how-to-convert-recursion-to-iteration)
   - [Searching](#searching)
     - [Linear Search](#linear-search)
     - [Binary Search](#binary-search)
@@ -324,6 +329,34 @@ def is_valid(board):
 ```
 
 Reference: https://en.wikipedia.org/wiki/Backtracking
+
+### Unfold Recursion
+
+Unfolding recursion means how to convert a recursion algorithm to non-recursion one.
+
+Recursion could be an elegant and intuitive solution, when applied properly. Nevertheless, sometimes, one might have to convert a recursive algorithm to iterative one for various reasons.
+
+#### Risk of Stackoverflow
+
+The recursion often incurs additional memory consumption on the system stack, which is a limited resource for each program. If not used properly, the recursion algorithm could lead to stackoverflow. One might argue that a specific type of recursion called tail recursion could solve this problem. Unfortunately, not every recursion can be converted to tail recursion, and not every compiler supports the optimization of the tail recursion.
+
+#### Efficiency
+
+Along with the additional memory consumption, the recursion could impose at least the additional cost of function calls, and in a worse case duplicate calculation.
+
+#### Complexity
+
+The nature of recursion is quite close to the mathematics, which is why the recursion appears to be more intuitive and comprehensive for many people. However, when we abuse the recursion, the recursive program could become more difficult to read and understand than the non-recursive one, e.g. nested recursion etc.
+
+The good news is that we can always convert a recursion to iteration. In order to do so, in general, we use a data structure of stack or queue, which replaces the role of the system call stack during the process of recursion. 
+
+#### How to convert recursion to iteration:
+
+To convert a recursion approach to an iteration one, we could perform the following two steps:
+
+1. We use a stack or queue data structure within the function, to replace the role of the system call stack. At each occurrence of recursion, we simply push the parameters as a new element into the data structure that we created, instead of invoking a recursion.
+
+2. In addition, we create a loop over the data structure that we created before. The chain invocation of recursion would then be replaced with the iteration within the loop.
 
 ## Searching
 
