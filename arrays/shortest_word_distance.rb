@@ -5,9 +5,9 @@
 
 # Solution:
 # This is a straight-forward coding problem. The distance between any two
-# positions `i1` and `i2` in an array is `|i_1 - i_2|`. To find the shortest
+# positions `i1` and `i2` in an array is `|i1 - i2|`. To find the shortest
 # distance between word1 and word2, we need to traverse the input array and
-# find all occurrences i1 and i2 of the two words, and check if |i_1 - i_2| is
+# find all occurrences i1 and i2 of the two words, and check if |i1 - i2| is
 # less than the minimum distance computed so far.
 
 #
