@@ -24,18 +24,19 @@
 # @param {Integer[]} nums
 # @return {Integer[]}
 def running_sum(nums)
-  nums.each_with_index do |_value, index|
-    next if index == 0
+  nums.count.times do |i|
+    next if i == 0
 
-    nums[index] = nums[index - 1] + nums[index]
+    nums[i] = nums[i - 1] + nums[i]
   end
-  print(nums)
+
+  nums
 end
 
 nums = [1, 2, 3, 4]
-running_sum(nums)
+print(running_sum(nums))
 # Output: [1,3,6,10]
 
 nums = [3, 1, 2, 10, 1]
-running_sum(nums)
+print(running_sum(nums))
 # Output: [3,4,6,16,17]
