@@ -37,7 +37,7 @@
 #
 # Space complexity: O(k) + O(k) ~ O(k)
 # Saving space by keeping only the latest generated row,
-# we need only O(k)O extra space, other than the O(k) space
+# we need only O(k) extra space, other than the O(k) space
 # required to store the output.
 
 def get_num(row, col)
@@ -113,9 +113,9 @@ def generate(num_rows)
   (2...num_rows + 1).each do |row|
     prev = result[row - 1]
     current = [1]
-    med = prev.size / 2
+    med = prev.count / 2
 
-    (1...prev.size).each do |i|
+    (1...prev.count).each do |i|
       current[i] = prev[i - 1] + prev[i]
     end
 
@@ -161,6 +161,7 @@ end
 # @return {Integer[]}
 def get_row(row_index)
   pascal = [[1]]
+
   (1..row_index).each do |i|
     pascal[i] = []
     pascal[i][0] = pascal[i][i] = 1
@@ -168,6 +169,7 @@ def get_row(row_index)
       pascal[i][j] = pascal[i - 1][j - 1] + pascal[i - 1][j]
     end
   end
+
   pascal[row_index]
 end
 
@@ -189,7 +191,7 @@ print(get_row(row_index))
 
 # Complexity Analysis
 
-# Time complexity: O(k)O.
+# Time complexity: O(k).
 # Each term is calculated once, in constant time.
 
 # Space complexity: O(k).
