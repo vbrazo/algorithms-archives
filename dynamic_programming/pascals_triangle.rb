@@ -47,6 +47,8 @@
 # time complexity.
 #
 
+# @param {Integer} num_rows
+# @return {Integer[][]}
 def generate(num_rows)
   return [] if num_rows < 1
   return [[1]] if 1 == num_rows
