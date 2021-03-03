@@ -25,5 +25,42 @@
 # @param {Integer[]} a
 # @return {Integer}
 def sum_of_digits(a)
-
+  if digits_sum(min_digit(a)) % 2 == 0
+    1
+  else
+    0
+  end
 end
+
+def digits_sum(n)
+  a = 0
+  sum = 0
+
+  until n.zero?
+    a = n % 10
+    sum += a
+    n /= 10
+  end
+
+  sum
+end
+
+def min_digit(a)
+  min_digit = a[0]
+
+  a.each do |element|
+    if element < min_digit
+      min_digit = element
+    end
+  end
+
+  min_digit
+end
+
+a = [34,23,1,24,75,33,54,8]
+puts(sum_of_digits(a))
+# Output: 0
+
+a = [99,77,33,66,55]
+puts(sum_of_digits(a))
+# Output: 1
