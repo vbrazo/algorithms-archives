@@ -51,8 +51,8 @@
 # @return {Integer[][]}
 def generate(num_rows)
   return [] if num_rows < 1
-  return [[1]] if 1 == num_rows
-  return [[1], [1, 1]] if 2 == num_rows
+  return [[1]] if num_rows == 1
+  return [[1], [1, 1]] if num_rows == 2
 
   result = [[1], [1, 1]]
 
@@ -65,8 +65,8 @@ def generate(num_rows)
       current[i] = prev[i - 1] + prev[i]
     end
 
-    current.push 1
-    result.push current
+    current.push(1)
+    result.push(current)
   end
 
   result
