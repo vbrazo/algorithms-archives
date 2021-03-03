@@ -21,6 +21,25 @@
 # Output: [1,1]
 #
 
+#
+# Approach 1: Brute Force
+#
+
+#
+# Complexity Analysis
+#
+# Time complexity: O(k^2).
+# Simple memoization would make sure that a particular
+# element in a row is only calculated once. Assuming that our
+# memoization cache allows constant time lookup and updation
+# (like a hash-map), it takes constant time to calculate each
+# element in Pascal's triangle.
+#
+# Space complexity: O(k) + O(k) ~ O(k)
+# Saving space by keeping only the latest generated row,
+# we need only O(k)O extra space, other than the O(k) space
+# required to store the output.
+
 def get_num(row, col)
   return 1 if row == 0 || col == 0 || row == col
 
@@ -64,19 +83,17 @@ print(get_row(row_index))
 # Thus, we could reduce our memory footprint by only keeping
 # the latest row generated, and use that to generate a new row.
 
+#
 # Complexity Analysis
-
+#
 # Time complexity: O(k^2).
 # Simple memoization would make sure that a particular
 # element in a row is only calculated once. Assuming that our
 # memoization cache allows constant time lookup and updation
 # (like a hash-map), it takes constant time to calculate each
 # element in Pascal's triangle.
-
 #
-# Complexity Analysis
-#
-# Space complexity : O(k) + O(k) ~ O(k)
+# Space complexity: O(k) + O(k) ~ O(k)
 # Saving space by keeping only the latest generated row,
 # we need only O(k)O extra space, other than the O(k) space
 # required to store the output.
@@ -175,7 +192,7 @@ print(get_row(row_index))
 # Time complexity: O(k)O.
 # Each term is calculated once, in constant time.
 
-# Space complexity: O(k)O.
+# Space complexity: O(k).
 # No extra space required other than that required to
 # hold the output.
 
