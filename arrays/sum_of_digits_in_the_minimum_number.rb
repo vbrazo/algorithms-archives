@@ -25,7 +25,7 @@
 # @param {Integer[]} a
 # @return {Integer}
 def sum_of_digits(a)
-  if digits_sum(min_digit(a)) % 2 == 0
+  if digits_sum(min_digit(a)).even?
     1
   else
     0
@@ -49,18 +49,16 @@ def min_digit(a)
   min_digit = a[0]
 
   a.each do |element|
-    if element < min_digit
-      min_digit = element
-    end
+    min_digit = element if element < min_digit
   end
 
   min_digit
 end
 
-a = [34,23,1,24,75,33,54,8]
+a = [34, 23, 1, 24, 75, 33, 54, 8]
 puts(sum_of_digits(a))
 # Output: 0
 
-a = [99,77,33,66,55]
+a = [99, 77, 33, 66, 55]
 puts(sum_of_digits(a))
 # Output: 1
