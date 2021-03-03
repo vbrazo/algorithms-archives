@@ -33,3 +33,48 @@
 # case of 0, as we would otherwise return [1].
 # If numRows > 0, then we initialize triangle with [1] as its
 # first row, and proceed to fill the rows as follows:
+
+#
+# Complexity Analysis
+#
+# Time complexity: O(nums_rows^2)
+# Although updating each value of triangle happens in constant
+# time, it is performed O(numRows^2)
+#
+# Space complexity: O(nums_rows^2)
+# Because we need to store each number that we update in
+# triangle, the space requirement is the same as the
+# time complexity.
+#
+
+def generate(num_rows)
+  return [] if num_rows < 1
+  return [[1]] if 1 == num_rows
+  return [[1],[1,1]] if 2 == num_rows
+
+  result = [[1],[1,1]]
+
+  (2...num_rows).each do |row|
+    prev = result[row-1]
+    current = [1]
+    med = prev.size/2
+
+    (1...prev.size).each do |i|
+      current[i] = prev[i-1] + prev[i]
+    end
+
+    current.push 1
+    result.push current
+  end
+
+  result
+end
+
+num_rows = 5
+print(generate(num_rows))
+# => [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+
+
+num_rows = 1
+print(generate(num_rows))
+# => [[1]]
