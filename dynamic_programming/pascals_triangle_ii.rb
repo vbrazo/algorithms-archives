@@ -108,3 +108,60 @@ def generate(num_rows)
 
   result
 end
+
+#
+# Approach 3: Memory-efficient Dynamic Programming
+#
+
+# Intuition
+#
+# Notice that in the previous approach, we have maintained the
+# previous row in memory on the premise that we need terms
+# from it to build the current row. This is true, but not wholly.
+#
+# What we actually need, to generate a term in the current row,
+# is just the two terms above it (present in the previous row).
+#
+# Formally, in memory,
+# pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j]
+# where pascal[i][j] is the number in ith row and jth column of Pascal's triangle.
+# So, trying to compute pascal[i][j], only the memory
+# regions of pascal[i-1][j-1] and pascal[i-1][j] are required
+# to be accessed.
+
+#
+# Complexity Analysis
+#
+# Time complexity: O(k^2).
+# Same as the previous dynamic programming approach.
+#
+# Space complexity: O(k).
+# No extra space is used other than that required to hold
+# the output.
+#
+
+# @param {Integer} row_index
+# @return {Integer[]}
+def get_row(row_index)
+  pascal = [[1]]
+  (1..row_index).each do |i|
+    pascal[i] = []
+    pascal[i][0] = pascal[i][i] = 1
+    (1...i).each do |j|
+      pascal[i][j] = pascal[i - 1][j - 1] + pascal[i - 1][j]
+    end
+  end
+  pascal[row_index]
+end
+
+row_index = 3
+print(get_row(row_index))
+# => [1,3,3,1]
+
+row_index = 0
+print(get_row(row_index))
+# => [1]
+
+row_index = 1
+print(get_row(row_index))
+# => [1,1]
