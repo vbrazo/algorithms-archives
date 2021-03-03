@@ -52,17 +52,17 @@
 def generate(num_rows)
   return [] if num_rows < 1
   return [[1]] if 1 == num_rows
-  return [[1],[1,1]] if 2 == num_rows
+  return [[1], [1, 1]] if 2 == num_rows
 
-  result = [[1],[1,1]]
+  result = [[1], [1, 1]]
 
   (2...num_rows).each do |row|
-    prev = result[row-1]
+    prev = result[row - 1]
     current = [1]
-    med = prev.size/2
+    med = prev.size / 2
 
     (1...prev.size).each do |i|
-      current[i] = prev[i-1] + prev[i]
+      current[i] = prev[i - 1] + prev[i]
     end
 
     current.push 1
@@ -75,7 +75,6 @@ end
 num_rows = 5
 print(generate(num_rows))
 # => [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
-
 
 num_rows = 1
 print(generate(num_rows))
