@@ -69,7 +69,6 @@ arr3 = [521, 682, 1337, 1395, 1764]
 print(arrays_intersection(arr1, arr2, arr3))
 # Output: []
 
-
 #
 # Approach 2: Three pointers
 #
@@ -107,21 +106,19 @@ def arrays_intersection(arr1, arr2, arr3)
   # p1, p2, and p3 point to the beginning of arr1, arr2, and arr3 accordingly
   p1 = p2 = p3 = 0
 
-  while p1 < arr1.count and p2 < arr2.count and p3 < arr3.count
+  while (p1 < arr1.count) && (p2 < arr2.count) && (p3 < arr3.count)
     if arr1[p1] == arr2[p2] && arr1[p1] == arr3[p3]
       result.push(arr1[p1])
 
       p1 += 1
       p2 += 1
       p3 += 1
+    elsif arr1[p1] < arr2[p2]
+      p1 += 1
+    elsif arr2[p2] < arr3[p3]
+      p2 += 1
     else
-      if arr1[p1] < arr2[p2]
-        p1 += 1
-      elsif arr2[p2] < arr3[p3]
-        p2 += 1
-      else
-        p3 += 1
-      end
+      p3 += 1
     end
   end
 
