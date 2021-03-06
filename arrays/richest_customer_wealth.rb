@@ -39,7 +39,9 @@ def maximum_wealth(accounts)
   max_wealth = 0
 
   accounts.each do |account|
-    max_wealth = account.sum if max_wealth < account.sum
+    next if max_wealth > account.sum
+
+    max_wealth = account.sum
   end
 
   max_wealth
