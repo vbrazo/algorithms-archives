@@ -22,7 +22,37 @@
 # Output: 0
 
 #
-# Approach 1: Hash table
+# Approach 1: Brute force
+#
+
+# @param {Integer[]} nums
+# @return {Integer}
+def num_identical_pairs(nums)
+  pairs = 0
+
+  (0..nums.length - 2).each do |i|
+    (i + 1..nums.length - 1).each do |a|
+      nums[i] == nums[a] ? pairs += 1 : next
+    end
+  end
+
+  pairs
+end
+
+nums = [1, 2, 3, 1, 1, 3]
+puts(num_identical_pairs(nums))
+# Output: 4
+
+nums = [1, 1, 1, 1]
+puts(num_identical_pairs(nums))
+# Output: 6
+
+nums = [1, 2, 3]
+puts(num_identical_pairs(nums))
+# Output: 0
+
+#
+# Approach 2: Hash table
 #
 
 # @param {Integer[]} nums
@@ -31,11 +61,11 @@ def num_identical_pairs(nums)
   hash = {}
 
   nums.each do |num|
-    if hash[num]
-      hash[num] = hash[num] + 1
-    else
-      hash[num] = 1
-    end
+    hash[num] = if hash[num]
+                  hash[num] + 1
+                else
+                  1
+                end
   end
 
   counter = 0
@@ -43,21 +73,21 @@ def num_identical_pairs(nums)
   # Count how many times each number appears.
   # If a number appears n times, then n * (n – 1) // 2 good pairs
   # can be made with this number.
-  hash.each do |key, val|
-    counter = counter + (val * (val - 1) / 2)
+  hash.each do |_key, val|
+    counter += (val * (val - 1) / 2)
   end
 
   counter
 end
 
-nums = [1,2,3,1,1,3]
+nums = [1, 2, 3, 1, 1, 3]
 puts(num_identical_pairs(nums))
 # Output: 4
 
-nums = [1,1,1,1]
+nums = [1, 1, 1, 1]
 puts(num_identical_pairs(nums))
 # Output: 6
 
-nums = [1,2,3]
+nums = [1, 2, 3]
 puts(num_identical_pairs(nums))
 # Output: 0
