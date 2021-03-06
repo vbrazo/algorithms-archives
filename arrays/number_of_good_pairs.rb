@@ -71,7 +71,7 @@ def num_identical_pairs(nums)
   counter = 0
 
   # Count how many times each number appears.
-  # If a number appears n times, then n * (n – 1) // 2 good pairs
+  # If a number appears n times, then n * (n – 1) / 2 good pairs
   # can be made with this number.
   hash.values.each do |val|
     counter += (val * (val - 1) / 2)
