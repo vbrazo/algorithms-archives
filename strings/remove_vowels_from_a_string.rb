@@ -14,20 +14,20 @@
 # @param {String} s
 # @return {String}
 def remove_vowels(s)
-  new_str = []
-  vowels = ['a', 'e', 'i', 'o', 'u']
+  consonants = []
+  vowels = %w[a e i o u]
 
   s.to_s.chars.each do |character|
-    new_str.push(character) unless vowels.include? character
+    consonants.push(character) unless vowels.include? character
   end
 
-  new_str.join
+  consonants.join
 end
 
-s = "leetcodeisacommunityforcoders"
+s = 'leetcodeisacommunityforcoders'
 print(remove_vowels(s))
 # Output: "ltcdscmmntyfrcdrs"
 
-s = "aeiou"
+s = 'aeiou'
 print(remove_vowels(s))
 # Output: ""
