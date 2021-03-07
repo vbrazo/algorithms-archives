@@ -39,14 +39,15 @@
 def count_matches(items, rule_key, rule_value)
   counter = 0
 
+  keys = {
+    'type' => 0,
+    'color' => 1,
+    'name' => 2
+  }
+
   items.each do |item|
-    pos = 0
-
-    pos = 0 if rule_key == 'type'
-    pos = 1 if rule_key == 'color'
-    pos = 2 if rule_key == 'name'
-
-    counter += 1 if rule_value == item[pos]
+    position = keys[rule_key]
+    counter += 1 if rule_value == item[position]
   end
 
   counter
