@@ -67,3 +67,18 @@ end
 
 puts(add_digits(38))
 # Output: 2
+
+#
+# Approach 3: One-liner
+#
+
+def add_digits(num)
+  if 0 != num % 9
+    num % 9
+  else
+    (num != 0 ? 9 : 0)
+  end
+end
+
+puts(add_digits(38))
+# Output: 2
