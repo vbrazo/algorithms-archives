@@ -55,3 +55,37 @@ smaller_numbers_than_current(nums)
 nums = [7,7,7,7]
 smaller_numbers_than_current(nums)
 # Output: [0,0,0,0]
+
+#
+# Approach 2: sort + hash
+#
+
+# Time complexity: O(n log n)
+
+def smaller_numbers_than_current(nums)
+  sorted = nums.sort
+  map = Hash.new
+
+  sorted.each_with_index do |num, i|
+    next if map[num]
+    map[num] = i
+  end
+
+  nums.each_with_index do |num, i|
+    nums[i] = map[num]
+  end
+
+  print(nums)
+end
+
+nums = [8,1,2,2,3]
+smaller_numbers_than_current(nums)
+# Output: [4,0,1,1,3]
+
+nums = [6,5,4,8]
+smaller_numbers_than_current(nums)
+# Output: [2,1,0,3]
+
+nums = [7,7,7,7]
+smaller_numbers_than_current(nums)
+# Output: [0,0,0,0]
