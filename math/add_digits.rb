@@ -16,9 +16,8 @@
 def add_digits(num)
   sum = num
 
-  while true
+  until sum < 10
     sum = sum_of_digits(sum)
-    break if sum < 10
   end
 
   sum
@@ -27,11 +26,13 @@ end
 def sum_of_digits(n)
   a = 0
   sum = 0
+
   until n.zero?
     a = n % 10
     sum += a
     n /= 10
   end
+
   sum
 end
 
