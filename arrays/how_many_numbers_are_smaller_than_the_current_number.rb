@@ -31,28 +31,28 @@
 # @return {Integer[]}
 def smaller_numbers_than_current(nums)
   arr = {}
+
   nums.each_with_index do |num1, i|
     arr[i] = 0
     nums.each_with_index do |num2, j|
-      if i != j
-        if num1 > num2
-          arr[i] = arr[i] + 1
-        end
-      end
+      next if i == j
+
+      arr[i] = arr[i] + 1 if num1 > num2
     end
   end
+
   arr.values
 end
 
-nums = [8,1,2,2,3]
+nums = [8, 1, 2, 2, 3]
 smaller_numbers_than_current(nums)
 # Output: [4,0,1,1,3]
 
-nums = [6,5,4,8]
+nums = [6, 5, 4, 8]
 smaller_numbers_than_current(nums)
 # Output: [2,1,0,3]
 
-nums = [7,7,7,7]
+nums = [7, 7, 7, 7]
 smaller_numbers_than_current(nums)
 # Output: [0,0,0,0]
 
@@ -66,10 +66,11 @@ smaller_numbers_than_current(nums)
 # @return {Integer[]}
 def smaller_numbers_than_current(nums)
   sorted = nums.sort
-  map = Hash.new
+  map = {}
 
   sorted.each_with_index do |num, i|
     next if map[num]
+
     map[num] = i
   end
 
@@ -77,17 +78,17 @@ def smaller_numbers_than_current(nums)
     nums[i] = map[num]
   end
 
-  print(nums)
+  nums
 end
 
-nums = [8,1,2,2,3]
+nums = [8, 1, 2, 2, 3]
 smaller_numbers_than_current(nums)
 # Output: [4,0,1,1,3]
 
-nums = [6,5,4,8]
+nums = [6, 5, 4, 8]
 smaller_numbers_than_current(nums)
 # Output: [2,1,0,3]
 
-nums = [7,7,7,7]
+nums = [7, 7, 7, 7]
 smaller_numbers_than_current(nums)
 # Output: [0,0,0,0]
