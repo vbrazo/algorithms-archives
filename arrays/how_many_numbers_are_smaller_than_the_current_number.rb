@@ -62,6 +62,8 @@ smaller_numbers_than_current(nums)
 
 # Time complexity: O(n log n)
 
+# @param {Integer[]} nums
+# @return {Integer[]}
 def smaller_numbers_than_current(nums)
   sorted = nums.sort
   map = Hash.new
