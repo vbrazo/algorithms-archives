@@ -27,6 +27,8 @@
 # Approach 1: Brute Force
 #
 
+# Time complexity: O(n^2)
+
 # @param {Integer[]} nums
 # @return {Integer[]}
 def smaller_numbers_than_current(nums)
