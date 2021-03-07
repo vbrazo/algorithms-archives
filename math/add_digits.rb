@@ -11,16 +11,45 @@
 # Follow up:
 # Could you do it without any loop/recursion in O(1) runtime?
 
+#
+# Approach 1: Iterative
+#
+
 # @param {Integer} num
 # @return {Integer}
 def add_digits(num)
   sum = num
 
-  until sum < 10
-    sum = sum_of_digits(sum)
+  sum = sum_of_digits(sum) until sum < 10
+
+  sum
+end
+
+def sum_of_digits(n)
+  a = 0
+  sum = 0
+
+  until n.zero?
+    a = n % 10
+    sum += a
+    n /= 10
   end
 
   sum
+end
+
+puts(add_digits(38))
+# Output: 2
+
+#
+# Approach 2: Recursive
+#
+
+def add_digits(num)
+  return num if num < 10
+
+  current_sum = sum_of_digits(num)
+  add_digits(current_sum)
 end
 
 def sum_of_digits(n)
