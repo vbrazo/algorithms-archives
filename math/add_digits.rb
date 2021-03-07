@@ -82,3 +82,16 @@ end
 
 puts(add_digits(38))
 # Output: 2
+
+#
+# Approach 4: Ruby way
+#
+
+def add_digits(num)
+  num = num.to_s.chars.sum(&:to_i) while num > 9
+
+  num
+end
+
+puts(add_digits(38))
+# Output: 2
