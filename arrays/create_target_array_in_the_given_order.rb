@@ -44,13 +44,13 @@
 # @param {Integer[]} index
 # @return {Integer[]}
 def create_target_array(nums, index)
-  arr = []
+  target = []
 
   nums.count.times do |i|
-    arr.insert(index[i], nums[i])
+    target.insert(index[i], nums[i])
   end
 
-  arr
+  target
 end
 
 nums = [0, 1, 2, 3, 4]
@@ -82,20 +82,20 @@ create_target_array(nums, index)
 # @param {Integer[]} index
 # @return {Integer[]}
 def create_target_array(nums, index)
-  result = []
+  target = []
 
   nums.each_with_index do |value, indx|
     i = index[indx]
-    result.push(value)
-    j = result.size - 1
+    target.push(value)
+    j = target.size - 1
 
     while i != j
-      result[j - 1], result[j] = result[j], result[j - 1]
+      target[j - 1], target[j] = target[j], target[j - 1]
       j -= 1
     end
   end
 
-  result
+  target
 end
 
 nums = [0, 1, 2, 3, 4]
