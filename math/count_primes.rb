@@ -1,5 +1,23 @@
+# Count the number of prime numbers less than a non-negative number, n.
+
+# Example 1:
 #
-# Approach 1: Brute Force
+# Input: n = 10
+# Output: 4
+# Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+#
+# Example 2:
+#
+# Input: n = 0
+# Output: 0
+#
+# Example 3:
+#
+# Input: n = 1
+# Output: 0
+
+#
+# Approach 1: Brute Force [Time Limit Exceeded]
 #
 
 # Let's write down all of 12's factors:
@@ -75,8 +93,8 @@ def count_primes(n)
   count = 0
 
   # for every number from 2 to n-1
-  (2...n).each do |i|
-    if sieve[i] == true
+  for i in 2...n
+    if (sieve[i] == true)
       count += 1
       j = 2
 
@@ -84,7 +102,7 @@ def count_primes(n)
       while i * j < n
         # mark it as not prime
         sieve[i * j] = false
-        # so we can skip it next time
+         # so we can skip it next time
         j += 1
       end
     end
@@ -93,6 +111,28 @@ def count_primes(n)
   end
 
   count
+end
+
+puts(count_primes(10))
+# Output: 4
+
+puts(count_primes(3))
+# Output: 1
+
+puts(count_primes(2))
+# Output: 1
+
+puts(count_primes(4))
+# Output: 1
+
+
+#
+# Approach 3: Using Prime library
+#
+
+require 'prime'
+def count_primes(n)
+   Prime.each(n - 1).count
 end
 
 puts(count_primes(10))
