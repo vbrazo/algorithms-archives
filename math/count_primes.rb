@@ -43,6 +43,15 @@ end
 puts(count_primes(10))
 # Output: 4
 
+puts(count_primes(3))
+# Output: 1
+
+puts(count_primes(2))
+# Output: 1
+
+puts(count_primes(4))
+# Output: 1
+
 #
 # Approach 2: Sieve of Eratosthenes
 # https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
@@ -60,33 +69,26 @@ puts(count_primes(10))
 # was already marked off. What does this tell you? Should you mark off
 # all multiples of 4 as well?
 
-def count_primes(num)
-  is_prime = []
-
-  (2..num).each do |_n|
-    is_prime.push(true)
-  end
-
-  # Loop's ending condition is i * i < n instead of i < sqrt(n)
-  # to avoid repeatedly calling an expensive function sqrt().
-  i = 2
-  while i * i <= num
-    next unless is_prime[i]
-
-    j = i * i
-    while j < num
-      is_prime[j] = false
-      j += i
-    end
-
-    i += 1
-  end
-
-  i = 2
+def count_primes(n)
+  # assume everything is prime
+  sieve = [true] * n
   count = 0
 
-  while i < num
-    count += 1 if is_prime[i]
+  # for every number from 2 to n-1
+  (2...n).each do |i|
+    if sieve[i] == true
+      count += 1
+      j = 2
+
+      # for every multiple of i
+      while i * j < n
+        # mark it as not prime
+        sieve[i * j] = false
+        # so we can skip it next time
+        j += 1
+      end
+    end
+
     i += 1
   end
 
@@ -95,3 +97,12 @@ end
 
 puts(count_primes(10))
 # Output: 4
+
+puts(count_primes(3))
+# Output: 1
+
+puts(count_primes(2))
+# Output: 1
+
+puts(count_primes(4))
+# Output: 1
