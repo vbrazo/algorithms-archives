@@ -121,8 +121,8 @@ def count_primes(n)
   count = 0
 
   # for every number from 2 to n-1
-  for i in 2...n
-    if (sieve[i] == true)
+  (2...n).each do |i|
+    if sieve[i] == true
       count += 1
       j = 2
 
@@ -153,7 +153,6 @@ puts(count_primes(2))
 
 puts(count_primes(4))
 # Output: 1
-
 
 #
 # Approach 3: Using Prime library
