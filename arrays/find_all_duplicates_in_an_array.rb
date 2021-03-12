@@ -78,3 +78,32 @@ end
 nums = [4, 3, 2, 7, 8, 2, 3, 1]
 print(find_duplicates(nums))
 # Output: [2,3]
+
+#
+# Approach 3: Hash map
+#
+
+#
+# Complexity Analysis
+#
+# Time complexity: O(n) average case.
+#
+
+def find_duplicates(array)
+  result_hash = {}
+  result_array = []
+
+  array.each do |num|
+    if result_hash[num].nil?
+      result_hash[num] = 1
+    else
+      result_hash[num] += 1
+    end
+  end
+
+  result_hash.each do |k, v|
+    result_array.push(k) if v > 1
+  end
+
+  result_array
+end
