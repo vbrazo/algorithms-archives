@@ -5,8 +5,16 @@
 # You can return the answer in any order.
 
 #
-# Approach 1: Two pointer
+# Approach 1: Two pointers approach
 #
+
+# Complexity analysis
+
+# Time complexity: O(n). Each of the n elements is visited at
+# most once, thus the time complexity is O(n).
+
+# Space complexity: O(1). We only use two indexes, the space
+# complexity is O(1).
 
 # @param {Integer[]} numbers
 # @param {Integer} target
