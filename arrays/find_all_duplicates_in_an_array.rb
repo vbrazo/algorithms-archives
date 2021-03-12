@@ -63,16 +63,16 @@ print(find_duplicates(nums))
 # @param {Integer[]} nums
 # @return {Integer[]}
 def find_duplicates(nums)
-  # sort array
   array = []
   nums = nums.sort
+
   nums.count.times do |i|
     if nums[i] == nums[i+1]
       array.push(nums[i])
     end
   end
-  print array
-  # check if adjacent is equal to current
+
+  print(array)
 end
 
 nums = [4, 3, 2, 7, 8, 2, 3, 1]
