@@ -43,4 +43,38 @@ end
 
 nums = [4, 3, 2, 7, 8, 2, 3, 1]
 print(find_duplicates(nums))
+# Output: [3,2]
+
+#
+# Approach 2: Sort and Compare Adjacent Elements
+#
+
+# Intuition
+
+# After sorting a list of elements, all elements of equivalent value get placed together.
+# Thus, when you sort an array, equivalent elements form contiguous blocks.
+
+#
+# Complexity Analysis
+#
+# Time complexity: O(n log n)
+#
+
+# @param {Integer[]} nums
+# @return {Integer[]}
+def find_duplicates(nums)
+  # sort array
+  array = []
+  nums = nums.sort
+  nums.count.times do |i|
+    if nums[i] == nums[i+1]
+      array.push(nums[i])
+    end
+  end
+  print array
+  # check if adjacent is equal to current
+end
+
+nums = [4, 3, 2, 7, 8, 2, 3, 1]
+print(find_duplicates(nums))
 # Output: [2,3]
