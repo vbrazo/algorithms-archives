@@ -20,6 +20,10 @@
 # Output: 15
 # Explanation: The unique elements are [1,2,3,4,5], and the sum is 15.
 
+#
+# Approach 1: Hash table
+#
+
 # @param {Integer[]} nums
 # @return {Integer}
 def sum_of_unique(nums)
@@ -33,18 +37,45 @@ def sum_of_unique(nums)
     end
   end
 
-  unique = hash_table.select { |key, value| value == 1 }
+  unique = hash_table.select { |_key, value| value == 1 }
   unique.keys.sum
 end
 
-nums = [1,2,3,2]
+nums = [1, 2, 3, 2]
 puts sum_of_unique(nums)
 # Output: 4
 
-nums = [1,1,1,1,1]
+nums = [1, 1, 1, 1, 1]
 puts sum_of_unique(nums)
 # Output: 0
 
-nums = [1,2,3,4,5]
+nums = [1, 2, 3, 4, 5]
+puts sum_of_unique(nums)
+# Output: 15
+
+#
+# Approach 2: Hash table with additional array
+#
+
+def sum_of_unique(nums)
+  arr = []
+  hash = nums.group_by { |ele| ele }
+
+  hash.each do |k, v|
+    arr.push(k) if v.length == 1
+  end
+
+  arr.sum
+end
+
+nums = [1, 2, 3, 2]
+puts sum_of_unique(nums)
+# Output: 4
+
+nums = [1, 1, 1, 1, 1]
+puts sum_of_unique(nums)
+# Output: 0
+
+nums = [1, 2, 3, 4, 5]
 puts sum_of_unique(nums)
 # Output: 15
