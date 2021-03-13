@@ -12,6 +12,10 @@
 # Input: address = "255.100.50.0"
 # Output: "255[.]100[.]50[.]0"
 
+#
+# Approach 1: Hash map
+#
+
 # @param {String} address
 # @return {String}
 def defang_i_paddr(address)
@@ -26,6 +30,30 @@ def defang_i_paddr(address)
   end
 
   hash_table.values.join
+end
+
+address = '1.1.1.1'
+print(defang_i_paddr(address))
+# Output: "1[.]1[.]1[.]1"
+
+address = "255.100.50.0"
+print(defang_i_paddr(address))
+# Output: "255[.]100[.]50[.]0"
+
+#
+# Approach 2: Iterative
+#
+
+def defang_i_paddr(address)
+  defanged_address = ""
+
+  address.each_char do |char|
+    char = '[.]' if char == '.'
+
+    defanged_address += char
+  end
+
+  return defanged_address
 end
 
 address = '1.1.1.1'
