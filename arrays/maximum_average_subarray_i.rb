@@ -23,23 +23,29 @@
 # @param {Integer} k
 # @return {Float}
 def find_max_average(nums, k)
-  pointer1 = 0
-  pointer2 = k
-  max_average = 0
+  window_val = nums[0...k].sum
+  max_val = window_val
 
-  (k..nums.count).each do
-    new_average = nums[pointer1..pointer2-1].sum / (k * 1.0)
+  for i in 1..nums.length-k
+    window_val = window_val - nums[i - 1] + nums[i + k - 1]
 
-    max_average = new_average if max_average < new_average
-
-    pointer1 += 1
-    pointer2 += 1
+    max_val = window_val if window_val > max_val
   end
 
-  max_average
+  max_val / (1.0 * k)
 end
 
 nums = [1, 12, -5, -6, 50, 3]
 k = 4
 puts find_max_average(nums, k)
 # Output: 12.75
+
+nums = [-1]
+k = 1
+puts find_max_average(nums, k)
+# Output: -1
+
+nums = [0, 4, 0, 3, 2]
+k = 1
+puts find_max_average(nums, k)
+# Output: 4
