@@ -31,3 +31,7 @@ end
 address = '1.1.1.1'
 print(defang_i_paddr(address))
 # Output: "1[.]1[.]1[.]1"
+
+address = "255.100.50.0"
+print(defang_i_paddr(address))
+# Output: "255[.]100[.]50[.]0"
