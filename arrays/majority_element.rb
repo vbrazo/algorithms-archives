@@ -186,3 +186,7 @@ puts(majority_element(nums))
 nums = [2, 2, 1, 1, 1, 2, 2]
 puts(majority_element(nums))
 # Output: 2
+
+nums = [6, 5, 5]
+puts(majority_element(nums))
+# Output: 5
