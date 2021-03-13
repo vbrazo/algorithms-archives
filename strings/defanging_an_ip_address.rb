@@ -14,12 +14,20 @@
 
 # @param {String} address
 # @return {String}
-def defang_i_paddr(address); end
+def defang_i_paddr(address)
+  hash_table = {}
+
+  address.chars.each_with_index do |value, index|
+    if value == "."
+      hash_table[index] = "[#{value}]"
+    else
+      hash_table[index] = value
+    end
+  end
+
+  hash_table.values.join
+end
 
 address = '1.1.1.1'
 print(defang_i_paddr(address))
 # Output: "1[.]1[.]1[.]1"
-
-address = '1.1.1.1'
-print(defang_i_paddr(address))
-# Output: "255[.]100[.]50[.]0"
