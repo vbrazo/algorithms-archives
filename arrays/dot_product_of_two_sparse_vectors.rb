@@ -79,7 +79,7 @@ puts(ans)
 # Output: 15
 
 #
-# Approach 2: Hash set
+# Approach 2: Hash map
 #
 
 # Intuition
