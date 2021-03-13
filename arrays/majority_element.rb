@@ -69,7 +69,7 @@ nums = [2, 2, 1, 1, 1, 2, 2]
 puts(majority_element(nums))
 # Output: 2
 
-nums = [8,8,7,7,7]
+nums = [8, 8, 7, 7, 7]
 puts(majority_element(nums))
 # Output: 7
 
