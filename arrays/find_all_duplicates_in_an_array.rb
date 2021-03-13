@@ -67,9 +67,7 @@ def find_duplicates(nums)
   nums = nums.sort
 
   nums.count.times do |i|
-    if nums[i] == nums[i+1]
-      array.push(nums[i])
-    end
+    array.push(nums[i]) if nums[i] == nums[i + 1]
   end
 
   print(array)
