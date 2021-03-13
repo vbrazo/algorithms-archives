@@ -156,22 +156,27 @@ puts(majority_element(nums))
 # Boyer-Moore allocates only constant additional memory.
 
 def majority_element(nums)
+  candidate = nil
   count = 0
-  candidate = 0
 
-  nums.each do |num|
-    next unless count == 0
+  # first round to find candidate
+  nums.each do |ele|
+    candidate = ele if count == 0
 
-    candidate = num
-
-    if num == candidate
+    if candidate == ele
       count += 1
     else
       count -= 1
     end
   end
 
-  candidate
+  # second round to confirm
+  count = 0
+  nums.each do |ele|
+    count += 1 if ele == candidate
+  end
+
+  count > nums.count / 2 ? candidate : nil
 end
 
 nums = [3, 2, 3]
