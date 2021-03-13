@@ -15,14 +15,62 @@
 # Output: 2
 
 #
-# Approach 1: HashMap
+# Approach 1: Brute Force
+#
+
+#
+# Intuition
+#
+# We can exhaust the search space in quadratic time by
+# checking whether each element is the majority element.
+#
+
+# Complexity Analysis
+#
+# Time complexity: O(n^2)
+# The brute force algorithm contains two nested for loops
+# that each run for n iterations, adding up to quadratic time
+# complexity.
+
+# Space complexity: O(1)
+# The brute force solution does not allocate additional space
+# proportional to the input size.
+
+# @param {Integer[]} nums
+# @return {Integer}
+def majority_element(nums)
+  count = 0
+  majority_element = nums.count / 2
+
+  nums.each do |i|
+    nums.each do |j|
+      if j == i
+        count += 1
+      end
+    end
+
+    return i if count > majority_element
+  end
+end
+
+nums = [3, 2, 3]
+puts(majority_element(nums))
+# Output: 3
+
+nums = [2, 2, 1, 1, 1, 2, 2]
+puts(majority_element(nums))
+# Output: 2
+
+
+#
+# Approach 2: HashMap
 #
 
 # Intuition
 #
 # We know that the majority element occurs more than `n/2` times,
 # and a HashMap allows us to count element occurrences efficiently.
-# 
+#
 # Complexity Analysis
 #
 # Time complexity: O(n)
@@ -46,9 +94,9 @@ def majority_element(nums)
 end
 
 nums = [3, 2, 3]
-print(majority_element(nums))
+puts(majority_element(nums))
 # Output: 3
 
 nums = [2, 2, 1, 1, 1, 2, 2]
-print(majority_element(nums))
+puts(majority_element(nums))
 # Output: 2
