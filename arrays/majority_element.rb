@@ -52,9 +52,7 @@ def majority_element(nums)
 
   nums.each do |i|
     nums.each do |j|
-      if j == i
-        count += 1
-      end
+      count += 1 if j == i
     end
 
     return i if count > majority_element
@@ -68,7 +66,6 @@ puts(majority_element(nums))
 nums = [2, 2, 1, 1, 1, 2, 2]
 puts(majority_element(nums))
 # Output: 2
-
 
 #
 # Approach 2: HashMap
@@ -87,18 +84,16 @@ puts(majority_element(nums))
 #
 # Space complexity: O(n)
 
-
 # @param {Integer[]} nums
 # @return {Integer}
 def majority_element(nums)
-  hash = Hash.new(0)
+  num_hash = {}
 
-  nums.each do |x|
-    hash[x] += 1
+  nums.each do |num|
+    num_hash.key?(num) ? num_hash[num] += 1 : num_hash[num] = 1
   end
 
-  hash = hash.sort_by { |_, v| v }.reverse
-  hash.sort_by { |k, _| return k }.reverse
+  num_hash.max_by { |_k, v| v }[0]
 end
 
 nums = [3, 2, 3]
@@ -129,7 +124,54 @@ puts(majority_element(nums))
 def majority_element(nums)
   nums = nums.sort
 
-  return nums[nums.count/2]
+  nums[nums.count / 2]
+end
+
+nums = [3, 2, 3]
+puts(majority_element(nums))
+# Output: 3
+
+nums = [2, 2, 1, 1, 1, 2, 2]
+puts(majority_element(nums))
+# Output: 2
+
+#
+# Approach 4: Boyer-Moore Voting Algorithm
+#
+
+# Intuition
+
+# If we had some way of counting instances of the majority
+# element as +1+1 and instances of any other element as -1,
+# summing them would make it obvious that the majority element
+# is indeed the majority element.
+
+# Complexity Analysis
+#
+# Time complexity: O(n)
+# Boyer-Moore performs constant work exactly n times,
+# so the algorithm runs in linear time.
+#
+# Space complexity: O(1)
+# Boyer-Moore allocates only constant additional memory.
+
+def majority_element(nums)
+  count = 0
+  candidate = 0
+
+  nums.each do |num|
+    next unless count == 0
+
+    candidate = num
+
+    if num == candidate
+      count += 1
+    else
+      count -= 1
+    end
+  end
+
+  candidate
 end
 
 nums = [3, 2, 3]
