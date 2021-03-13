@@ -51,6 +51,8 @@ def majority_element(nums)
   majority_element = nums.count / 2
 
   nums.each do |i|
+    count = 0
+
     nums.each do |j|
       count += 1 if j == i
     end
@@ -66,6 +68,10 @@ puts(majority_element(nums))
 nums = [2, 2, 1, 1, 1, 2, 2]
 puts(majority_element(nums))
 # Output: 2
+
+nums = [8,8,7,7,7]
+puts(majority_element(nums))
+# Output: 7
 
 #
 # Approach 2: HashMap
