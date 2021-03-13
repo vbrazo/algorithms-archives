@@ -18,6 +18,14 @@
 # Approach 1: Brute Force
 #
 
+# Algorithm
+#
+# The brute force algorithm iterates over the array,
+# and then iterates again for each number to count its
+# occurrences. As soon as a number is found to have appeared
+# more than any other can possibly have appeared, return it.
+#
+
 #
 # Intuition
 #
@@ -91,6 +99,37 @@ def majority_element(nums)
 
   hash = hash.sort_by { |_, v| v }.reverse
   hash.sort_by { |k, _| return k }.reverse
+end
+
+nums = [3, 2, 3]
+puts(majority_element(nums))
+# Output: 3
+
+nums = [2, 2, 1, 1, 1, 2, 2]
+puts(majority_element(nums))
+# Output: 2
+
+#
+# Approach 3: Sorting
+#
+
+# Complexity Analysis
+#
+# Time complexity: O(n lgn)
+#
+# Sorting the array costs O(n lgn) time in Python and Java,
+# so it dominates the overall runtime.
+#
+# Space complexity: O(1) or O(n)
+#
+# We sorted nums in place here - if that is not allowed,
+# then we must spend linear additional space on a copy of
+# nums and sort the copy instead.
+
+def majority_element(nums)
+  nums = nums.sort
+
+  return nums[nums.count/2]
 end
 
 nums = [3, 2, 3]
