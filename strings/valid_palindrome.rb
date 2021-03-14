@@ -132,6 +132,27 @@ def is_palindrome(s)
   true
 end
 
+# Another way of writing it
+def is_palindrome(s)
+  return true if s.empty?
+
+  s = s.gsub(/[^0-9a-z]/i, '')
+
+  pointer1 = 0
+  pointer2 = s.length - 1
+
+  while pointer1 <= pointer2
+    unless s[pointer1].downcase == s[pointer2].downcase
+      return false
+    end
+
+    pointer1 += 1
+    pointer2 -= 1
+  end
+
+  true
+end
+
 s = 'A man, a plan, a canal: Panama'
 puts is_palindrome(s)
 # Output: true
