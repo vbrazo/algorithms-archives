@@ -58,3 +58,34 @@ def first_bad_version(n)
     end
   end
 end
+
+#
+# Approach 2: Binary Search
+#
+
+#
+# Complexity analysis
+#
+# Time complexity: O(logn). The search space is halved each time,
+# so the time complexity is O(logn).
+#
+# Space complexity: O(1).
+
+# @param {Integer} n
+# @return {Integer}
+def first_bad_version(n)
+  left = 1
+  right = n
+
+  while left < right
+    pivot = left + (right - left) / 2
+
+    if is_bad_version(pivot)
+      right = pivot
+    else
+      left = pivot + 1
+    end
+  end
+
+  return left
+end
