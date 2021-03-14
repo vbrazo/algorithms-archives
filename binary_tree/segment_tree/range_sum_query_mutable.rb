@@ -31,6 +31,10 @@
 # 0 <= left <= right < nums.length
 # At most 3 * 104 calls will be made to update and sumRange.
 
+#
+# Approach: ruby segment-tree (log(n) sum and update)
+#
+
 class NumArray
   attr_accessor :nodes, :tree
 
