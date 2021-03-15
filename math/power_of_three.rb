@@ -27,13 +27,9 @@
 # Space complexity: O(1). We are not using any additional memory.
 
 def is_power_of_three(n)
-  if (n < 1)
-    return false
-  end
+  return false if n < 1
 
-  while n % 3 == 0
-    n /= 3
-  end
+  n /= 3 while n % 3 == 0
 
   n == 1
 end
