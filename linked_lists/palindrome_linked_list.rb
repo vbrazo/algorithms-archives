@@ -130,3 +130,64 @@ def reverse_linked_list(head)
 
   return second_iterator
 end
+
+#
+# Approach 3: Recursion
+#
+
+# Complexity Analysis
+#
+# Time complexity: O(n), where nn is the number of nodes in the Linked List.
+# The recursive function is run once for each of the n nodes, and the body
+# of the recursive function is O(1). Therefore, this gives a total of O(n).
+#
+# Space complexity: O(n), where n is the number of nodes in the Linked List.
+# I hinted at the start that this is not using O(1) space. This might seem
+# strange, after all we aren't creating any new data structures. So, where is
+# the O(n) extra memory we're using? Understanding what is happening here
+# requires understanding how the computer runs a recursive function.
+
+# Each time a function is called within a function, the computer needs to keep
+# track of where it is up to (and the values of any local variables) in the
+# current function before it goes into the called function. It does this by
+# putting an entry on something called the runtime stack, called a stack frame.
+# Once it has created a stack frame for the current function, it can then go into
+# the called function. Then once it is finished with the called function, it pops
+# the top stack frame to resume the function it had been in before the function
+# call was made.
+#
+# Before doing any palindrome checking, the above recursive function creates n
+# of these stack frames because the first step of processing a node is to process
+# the nodes after it, which is done with a recursive call. Then once it has the n
+# stack frames, it pops them off one-by-one to process them.
+#
+# So, the space usage is on the runtime stack because we are creating nn stack
+# frames. Always make sure to consider what's going on the runtime stack when
+# analyzing a recursive function. It's a common mistake to forget to.
+#
+# Not only is this approach still using O(n) space, it is worse than the
+# first approach because in many languages (such as Python), stack frames are
+# large, and there's a maximum runtime stack depth of 1000 (you can increase it,
+# but you risk causing memory errors with the underlying interpreter). With every
+# node creating a stack frame, this will greatly limit the maximum Linked List
+# size the algorithm can handle.
+
+def is_palindrome(head)
+  if not head; return true end
+
+  @iter_count = 0
+  @node = head
+  @ret = true
+  def recursion(node, count)
+    if node.next; recursion(node.next, count + 1) end
+
+    if count <= @iter_count; return end
+
+    if node.val != @node.val; @ret = false end
+    @node = @node.next
+    @iter_count += 1
+  end
+
+  recursion(head, 0)
+  return @ret
+end
