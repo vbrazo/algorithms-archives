@@ -53,9 +53,7 @@
 # @return {Integer}
 def first_bad_version(n)
   (1..n).each do |i|
-    if is_bad_version(i) == true
-      return i
-    end
+    return i if is_bad_version(i) == true
   end
 end
 
@@ -87,5 +85,5 @@ def first_bad_version(n)
     end
   end
 
-  return left
+  left
 end

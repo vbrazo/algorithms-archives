@@ -41,7 +41,7 @@ def is_palindrome(head)
   array = []
   iterator = head
 
-  while iterator do
+  while iterator
     array.push(iterator.val)
     iterator = iterator.next
   end
@@ -69,6 +69,7 @@ end
 
 def is_palindrome(head)
   return true if head.nil? || head.next.nil?
+
   dummy_head = ListNode.new(0, head)
 
   # Find the middle of the linked list
@@ -110,7 +111,7 @@ def is_palindrome(head)
   reverse_linked_list(initial_tail_of_first_half)
   initial_tail_of_first_half.next = next_node_from__tail_of_first_half
 
-  return is_palindrome
+  is_palindrome
 end
 
 def reverse_linked_list(head)
@@ -128,7 +129,7 @@ def reverse_linked_list(head)
     third_iterator = third_iterator&.next
   end
 
-  return second_iterator
+  second_iterator
 end
 
 #
@@ -173,21 +174,24 @@ end
 # size the algorithm can handle.
 
 def is_palindrome(head)
-  if not head; return true end
+  return true unless head
 
   @iter_count = 0
   @node = head
   @ret = true
+
   def recursion(node, count)
-    if node.next; recursion(node.next, count + 1) end
+    recursion(node.next, count + 1) if node.next
 
-    if count <= @iter_count; return end
+    return if count <= @iter_count
 
-    if node.val != @node.val; @ret = false end
+    @ret = false if node.val != @node.val
+
     @node = @node.next
     @iter_count += 1
   end
 
   recursion(head, 0)
-  return @ret
+
+  @ret
 end

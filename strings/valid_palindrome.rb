@@ -142,9 +142,7 @@ def is_palindrome(s)
   pointer2 = s.length - 1
 
   while pointer1 <= pointer2
-    unless s[pointer1].downcase == s[pointer2].downcase
-      return false
-    end
+    return false unless s[pointer1].downcase == s[pointer2].downcase
 
     pointer1 += 1
     pointer2 -= 1
