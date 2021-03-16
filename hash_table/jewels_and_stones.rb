@@ -60,3 +60,50 @@ jewels = "z"
 stones = "ZZ"
 puts(num_jewels_in_stones(jewels, stones))
 # Output: 0
+
+
+#
+# Approach 2: Hash map
+#
+
+# Complexity Analysis
+#
+# Time Complexity: O(J.length+S.length). The O(J.length) part
+# comes from creating J. The O(S.length) part comes from
+# searching S.
+#
+# Space Complexity: O(J.length).
+
+# @param {String} jewels
+# @param {String} stones
+# @return {Integer}
+def num_jewels_in_stones(jewels, stones)
+  hash_table = {}
+  count = 0
+
+  stones.chars.each_with_index do |stone, i|
+    if hash_table[stone].nil?
+      hash_table[stone] = 1
+    else
+      hash_table[stone] += 1
+    end
+  end
+
+  jewels.chars.each do |jewel|
+    unless hash_table[jewel].nil?
+      count += hash_table[jewel]
+    end
+  end
+
+  count
+end
+
+jewels = "aA"
+stones = "aAAbbbb"
+puts(num_jewels_in_stones(jewels, stones))
+# Output: 3
+
+jewels = "z"
+stones = "ZZ"
+puts(num_jewels_in_stones(jewels, stones))
+# Output: 0
