@@ -22,11 +22,33 @@
 # jewels and stones consist of only English letters.
 # All the characters of jewels are unique.
 
+#
+# Approach #1: Brute Force [Accepted]
+#
+
+# Complexity Analysis
+
+# Time Complexity: O(J.length∗S.length)).
+# Space Complexity: O(1) additional space complexity in
+# Python. In Java, this can be O(J.length∗S.length)) because
+# of the creation of new arrays.
+
 # @param {String} jewels
 # @param {String} stones
 # @return {Integer}
 def num_jewels_in_stones(jewels, stones)
+  hash_table = {}
+  count = 0
 
+  jewels.chars.each do |jewel|
+    stones.chars.each do |stone|
+      if stone == jewel
+        count += 1
+      end
+    end
+  end
+
+  count
 end
 
 jewels = "aA"
