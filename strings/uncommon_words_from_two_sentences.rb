@@ -19,6 +19,15 @@
 # Input: A = "apple apple", B = "banana"
 # Output: ["banana"]
 
+#
+# Approach 1: Counting
+#
+
+# Complexity Analysis
+#
+# Time Complexity: O(M+N), where M, NM, N are the lengths of A and B respectively.
+# Space Complexity: O(M+N), the space used by count.
+
 # @param {String} a
 # @param {String} b
 # @return {String[]}
