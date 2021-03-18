@@ -40,3 +40,23 @@ def is_power_of_two(n)
 
   n == 1
 end
+
+n = 1
+# Output: true
+puts is_power_of_two(n)
+
+n = 16
+# Output: true
+puts is_power_of_two(n)
+
+n = 3
+# Output: false
+puts is_power_of_two(n)
+
+n = 4
+# Output: true
+puts is_power_of_two(n)
+
+n = 5
+# Output: false
+puts is_power_of_two(n)
