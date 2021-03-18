@@ -29,12 +29,14 @@ def delete_duplicates(head)
   while head
     if head.next and head.val == head.next.val
       while head.next and head.val == head.next.val
-          head = head.next
+        head = head.next
       end
-        pred.next = head.next
+
+      pred.next = head.next
     else
-        pred = pred.next
+      pred = pred.next
     end
+
     head = head.next
   end
 
