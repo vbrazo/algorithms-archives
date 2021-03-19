@@ -37,14 +37,17 @@
 # @return {Boolean}
 def is_strobogrammatic(num)
   return true if num.length == 0
+
   a, b = num[0], num[-1]
   sets = [['8','8'],['6','9'],['0','0'],['1','1']]
+
   sets.each do |set|
     if (a == set[0] && b == set[1]) || (a == set[1] && b == set[0])
       return is_strobogrammatic(num[1..-2])
     end
   end
-  return false
+  
+  false
 end
 
 num = "69"
@@ -67,6 +70,8 @@ puts is_strobogrammatic(num)
 # Approach 2: Iterative approach
 # 
 
+# @param {String} num
+# @return {Boolean}
 def is_strobogrammatic(num)
   strobogrammatic_numbers = { 
                               '0' => '0',
