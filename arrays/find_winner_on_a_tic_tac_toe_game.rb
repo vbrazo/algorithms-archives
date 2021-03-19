@@ -129,3 +129,94 @@ tictactoe(moves)
 # "X  "
 # " O "
 # "   "
+
+#
+# Approach 2: Using matrix library
+#
+
+require 'matrix'
+
+class Matrix
+  def rotate
+    Matrix[*to_a.map(&:reverse).transpose]
+  end
+end
+
+PLAYER = %w(A B)
+
+# @param {Integer[][]} moves
+# @return {String}
+def tictactoe(moves)
+  grid = [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
+  moves.each_with_index do |(i, j), index|
+    grid[i][j] = PLAYER[index % 2]
+  end
+  result(grid)
+end
+
+def result(grid)
+  if (winner = horizontal(grid) || vertical(grid) || diag(grid))
+    winner.first
+  elsif pending?(grid)
+    'Pending'
+  else
+    'Draw'
+  end
+end
+
+def horizontal(grid)
+  winner(grid)
+end
+
+def vertical(grid)
+  winner(grid.transpose)
+end
+
+def diag(grid)
+  winner([Matrix.rows(grid).each(:diagonal).to_a,
+          Matrix.rows(grid).rotate.each(:diagonal).to_a])
+end
+
+# checking for a move played three times
+def winner(rows)
+  rows.find { |row| row.compact.size == 3 && row.uniq.size == 1 }
+end
+
+def pending?(grid)
+  grid.flatten.any?(&:nil?)
+end
+
+moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]
+tictactoe(moves)
+# Output: "A"
+# Explanation: "A" wins, he always plays first.
+# "X  "    "X  "    "X  "    "X  "    "X  "
+# "   " -> "   " -> " X " -> " X " -> " X "
+# "   "    "O  "    "O  "    "OO "    "OOX"
+#
+
+moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]
+tictactoe(moves)
+# Output: "B"
+# Explanation: "B" wins.
+# "X  "    "X  "    "XX "    "XXO"    "XXO"    "XXO"
+# "   " -> " O " -> " O " -> " O " -> "XO " -> "XO "
+# "   "    "   "    "   "    "   "    "   "    "O  "
+#
+
+moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]
+tictactoe(moves)
+# Output: "Draw"
+# Explanation: The game ends in a draw since there are no moves to make.
+# "XXO"
+# "OOX"
+# "XOX"
+#
+
+moves = [[0,0],[1,1]]
+tictactoe(moves)
+# Output: "Pending"
+# Explanation: The game has not finished yet.
+# "X  "
+# " O "
+# "   "
