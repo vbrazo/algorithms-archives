@@ -29,6 +29,10 @@
 # num consists of only digits.
 # num does not contain any leading zeros except for zero itself.
 
+# 
+# Approach 1: Recursion
+# 
+
 # @param {String} num
 # @return {Boolean}
 def is_strobogrammatic(num)
@@ -41,6 +45,45 @@ def is_strobogrammatic(num)
     end
   end
   return false
+end
+
+num = "69"
+puts is_strobogrammatic(num)
+# Output: true
+
+num = "88"
+puts is_strobogrammatic(num)
+# Output: true
+
+num = "962"
+puts is_strobogrammatic(num)
+# Output: false
+
+num = "1"
+puts is_strobogrammatic(num)
+# Output: true
+
+# 
+# Approach 2: Iterative approach
+# 
+
+def is_strobogrammatic(num)
+  strobogrammatic_numbers = { 
+                              '0' => '0',
+                              '1' => '1',
+                              '6' => '9',
+                              '8' => '8',
+                              '9' => '6'
+                            }  
+
+  strob_letters = []
+    
+  num.chars.each do |char|
+    return false unless strobogrammatic_numbers.has_key?(char)  
+    strob_letters.unshift(strobogrammatic_numbers[char]) if strobogrammatic_numbers.has_key?(char) 
+  end
+    
+  num == strob_letters.join('') ? true : false
 end
 
 num = "69"
