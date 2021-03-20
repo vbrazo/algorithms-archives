@@ -2,7 +2,9 @@
 
 # We are given a list nums of integers representing a list compressed with run-length encoding.
 #
-# Consider each adjacent pair of elements [freq, val] = [nums[2*i], nums[2*i+1]] (with i >= 0).  For each such pair, there are freq elements with value val concatenated in a sublist. Concatenate all the sublists from left to right to generate the decompressed list.
+# Consider each adjacent pair of elements [freq, val] = [nums[2*i], nums[2*i+1]] (with i >= 0).
+# For each such pair, there are freq elements with value val concatenated in a sublist.
+# Concatenate all the sublists from left to right to generate the decompressed list.
 #
 # Return the decompressed list.
 
@@ -25,16 +27,30 @@
 # nums.length % 2 == 0
 # 1 <= nums[i] <= 100
 
+#
+# Approach 1: Iterative
+#
+
 # @param {Integer[]} nums
 # @return {Integer[]}
 def decompress_rl_elist(nums)
+  array = []
+  nums = nums.each_slice(2).to_a
 
+  nums.count.times do |index|
+    freq = nums[index][0]
+    val = nums[index][1]
+
+    array << [val] * freq
+  end
+
+  array.flatten
 end
 
 nums = [1,2,3,4]
-puts decompress_rl_elist(nums)
+print decompress_rl_elist(nums)
 # Output: [2,4,4,4]
 
 nums = [1,1,2,3]
-puts decompress_rl_elist(nums)
+print decompress_rl_elist(nums)
 # Output: [1,3,3]
