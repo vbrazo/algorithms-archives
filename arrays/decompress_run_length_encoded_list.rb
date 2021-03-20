@@ -47,10 +47,30 @@ def decompress_rl_elist(nums)
   array.flatten
 end
 
-nums = [1,2,3,4]
+nums = [1, 2, 3, 4]
 print decompress_rl_elist(nums)
 # Output: [2,4,4,4]
 
-nums = [1,1,2,3]
+nums = [1, 1, 2, 3]
+print decompress_rl_elist(nums)
+# Output: [1,3,3]
+
+#
+# Approach 2: Recurvise
+#
+
+def decompress_rl_elist(nums, pair = 0, n = [])
+  return n.flatten.compact if nums[pair..pair + 1].empty?
+
+  n[pair] = Array.new(nums[pair..pair + 1][0], nums[pair..pair + 1][1])
+
+  decompress_rl_elist(nums, pair + 2, n)
+end
+
+nums = [1, 2, 3, 4]
+print decompress_rl_elist(nums)
+# Output: [2,4,4,4]
+
+nums = [1, 1, 2, 3]
 print decompress_rl_elist(nums)
 # Output: [1,3,3]
