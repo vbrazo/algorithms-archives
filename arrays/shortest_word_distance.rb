@@ -114,3 +114,55 @@ word1 = 'makes'
 word2 = 'coding'
 puts(shortest_distance(words, word1, word2))
 # Output: 1
+
+#
+# Approach 3: Divide and Conquer
+
+# @param {String[]} words_dict
+# @param {String} word1
+# @param {String} word2
+# @return {Integer}
+def shortest_distance(words_dict, word1, word2)
+  pos1 = []
+  pos2 = []
+
+  # find positions of word1 and word2 and
+  # populate in arrays
+  words_dict.each_with_index do |word, i|
+    if word1 == word
+      pos1.push(i)
+    end
+
+    if word2 == word
+      pos2.push(i)
+    end
+  end
+
+  # find minimum distance between
+  # word1 and word2 based on the positions
+  min = 0
+  pos1.each do |k|
+    pos2.each do |p|
+      dist = (p - k).abs
+      if min == 0
+        min = dist
+      elsif dist < min
+        min = dist
+      end
+    end
+  end
+
+  min
+end
+
+words_dict = ["practice", "makes", "perfect", "coding", "makes"]
+word1 = "coding"
+word2 = "practice"
+puts shortest_distance(words_dict, word1, word2)
+# Output: 3
+
+words_dict = ["practice", "makes", "perfect", "coding", "makes"]
+word1 = "makes"
+word2 = "coding"
+puts shortest_distance(words_dict, word1, word2)
+# Output: 1
