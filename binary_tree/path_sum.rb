@@ -42,6 +42,7 @@ class TreeNode
     @right = right
   end
 end
+
 # @param {TreeNode} root
 # @param {Integer} target_sum
 # @return {Boolean}
