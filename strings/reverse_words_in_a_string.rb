@@ -67,3 +67,58 @@ puts reverse_words(s)
 s = "Alice does not even like bob"
 puts reverse_words(s)
 # Output: "bob like even not does Alice"
+
+#
+# Approach 2: two-pointers approach
+#
+
+# @param {String} s
+# @return {String}
+def reverse_words(s)
+  j = 0
+  pointer1 = 0
+  result = []
+  pointer2 = s.size
+
+  while pointer1 < pointer2
+    while pointer1 < pointer2 && s[pointer1] == " "
+      pointer1 += 1
+    end
+
+    j = pointer1 + 1
+
+    while j < pointer2 && s[j] != " "
+      j += 1
+    end
+
+    substring = s[pointer1, j - pointer1]
+
+    unless substring.empty?
+      result = [substring] + result
+    end
+
+    pointer1 = j + 1
+  end
+
+  result.join(" ")
+end
+
+s = "the sky is blue"
+puts reverse_words(s)
+# Output: "blue is sky the"
+
+s = "  hello world  "
+puts reverse_words(s)
+# Output: "world hello"
+
+s = "a good   example"
+puts reverse_words(s)
+# Output: "example good a"
+
+s = "  Bob    Loves  Alice   "
+puts reverse_words(s)
+# Output: "Alice Loves Bob"
+
+s = "Alice does not even like bob"
+puts reverse_words(s)
+# Output: "bob like even not does Alice"
