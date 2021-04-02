@@ -113,7 +113,7 @@ def is_anagram(s, t)
                    end
   end
 
-  hash1.each do |key, _value|
+  hash1.keys.each do |key|
     return false if hash2[key] != hash1[key]
   end
 
@@ -134,3 +134,50 @@ s = 'a'
 t = 'ab'
 puts(is_anagram(s, t))
 # => false
+
+#
+# Approach 3: Hash table
+#
+
+def is_anagram(s, t)
+  s_length = s.length
+  t_length = t.length
+  counter = Hash.new(0)
+
+  return false unless s_length == t_length
+
+  (0...s_length).each do |i|
+    counter[s[i]] += 1
+  end
+
+  (0...s_length).each do |i|
+    counter[t[i]] -= 1
+
+    return false if counter[t[i]] < 0
+  end
+
+  true
+end
+
+#
+# Approach 4: Hash table
+#
+
+def is_anagram(s, t)
+  s_length = s.length
+  t_length = t.length
+  counter = Hash.new(0)
+
+  return false unless s_length == t_length
+
+  (0...s_length).each do |i|
+    counter[s[i]] += 1
+    counter[t[i]] -= 1
+  end
+
+  counter.each do |k, v|
+    return false unless v == 0
+  end
+
+  true
+end
