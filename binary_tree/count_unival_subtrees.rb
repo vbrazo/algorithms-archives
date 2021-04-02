@@ -17,9 +17,15 @@
 # Approach 1: Recursive (Brute Force)
 #
 
-# Recursively, we could simply do a check at every node to see if it and all it's
-# children as the same value. This would be extremely inefficient though with a
-# time complexity of O(n^2). It does look nice and pretty though.
+# Complexity Analysis
+#
+# Time complexity: O(n)
+# Space complexity: O(H)
+
+# Explanation: Recursively, we could simply do a check at every node to see
+# if it and all it's children as the same value. This would be extremely
+# inefficient though with a time complexity of O(n^2). It does look nice
+# and pretty though.
 #
 # We'll start with two helper methods that we'll also use for the iterative BFS approach.
 
