@@ -48,9 +48,7 @@ def balanced_string_split(s)
       balance += 1
     end
 
-    if balance == 0
-      total += 1
-    end
+    total += 1 if balance == 0
   end
 
   total

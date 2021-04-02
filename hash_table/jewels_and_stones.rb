@@ -42,9 +42,7 @@ def num_jewels_in_stones(jewels, stones)
 
   jewels.chars.each do |jewel|
     stones.chars.each do |stone|
-      if stone == jewel
-        count += 1
-      end
+      count += 1 if stone == jewel
     end
   end
 
@@ -60,7 +58,6 @@ jewels = "z"
 stones = "ZZ"
 puts(num_jewels_in_stones(jewels, stones))
 # Output: 0
-
 
 #
 # Approach 2: Hash map
@@ -81,7 +78,7 @@ def num_jewels_in_stones(jewels, stones)
   hash_table = {}
   count = 0
 
-  stones.chars.each_with_index do |stone, i|
+  stones.chars.each_with_index do |stone, _i|
     if hash_table[stone].nil?
       hash_table[stone] = 1
     else
@@ -90,9 +87,7 @@ def num_jewels_in_stones(jewels, stones)
   end
 
   jewels.chars.each do |jewel|
-    unless hash_table[jewel].nil?
-      count += hash_table[jewel]
-    end
+    count += hash_table[jewel] unless hash_table[jewel].nil?
   end
 
   count

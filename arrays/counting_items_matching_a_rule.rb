@@ -40,9 +40,9 @@ def count_matches(items, rule_key, rule_value)
   counter = 0
 
   keys = {
-    'type' => 0,
-    'color' => 1,
-    'name' => 2
+    "type"  => 0,
+    "color" => 1,
+    "name"  => 2
   }
 
   items.each do |item|
@@ -58,8 +58,8 @@ items = [
   %w[computer silver lenovo],
   %w[phone gold iphone]
 ]
-rule_key = 'color'
-rule_value = 'silver'
+rule_key = "color"
+rule_value = "silver"
 puts(count_matches(items, rule_key, rule_value))
 # Output: 1
 
@@ -68,13 +68,13 @@ items = [
   %w[computer silver phone],
   %w[phone gold iphone]
 ]
-rule_key = 'type'
-rule_value = 'phone'
+rule_key = "type"
+rule_value = "phone"
 puts(count_matches(items, rule_key, rule_value))
 # Output: 2
 
 items = []
-rule_key = 'type'
-rule_value = 'phone'
+rule_key = "type"
+rule_value = "phone"
 puts(count_matches(items, rule_key, rule_value))
 # Output: 0

@@ -46,8 +46,8 @@ end
 # @param {Employee} employees
 # @param {Integer} id
 # @return {Integer}
-def get_importance(employees, id, ans = 0)
-  manager = employees.find { |emp| emp.id == id }
+def get_importance(employees, id, ans=0)
+  manager = employees.find {|emp| emp.id == id }
   ans = manager.importance
   manager.subordinates.each do |sub|
     ans += get_importance(employees, sub, ans)
@@ -61,7 +61,6 @@ employee3 = Employee.new(3, 3, [])
 puts get_importance([employee1, employee2, employee3], 1)
 # Output: 11
 
-
 #
 # Approach 2: BFS
 #
@@ -71,13 +70,13 @@ puts get_importance([employee1, employee2, employee3], 1)
 # @return {Integer}
 def get_importance(employees, id)
   ans = 0
-  manager = employees.find { |emp| emp.id == id }
+  manager = employees.find {|emp| emp.id == id }
   queue = [manager.subordinates]
   ans = manager.importance
-  while !queue.empty?
+  until queue.empty?
     curr = queue.shift
     curr.each do |id|
-      emp = employees.find { |e| e.id == id }
+      emp = employees.find {|e| e.id == id }
       ans += emp.importance
       queue.push(emp.subordinates) unless emp.subordinates.empty?
     end

@@ -48,18 +48,18 @@ def is_anagram(s, t)
   s == t
 end
 
-s = 'anagram'
-t = 'nagaram'
+s = "anagram"
+t = "nagaram"
 puts(is_anagram(s, t))
 # => true
 
-s = 'rat'
-t = 'car'
+s = "rat"
+t = "car"
 puts(is_anagram(s, t))
 # => false
 
-s = 'a'
-t = 'ab'
+s = "a"
+t = "ab"
 puts(is_anagram(s, t))
 # => false
 
@@ -120,18 +120,18 @@ def is_anagram(s, t)
   true
 end
 
-s = 'anagram'
-t = 'nagaram'
+s = "anagram"
+t = "nagaram"
 puts(is_anagram(s, t))
 # => true
 
-s = 'rat'
-t = 'car'
+s = "rat"
+t = "car"
 puts(is_anagram(s, t))
 # => false
 
-s = 'a'
-t = 'ab'
+s = "a"
+t = "ab"
 puts(is_anagram(s, t))
 # => false
 
@@ -175,7 +175,7 @@ def is_anagram(s, t)
     counter[t[i]] -= 1
   end
 
-  counter.each do |k, v|
+  counter.each do |_k, v|
     return false unless v == 0
   end
 

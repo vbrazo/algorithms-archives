@@ -58,7 +58,7 @@ duplicate_zeros([1, 2, 3])
 # Space Complexity: O(1). We do not use any extra space.
 
 def duplicate_zeros(arr)
-  zeros = arr.select { |n| n.zero? }.size
+  zeros = arr.select {|n| n.zero? }.size
 
   (arr.size - 1).downto(0) do |pointer|
     if arr[pointer].zero?

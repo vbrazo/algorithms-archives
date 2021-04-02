@@ -36,7 +36,7 @@
 class TreeNode
   attr_accessor :val, :left, :right
 
-  def initialize(val = 0, left = nil, right = nil)
+  def initialize(val=0, left=nil, right=nil)
     @val = val
     @left = left
     @right = right
@@ -51,9 +51,7 @@ def has_path_sum(root, target_sum)
 
   target_sum -= root.val
 
-  if !root.left && !root.right
-    return target_sum == 0
-  end
+  return target_sum == 0 if !root.left && !root.right
 
   has_path_sum(root.left, target_sum) || has_path_sum(root.right, target_sum)
 end

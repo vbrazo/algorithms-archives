@@ -41,7 +41,7 @@ def reorder_log_files(logs)
   logs.each do |arr|
     digit = arr.split(" ")[1][0]
 
-    if digit >= '0' && digit <= '9'
+    if digit >= "0" && digit <= "9"
       dig_logs << arr
     else
       let_logs << arr
@@ -58,10 +58,10 @@ def reorder_log_files(logs)
   let_logs + dig_logs
 end
 
-logs = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
+logs = ["dig1 8 1 5 1", "let1 art can", "dig2 3 6", "let2 own kit dig", "let3 art zero"]
 print(reorder_log_files(logs))
 # Output: ["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2 3 6"]
 
-logs = ["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]
+logs = ["a1 9 2 3 1", "g1 act car", "zo4 4 7", "ab1 off key dog", "a8 act zoo"]
 print(reorder_log_files(logs))
 # Output: ["g1 act car","a8 act zoo","ab1 off key dog","a1 9 2 3 1","zo4 4 7"]

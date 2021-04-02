@@ -24,18 +24,19 @@ def calculate(s)
   s.each_char do |char|
     if char =~ /\d/
       num = num * 10 + char.to_i
-    elsif ['+', '-'].include?(char)
+    elsif ["+", "-"].include?(char)
       res += sign * num
       num = 0
-      sign = char == '+' ? 1 : -1
-    elsif char == '('
+      sign = char == "+" ? 1 : -1
+    elsif char == "("
       stack << res
       stack << sign
-      sign, res = 1, 0
-    elsif char == ')'
+      sign = 1
+      res = 0
+    elsif char == ")"
       res += num * sign
-      res *= stack.pop()
-      res += stack.pop()
+      res *= stack.pop
+      res += stack.pop
       num = 0
     end
   end

@@ -34,10 +34,10 @@
 def uncommon_from_sentences(a, b)
   hash = Hash.new(0)
 
-  a.split(" ").each{ |ele| hash[ele] += 1 }
-  b.split(" ").each{ |ele| hash[ele] += 1 }
+  a.split(" ").each {|ele| hash[ele] += 1 }
+  b.split(" ").each {|ele| hash[ele] += 1 }
 
-  hash.select{ |k,v| v == 1 }.keys
+  hash.select {|_k, v| v == 1 }.keys
 end
 
 a = "this apple is sweet"

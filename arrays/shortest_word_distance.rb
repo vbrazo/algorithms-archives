@@ -50,14 +50,14 @@ def shortest_distance(words, word1, word2)
 end
 
 words = %w[practice makes perfect coding makes]
-word1 = 'coding'
-word2 = 'practice'
+word1 = "coding"
+word2 = "practice"
 puts(shortest_distance(words, word1, word2))
 # Output: 3
 
 words = %w[practice makes perfect coding makes]
-word1 = 'makes'
-word2 = 'coding'
+word1 = "makes"
+word2 = "coding"
 puts(shortest_distance(words, word1, word2))
 # Output: 1
 
@@ -104,14 +104,14 @@ def shortest_distance(words, word1, word2)
 end
 
 words = %w[practice makes perfect coding makes]
-word1 = 'coding'
-word2 = 'practice'
+word1 = "coding"
+word2 = "practice"
 puts(shortest_distance(words, word1, word2))
 # Output: 3
 
 words = %w[practice makes perfect coding makes]
-word1 = 'makes'
-word2 = 'coding'
+word1 = "makes"
+word2 = "coding"
 puts(shortest_distance(words, word1, word2))
 # Output: 1
 
@@ -129,13 +129,9 @@ def shortest_distance(words_dict, word1, word2)
   # find positions of word1 and word2 and
   # populate in arrays
   words_dict.each_with_index do |word, i|
-    if word1 == word
-      pos1.push(i)
-    end
+    pos1.push(i) if word1 == word
 
-    if word2 == word
-      pos2.push(i)
-    end
+    pos2.push(i) if word2 == word
   end
 
   # find minimum distance between
@@ -155,13 +151,13 @@ def shortest_distance(words_dict, word1, word2)
   min
 end
 
-words_dict = ["practice", "makes", "perfect", "coding", "makes"]
+words_dict = %w[practice makes perfect coding makes]
 word1 = "coding"
 word2 = "practice"
 puts shortest_distance(words_dict, word1, word2)
 # Output: 3
 
-words_dict = ["practice", "makes", "perfect", "coding", "makes"]
+words_dict = %w[practice makes perfect coding makes]
 word1 = "makes"
 word2 = "coding"
 puts shortest_distance(words_dict, word1, word2)

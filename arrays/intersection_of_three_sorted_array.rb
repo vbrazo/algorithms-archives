@@ -48,7 +48,7 @@ def arrays_intersection(arr1, arr2, arr3)
   add_to_hash(arr2, hash)
   add_to_hash(arr3, hash)
 
-  hash.select { |_, value| value == 3 }.map { |key, _| key }
+  hash.select {|_, value| value == 3 }.map {|key, _| key }
 end
 
 def add_to_hash(array, hash)

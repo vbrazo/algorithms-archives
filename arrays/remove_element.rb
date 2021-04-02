@@ -27,7 +27,7 @@ def remove_element(nums, val)
   pointer1
 end
 
-puts 'First Example:'
+puts "First Example:"
 nums = [0, 1, 2, 2, 3, 0, 4, 2]
 nums.sort
 val = 2
@@ -99,7 +99,7 @@ def remove_element(nums, val)
   pointer
 end
 
-puts 'First Example:'
+puts "First Example:"
 nums = [0, 1, 2, 2, 3, 0, 4, 2]
 nums.sort
 val = 2

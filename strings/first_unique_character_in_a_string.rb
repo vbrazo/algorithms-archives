@@ -38,7 +38,7 @@ def first_uniq_char(s)
                         end
   end
 
-  non_repetead = ''
+  non_repetead = ""
   pointer = 0
 
   hash_table.each do |_, value|
@@ -48,11 +48,11 @@ def first_uniq_char(s)
   end
 end
 
-s = 'leetcode'
+s = "leetcode"
 puts(first_uniq_char(s))
 # => 0
 
-s = 'loveleetcode'
+s = "loveleetcode"
 puts(first_uniq_char(s))
 # => 2
 
@@ -73,10 +73,10 @@ def first_uniq_char(s)
   -1
 end
 
-s = 'leetcode'
+s = "leetcode"
 puts(first_uniq_char(s))
 # => 0
 
-s = 'loveleetcode'
+s = "loveleetcode"
 puts(first_uniq_char(s))
 # => 2

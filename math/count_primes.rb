@@ -158,7 +158,7 @@ puts(count_primes(4))
 # Approach 3: Using Prime library
 #
 
-require 'prime'
+require "prime"
 
 def count_primes(n)
   Prime.each(n - 1).count

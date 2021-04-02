@@ -47,13 +47,9 @@ def backtrack(parenthesis, curr, open, close, max)
     return
   end
 
-  if open < max
-    backtrack(parenthesis, curr + "(", open + 1, close, max)
-  end
+  backtrack(parenthesis, curr + "(", open + 1, close, max) if open < max
 
-  if close < open
-    backtrack(parenthesis, curr + ")", open, close + 1, max)
-  end
+  backtrack(parenthesis, curr + ")", open, close + 1, max) if close < open
 end
 
 n = 3

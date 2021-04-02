@@ -19,7 +19,7 @@
 def merge(nums1, _m, nums2, _n)
   return nums1 if nums2.length == 0
 
-  nums = (nums1 + nums2).select { |num| num.positive? }
+  nums = (nums1 + nums2).select {|num| num.positive? }
   sorted_array = nums.sort
 
   print(sorted_array.to_s)

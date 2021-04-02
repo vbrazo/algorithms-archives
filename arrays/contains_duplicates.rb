@@ -117,7 +117,7 @@ puts(contains_duplicate(nums))
 # Space complexity: O(n). The space used by a hash table is linear with
 # the number of elements in it.
 
-require 'set'
+require "set"
 
 def contains_duplicate(nums)
   set_nums = [].to_set

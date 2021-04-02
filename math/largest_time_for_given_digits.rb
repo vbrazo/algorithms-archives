@@ -9,7 +9,7 @@
 # Input: A = [1,2,3,4]
 # Output: "23:41"
 # Explanation: The valid 24-hour times are "12:34", "12:43", "13:24", "13:42", "14:23", "14:32", "21:34", "21:43", "23:14", and "23:41". Of these times, "23:41" is the latest.
-# 
+#
 #
 # Example 2:
 #
@@ -36,9 +36,9 @@
 # @param {Integer[]} a
 # @return {String}
 def largest_time_from_digits(a)
-  a = a.permutation.map { |b| '%d%d:%d%d' % b }
-  a = a.select { |t| valid?(t) }
-  a.max || ''
+  a = a.permutation.map {|b| "%d%d:%d%d" % b }
+  a = a.select {|t| valid?(t) }
+  a.max || ""
 end
 
 def valid?(str)
@@ -49,18 +49,18 @@ end
 # HH <= 24
 # MM <= 60
 
-arr = [1,2,3,4]
+arr = [1, 2, 3, 4]
 largest_time_from_digits(arr)
 # Output: "23:41"
 
-arr = [5,5,5,5]
+arr = [5, 5, 5, 5]
 largest_time_from_digits(arr)
 # Output: ""
 
-arr = [0,0,0,0]
+arr = [0, 0, 0, 0]
 largest_time_from_digits(arr)
 # Output: "00:00"
 
-arr = [0,0,1,0]
+arr = [0, 0, 1, 0]
 largest_time_from_digits(arr)
 # Output: "10:00"

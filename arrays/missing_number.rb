@@ -99,7 +99,7 @@ puts(missing_number(nums))
 # This algorithm is almost identical to the brute force approach,
 # except we first insert each element of nums into a set, allowing us
 # to later query for containment in O(1) time.
-require 'set'
+require "set"
 
 def missing_number(nums)
   set_nums = nums.to_set

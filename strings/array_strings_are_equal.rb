@@ -7,7 +7,7 @@ def array_strings_are_equal(word1, word2)
 end
 
 a = %w[abc d defg]
-b = ['abcddefg']
+b = ["abcddefg"]
 
 puts(array_strings_are_equal(a, b))
 

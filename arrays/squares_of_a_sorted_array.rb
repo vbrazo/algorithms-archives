@@ -11,7 +11,7 @@
 # Approach 1: is using Ruby function (for sure)!
 
 def sorted_squares(nums)
-  nums.map! { |num| num**2 }.sort
+  nums.map! {|num| num**2 }.sort
 end
 
 print(sorted_squares([4, -1, -9, 2]))
@@ -42,7 +42,7 @@ end
 
 def sorted_squares(nums)
   # This takes O(n)
-  nums.map! { |num| num**2 }
+  nums.map! {|num| num**2 }
 
   # This can take Ο(n2)
   bubble_sort(nums)

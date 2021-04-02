@@ -37,7 +37,7 @@ def sum_of_unique(nums)
     end
   end
 
-  unique = hash_table.select { |_key, value| value == 1 }
+  unique = hash_table.select {|_key, value| value == 1 }
   unique.keys.sum
 end
 
@@ -59,7 +59,7 @@ puts sum_of_unique(nums)
 
 def sum_of_unique(nums)
   arr = []
-  hash = nums.group_by { |ele| ele }
+  hash = nums.group_by {|ele| ele }
 
   hash.each do |k, v|
     arr.push(k) if v.length == 1

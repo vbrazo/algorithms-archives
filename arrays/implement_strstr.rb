@@ -51,13 +51,13 @@ def str_str(haystack, needle)
   -1
 end
 
-puts(str_str('hello', 'll'))
+puts(str_str("hello", "ll"))
 # => 2
 
-puts(str_str('heawello', 'll'))
+puts(str_str("heawello", "ll"))
 # => 5
 
-puts(str_str('heawello', 'll23'))
+puts(str_str("heawello", "ll23"))
 # => -1
 
 #
@@ -107,13 +107,13 @@ def str_str(haystack, needle)
   -1
 end
 
-puts(str_str('hello', 'll'))
+puts(str_str("hello", "ll"))
 # => 2
 
-puts(str_str('heawello', 'll'))
+puts(str_str("heawello", "ll"))
 # => 5
 
-puts(str_str('heawello', 'll23'))
+puts(str_str("heawello", "ll23"))
 # => -1
 
 #
@@ -161,11 +161,11 @@ def str_str(txt, pat)
   -1
 end
 
-puts(str_str('hello', 'll'))
+puts(str_str("hello", "ll"))
 # => 2
 
-puts(str_str('heawello', 'll'))
+puts(str_str("heawello", "ll"))
 # => 5
 
-puts(str_str('heawello', 'll23'))
+puts(str_str("heawello", "ll23"))
 # => -1

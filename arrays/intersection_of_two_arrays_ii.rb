@@ -20,7 +20,7 @@
 # @param {Integer[]} nums1
 # @param {Integer[]} nums2
 # @return {Integer[]}
-require 'set'
+require "set"
 
 def intersect(nums1, nums2)
   result = []
@@ -81,7 +81,7 @@ def intersect(arr1, arr2)
   ret = []
   hash1 = Hash.new(0)
 
-  arr2.each { |num| hash1[num] += 1 }
+  arr2.each {|num| hash1[num] += 1 }
 
   arr1.each do |num|
     if hash1.has_key?(num)

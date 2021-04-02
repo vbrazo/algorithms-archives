@@ -22,11 +22,11 @@ def fizz_buzz(n)
     i += 1
 
     if i % 5 == 0 && i % 3 == 0
-      str.push('FizzBuzz')
+      str.push("FizzBuzz")
     elsif i % 3 == 0
-      str.push('Fizz')
+      str.push("Fizz")
     elsif i % 5 == 0
-      str.push('Buzz')
+      str.push("Buzz")
     else
       str.push(i.to_s)
     end
@@ -113,12 +113,12 @@ def fizz_buzz(n)
 
   n.times do |i|
     i += 1
-    num_str = ''
+    num_str = ""
 
-    num_str += 'Fizz' if i % 3 == 0
-    num_str += 'Buzz' if i % 5 == 0
+    num_str += "Fizz" if i % 3 == 0
+    num_str += "Buzz" if i % 5 == 0
 
-    num_str = i.to_s if num_str == ''
+    num_str = i.to_s if num_str == ""
 
     str.push(num_str)
   end
@@ -158,18 +158,18 @@ puts(fizz_buzz(n))
 def fizz_buzz(n)
   str = []
   fizz_buzz = {}
-  fizz_buzz[3] = 'Fizz'
-  fizz_buzz[5] = 'Buzz'
+  fizz_buzz[3] = "Fizz"
+  fizz_buzz[5] = "Buzz"
 
   n.times do |i|
     i += 1
-    num_str = ''
+    num_str = ""
 
     fizz_buzz.each do |key, value|
       num_str += value if i % key == 0
     end
 
-    num_str = i.to_s if num_str == ''
+    num_str = i.to_s if num_str == ""
 
     str.push(num_str)
   end

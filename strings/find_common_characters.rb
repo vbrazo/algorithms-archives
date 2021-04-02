@@ -22,13 +22,11 @@
 # @return {String[]}
 def common_chars(a)
   hash = Hash.new(0)
-  a[0].each_char {|char| hash[char] += 1}
+  a[0].each_char {|char| hash[char] += 1 }
 
   (1...a.length).each do |i|
     hash.keys.each do |char|
-      if hash[char] > a[i].count(char)
-        hash[char] = a[i].count(char)
-      end
+      hash[char] = a[i].count(char) if hash[char] > a[i].count(char)
     end
   end
 
@@ -43,10 +41,10 @@ def common_chars(a)
   result
 end
 
-words = ["bella","label","roller"]
+words = %w[bella label roller]
 puts common_chars(words)
 # Output: ["e","l","l"]
 
-words = ["cool","lock","cook"]
+words = %w[cool lock cook]
 puts common_chars(words)
 # Output: ["c","o"]

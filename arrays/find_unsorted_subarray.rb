@@ -59,9 +59,9 @@ def find_unsorted_subarray(nums)
   l = nums.length
   r = 0
 
-  nums.each_with_index do |num, i|
-    (i+1..nums.count-1).each do |j|
-      if (nums[j] < nums[i])
+  nums.each_with_index do |_num, i|
+    (i + 1..nums.count - 1).each do |j|
+      if nums[j] < nums[i]
         r = j if j > r
         l = i if l > i
       end
@@ -71,12 +71,12 @@ def find_unsorted_subarray(nums)
   r - l < 0 ? 0 : r - l + 1
 end
 
-nums = [2,6,4,8,10,9,15]
+nums = [2, 6, 4, 8, 10, 9, 15]
 puts find_unsorted_subarray(nums)
 # Output: 5
 # Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
 
-nums = [1,2,3,4]
+nums = [1, 2, 3, 4]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
@@ -84,7 +84,7 @@ nums = [1]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
-nums = [2,1]
+nums = [2, 1]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
@@ -111,17 +111,17 @@ def find_unsorted_subarray(nums)
   high = 0
   low = nil
 
-  for i in 0...nums.length
-    if nums[i]!=nums_sorted[i]
+  (0...nums.length).each do |i|
+    if nums[i] != nums_sorted[i]
       low = i
       break
     end
   end
 
-  return 0 if low == nil
+  return 0 if low.nil?
 
-  (nums.length-1).downto(0) do |i|
-    if nums[i]!=nums_sorted[i]
+  (nums.length - 1).downto(0) do |i|
+    if nums[i] != nums_sorted[i]
       high = i
       break
     end
@@ -130,12 +130,12 @@ def find_unsorted_subarray(nums)
   high - low + 1
 end
 
-nums = [2,6,4,8,10,9,15]
+nums = [2, 6, 4, 8, 10, 9, 15]
 puts find_unsorted_subarray(nums)
 # Output: 5
 # Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
 
-nums = [1,2,3,4]
+nums = [1, 2, 3, 4]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
@@ -143,7 +143,7 @@ nums = [1]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
-nums = [2,1]
+nums = [2, 1]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
@@ -158,30 +158,26 @@ def find_unsorted_subarray3(nums)
   stack = []
 
   nums.each_with_index do |num, index|
-    while !stack.empty? && nums[stack.last] > num
-      left = [left, stack.pop].min
-    end
+    left = [left, stack.pop].min while !stack.empty? && nums[stack.last] > num
     stack.push index
   end
 
   stack.clear
 
   (nums.size - 1).downto(0) do |index|
-    while !stack.empty? && nums[stack.last] < nums[index]
-      right = [right, stack.pop].max
-    end
+    right = [right, stack.pop].max while !stack.empty? && nums[stack.last] < nums[index]
     stack.push index
   end
 
   right > left ? right - left + 1 : 0
 end
 
-nums = [2,6,4,8,10,9,15]
+nums = [2, 6, 4, 8, 10, 9, 15]
 puts find_unsorted_subarray(nums)
 # Output: 5
 # Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
 
-nums = [1,2,3,4]
+nums = [1, 2, 3, 4]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
@@ -189,7 +185,7 @@ nums = [1]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
-nums = [2,1]
+nums = [2, 1]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
@@ -210,27 +206,30 @@ puts find_unsorted_subarray(nums)
 # Space complexity: O(1). Constant space is used.
 
 def find_unsorted_subarray(nums)
-  l,r= 0, nums.length - 1
-  min, max = 10001, -10001
-  st,nd = 0,-1
+  l = 0
+  r = nums.length - 1
+  min = 10_001
+  max = -10_001
+  st = 0
+  nd = -1
 
-  while r >=0 do
+  while r >= 0
     nums[l] >= max ? max = nums[l] : nd = l
     nums[r] <= min ? min = nums[r] : st = r
 
     l += 1
-    r -=1
+    r -= 1
   end
 
   nd - st + 1
 end
 
-nums = [2,6,4,8,10,9,15]
+nums = [2, 6, 4, 8, 10, 9, 15]
 puts find_unsorted_subarray(nums)
 # Output: 5
 # Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
 
-nums = [1,2,3,4]
+nums = [1, 2, 3, 4]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
@@ -238,6 +237,6 @@ nums = [1]
 puts find_unsorted_subarray(nums)
 # Output: 0
 
-nums = [2,1]
+nums = [2, 1]
 puts find_unsorted_subarray(nums)
 # Output: 0

@@ -98,7 +98,7 @@ puts(third_max(nums))
 
 # @param {Integer[]} nums
 # @return {Integer}
-require 'set'
+require "set"
 
 def third_max(nums)
   nums = nums.to_set
@@ -160,7 +160,7 @@ puts(third_max(nums))
 # Space Complexity : O(1).
 #
 # Because maximums never holds more than 33 items at a time, it is considered to be constant O(1).
-require 'set'
+require "set"
 
 def third_max(nums)
   maximums = [].to_set

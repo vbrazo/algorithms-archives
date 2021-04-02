@@ -76,8 +76,8 @@ def pancake_sort(a)
     if index != value_to_sort - 1
       # flip the value to the head if necessary
       if index != 0
-        result.push(index+1)
-        swap(a, index+1)
+        result.push(index + 1)
+        swap(a, index + 1)
       end
 
       # now that the value is at the head, flip it to the bottom
@@ -96,12 +96,12 @@ def swap(sublist, k)
   i = 0
 
   while i < k / 2
-    sublist[i], sublist[k-i-1] = sublist[k-i-1], sublist[i]
+    sublist[i], sublist[k - i - 1] = sublist[k - i - 1], sublist[i]
     i += 1
   end
 end
 
-arr = [3,2,4,1]
+arr = [3, 2, 4, 1]
 print pancake_sort(arr)
 # Output: [4,2,4,3]
 # Explanation:
@@ -112,7 +112,7 @@ print pancake_sort(arr)
 # After 3rd flip (k = 4): arr = [3, 2, 1, 4]
 # After 4th flip (k = 3): arr = [1, 2, 3, 4], which is sorted.
 
-arr = [1,2,3]
+arr = [1, 2, 3]
 print pancake_sort(arr)
 # Output: []
 # Explanation: The input is already sorted, so there is no need to flip anything.

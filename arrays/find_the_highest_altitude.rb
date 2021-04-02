@@ -35,7 +35,7 @@ def largest_altitude(gain)
 
   # find maximum altitude
   max = 0
-  arr.each { |i| max = i if max < i }
+  arr.each {|i| max = i if max < i }
   max
 end
 

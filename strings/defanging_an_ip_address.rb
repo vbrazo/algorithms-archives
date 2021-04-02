@@ -22,7 +22,7 @@ def defang_i_paddr(address)
   hash_table = {}
 
   address.chars.each_with_index do |value, index|
-    hash_table[index] = if value == '.'
+    hash_table[index] = if value == "."
                           "[#{value}]"
                         else
                           value
@@ -32,11 +32,11 @@ def defang_i_paddr(address)
   hash_table.values.join
 end
 
-address = '1.1.1.1'
+address = "1.1.1.1"
 print(defang_i_paddr(address))
 # Output: "1[.]1[.]1[.]1"
 
-address = '255.100.50.0'
+address = "255.100.50.0"
 print(defang_i_paddr(address))
 # Output: "255[.]100[.]50[.]0"
 
@@ -45,10 +45,10 @@ print(defang_i_paddr(address))
 #
 
 def defang_i_paddr(address)
-  defanged_address = ''
+  defanged_address = ""
 
   address.each_char do |char|
-    char = '[.]' if char == '.'
+    char = "[.]" if char == "."
 
     defanged_address += char
   end
@@ -56,11 +56,11 @@ def defang_i_paddr(address)
   defanged_address
 end
 
-address = '1.1.1.1'
+address = "1.1.1.1"
 print(defang_i_paddr(address))
 # Output: "1[.]1[.]1[.]1"
 
-address = '255.100.50.0'
+address = "255.100.50.0"
 print(defang_i_paddr(address))
 # Output: "255[.]100[.]50[.]0"
 
@@ -69,13 +69,13 @@ print(defang_i_paddr(address))
 #
 
 def defang_i_paddr(address)
-  address.gsub('.', '[.]')
+  address.gsub(".", "[.]")
 end
 
-address = '1.1.1.1'
+address = "1.1.1.1"
 print(defang_i_paddr(address))
 # Output: "1[.]1[.]1[.]1"
 
-address = '255.100.50.0'
+address = "255.100.50.0"
 print(defang_i_paddr(address))
 # Output: "255[.]100[.]50[.]0"

@@ -21,22 +21,22 @@
 # @return {Integer}
 def calculate(s)
   operators = Set.new(%w[+ - * /])
-  digits = Set.new('0'..'9')
+  digits = Set.new("0".."9")
 
   num = 0
-  presign = '+'
+  presign = "+"
   stack = []
 
-  (s.delete(' ') + '+').each_char do |char|
+  (s.delete(" ") + "+").each_char do |char|
     if digits.include?(char)
-      num = num*10 + char.to_i
+      num = num * 10 + char.to_i
     elsif operators.include?(char)
       stack << case presign
-        when '+' ; num
-        when '-' ; -num
-        when '*' ; stack.pop*num
-        when '/' ; (stack.pop.to_f/num).to_i
-      end
+               when "+" then num
+               when "-" then -num
+               when "*" then stack.pop * num
+               when "/" then (stack.pop.to_f / num).to_i
+               end
 
       presign = char
       num = 0

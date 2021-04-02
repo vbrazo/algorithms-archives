@@ -45,11 +45,11 @@ class NumArray
 
   def update(idx, value)
     nodes[idx] = value
-    inner_update(self.tree, idx, value, 0, [0,self.nodes.length-1])
+    inner_update(tree, idx, value, 0, [0, nodes.length - 1])
   end
 
   def sum_range(l, r)
-    inner_query_sum(self.tree, 0, [0,self.nodes.length-1], [l, r])
+    inner_query_sum(tree, 0, [0, nodes.length - 1], [l, r])
   end
 
   private
@@ -61,12 +61,13 @@ class NumArray
       segment_tree[index]
     else
       r = 0
-      mid = (range.first+range.last)/2
+      mid = (range.first + range.last) / 2
       if range.first <= q_range.first && mid >= q_range.first
-        r += inner_query_sum(segment_tree, left(index), [range.first, mid], [q_range.first, [q_range.last,mid].min])
+        r += inner_query_sum(segment_tree, left(index), [range.first, mid], [q_range.first, [q_range.last, mid].min])
       end
-      if mid+1 <= q_range.last && range.last >= q_range.last
-        r += inner_query_sum(segment_tree, right(index), [mid+1, range.last], [[mid+1,q_range.first].max, q_range.last])
+      if mid + 1 <= q_range.last && range.last >= q_range.last
+        r += inner_query_sum(segment_tree, right(index), [mid + 1, range.last],
+                             [[mid + 1, q_range.first].max, q_range.last])
       end
       r
     end
@@ -76,21 +77,22 @@ class NumArray
     if range.first == range.last
       segment_tree[index] = nodes[idx]
     else
-      mid = (range.first+range.last)/2
+      mid = (range.first + range.last) / 2
       if range.first <= idx && idx <= mid
         inner_update(segment_tree, idx, value, left(index), [range.first, mid])
       else
-        inner_update(segment_tree, idx, value, right(index), [mid+1, range.last])
+        inner_update(segment_tree, idx, value, right(index), [mid + 1, range.last])
       end
-      segment_tree[index] = segment_tree[left(index)].to_i+segment_tree[right(index)].to_i
+      segment_tree[index] = segment_tree[left(index)].to_i + segment_tree[right(index)].to_i
     end
   end
 
   def build_segment_tree(nodes)
     return [] if nodes.length == 0
+
     height = find_tree_height(nodes.length, 10)
-    segment_tree = Array.new((1 << height)-1)
-    inner_build_segment_tree(segment_tree, nodes, 0, [0,nodes.length-1])
+    segment_tree = Array.new((1 << height) - 1)
+    inner_build_segment_tree(segment_tree, nodes, 0, [0, nodes.length - 1])
     segment_tree
   end
 
@@ -98,34 +100,33 @@ class NumArray
     if range.first == range.last
       segment_tree[index] = nodes[range.first]
     else
-      mid = (range.first+range.last)/2
+      mid = (range.first + range.last) / 2
       inner_build_segment_tree(segment_tree, nodes, left(index), [range.first, mid])
-      inner_build_segment_tree(segment_tree, nodes, right(index), [mid+1, range.last])
-      segment_tree[index] = segment_tree[left(index)]+segment_tree[right(index)]
+      inner_build_segment_tree(segment_tree, nodes, right(index), [mid + 1, range.last])
+      segment_tree[index] = segment_tree[left(index)] + segment_tree[right(index)]
     end
   end
 
   def left(index)
-    2*index+1
+    2 * index + 1
   end
 
   def right(index)
-    2*index+2
+    2 * index + 2
   end
 
   # A tricky way (reference: SICP)
   def find_tree_height(target, guess)
-    if target == 0
-      return 0
-    end
-    high_bounder = (1 << guess)-1
-    low_bounder = (1 << (guess-1))-1
+    return 0 if target == 0
+
+    high_bounder = (1 << guess) - 1
+    low_bounder = (1 << (guess - 1)) - 1
     if high_bounder >= target && low_bounder < target
       guess
     elsif low_bounder >= target
-      find_tree_height(target, guess-1)
+      find_tree_height(target, guess - 1)
     else
-      find_tree_height(target, guess+1)
+      find_tree_height(target, guess + 1)
     end
   end
 end

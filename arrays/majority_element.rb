@@ -99,7 +99,7 @@ def majority_element(nums)
     num_hash.key?(num) ? num_hash[num] += 1 : num_hash[num] = 1
   end
 
-  num_hash.max_by { |_k, v| v }[0]
+  num_hash.max_by {|_k, v| v }[0]
 end
 
 nums = [3, 2, 3]

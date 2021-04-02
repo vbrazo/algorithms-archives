@@ -29,24 +29,23 @@
 # num consists of only digits.
 # num does not contain any leading zeros except for zero itself.
 
-# 
+#
 # Approach 1: Recursion
-# 
+#
 
 # @param {String} num
 # @return {Boolean}
 def is_strobogrammatic(num)
   return true if num.length == 0
 
-  a, b = num[0], num[-1]
-  sets = [['8','8'],['6','9'],['0','0'],['1','1']]
+  a = num[0]
+  b = num[-1]
+  sets = [%w[8 8], %w[6 9], %w[0 0], %w[1 1]]
 
   sets.each do |set|
-    if (a == set[0] && b == set[1]) || (a == set[1] && b == set[0])
-      return is_strobogrammatic(num[1..-2])
-    end
+    return is_strobogrammatic(num[1..-2]) if (a == set[0] && b == set[1]) || (a == set[1] && b == set[0])
   end
-  
+
   false
 end
 
@@ -66,29 +65,30 @@ num = "1"
 puts is_strobogrammatic(num)
 # Output: true
 
-# 
+#
 # Approach 2: Iterative approach
-# 
+#
 
 # @param {String} num
 # @return {Boolean}
 def is_strobogrammatic(num)
-  strobogrammatic_numbers = { 
-                              '0' => '0',
-                              '1' => '1',
-                              '6' => '9',
-                              '8' => '8',
-                              '9' => '6'
-                            }  
+  strobogrammatic_numbers = {
+    "0" => "0",
+    "1" => "1",
+    "6" => "9",
+    "8" => "8",
+    "9" => "6"
+  }
 
   strob_letters = []
-    
+
   num.chars.each do |char|
-    return false unless strobogrammatic_numbers.has_key?(char)  
-    strob_letters.unshift(strobogrammatic_numbers[char]) if strobogrammatic_numbers.has_key?(char) 
+    return false unless strobogrammatic_numbers.has_key?(char)
+
+    strob_letters.unshift(strobogrammatic_numbers[char]) if strobogrammatic_numbers.has_key?(char)
   end
-    
-  num == strob_letters.join('') ? true : false
+
+  num == strob_letters.join("")
 end
 
 num = "69"

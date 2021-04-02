@@ -36,7 +36,7 @@
 def is_power_of_two(n)
   return false if n < 1
 
-  n /= 2 while n % 2 == 0
+  n /= 2 while n.even?
 
   n == 1
 end

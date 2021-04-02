@@ -109,7 +109,7 @@ puts(single_number(nums))
 
 # Space complexity: O(n + n) = O(n).
 # set needs space for the elements in nums
-require 'set'
+require "set"
 
 def single_number(nums)
   2 * nums.to_set.sum - nums.sum
@@ -152,7 +152,7 @@ puts(single_number(nums))
 def singleNumber(nums)
   a = 0
 
-  nums.each { |i| a ^= i }
+  nums.each {|i| a ^= i }
 
   a
 end

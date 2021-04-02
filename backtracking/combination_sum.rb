@@ -59,7 +59,7 @@ def find_combinations(results, curr, candidates, target, idx=0)
   if target == 0
     results.push(curr.clone)
   else
-    idx.upto(candidates.length-1) do |i|
+    idx.upto(candidates.length - 1) do |i|
       candidate = candidates[i]
 
       next if target - candidate < 0
@@ -75,12 +75,12 @@ def find_combinations(results, curr, candidates, target, idx=0)
   end
 end
 
-candidates = [2,3,6,7]
+candidates = [2, 3, 6, 7]
 target = 7
 combination_sum(candidates, target)
 # Output: [[2,2,3],[7]]
 
-candidates = [2,3,5]
+candidates = [2, 3, 5]
 target = 8
 combination_sum(candidates, target)
 # Output: [[2,2,2,2],[2,3,3],[3,5]]

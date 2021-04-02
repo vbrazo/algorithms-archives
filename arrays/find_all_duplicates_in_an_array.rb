@@ -37,7 +37,7 @@ def find_duplicates(nums)
                    end
   end
 
-  hash = hash.select { |_key, value| value > 1 }
+  hash = hash.select {|_key, value| value > 1 }
   hash.keys
 end
 

@@ -26,22 +26,22 @@
 # @param {String} s
 # @return {Boolean}
 def is_palindrome(s)
-  str = s.gsub(/[^a-zA-Z0-9]/, '').downcase
+  str = s.gsub(/[^a-zA-Z0-9]/, "").downcase
 
   str.reverse == str
 end
 
-s = 'A man, a plan, a canal: Panama'
+s = "A man, a plan, a canal: Panama"
 is_palindrome(s)
 # Output: true
 # Explanation: "amanaplanacanalpanama" is a palindrome.
 
-s = 'race a car'
+s = "race a car"
 is_palindrome(s)
 # Output: false
 # Explanation: "raceacar" is not a palindrome.
 
-s = 'ab_a'
+s = "ab_a"
 is_palindrome(s)
 # Output: true
 # Explanation: "raceacar" is not a palindrome.
@@ -66,7 +66,7 @@ is_palindrome(s)
 # @param {String} s
 # @return {Boolean}
 def is_palindrome(s)
-  str = s.gsub(/[^a-zA-Z0-9]/, '').downcase
+  str = s.gsub(/[^a-zA-Z0-9]/, "").downcase
 
   chars = str.chars
   reverse = str.chars.reverse
@@ -78,17 +78,17 @@ def is_palindrome(s)
   true
 end
 
-s = 'A man, a plan, a canal: Panama'
+s = "A man, a plan, a canal: Panama"
 is_palindrome(s)
 # Output: true
 # Explanation: "amanaplanacanalpanama" is a palindrome.
 
-s = 'race a car'
+s = "race a car"
 is_palindrome(s)
 # Output: false
 # Explanation: "raceacar" is not a palindrome.
 
-s = 'ab_a'
+s = "ab_a"
 is_palindrome(s)
 # Output: true
 # Explanation: "raceacar" is not a palindrome.
@@ -118,7 +118,7 @@ is_palindrome(s)
 # @param {String} s
 # @return {Boolean}
 def is_palindrome(s)
-  str = s.gsub(/[^a-zA-Z0-9]/, '').downcase
+  str = s.gsub(/[^a-zA-Z0-9]/, "").downcase
 
   chars = str.chars
   pointer2 = str.chars.count - 1
@@ -136,7 +136,7 @@ end
 def is_palindrome(s)
   return true if s.empty?
 
-  s = s.gsub(/[^0-9a-z]/i, '')
+  s = s.gsub(/[^0-9a-z]/i, "")
 
   pointer1 = 0
   pointer2 = s.length - 1
@@ -151,17 +151,17 @@ def is_palindrome(s)
   true
 end
 
-s = 'A man, a plan, a canal: Panama'
+s = "A man, a plan, a canal: Panama"
 puts is_palindrome(s)
 # Output: true
 # Explanation: "amanaplanacanalpanama" is a palindrome.
 
-s = 'race a car'
+s = "race a car"
 puts is_palindrome(s)
 # Output: false
 # Explanation: "raceacar" is not a palindrome.
 
-s = 'ab_a'
+s = "ab_a"
 puts is_palindrome(s)
 # Output: true
 # Explanation: "raceacar" is not a palindrome.

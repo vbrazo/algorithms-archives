@@ -24,10 +24,10 @@ def remove_vowels(s)
   consonants.join
 end
 
-s = 'leetcodeisacommunityforcoders'
+s = "leetcodeisacommunityforcoders"
 print(remove_vowels(s))
 # Output: "ltcdscmmntyfrcdrs"
 
-s = 'aeiou'
+s = "aeiou"
 print(remove_vowels(s))
 # Output: ""

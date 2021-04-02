@@ -4,7 +4,7 @@
 
 # How to calculate the two angles with respect to 12:00?
 # The minute hand moves 360 degrees in 60 minute(or 6 degrees in one minute) and hour hand moves 360 degrees in 12 hours(or 0.5 degrees in 1 minute). In h hours and m minutes, the minute hand would move (h*60 + m)*6 and hour hand would move (h*60 + m)*0.5.
- 
+
 # Constraints:
 #
 # 1 <= hour <= 12
@@ -21,19 +21,13 @@ def angle_clock(hour, minutes)
   # 3. The difference between the two angles is the angle between the two hands.
 
   # validate the input
-  if (h < 0 || m < 0 || h > 12 || m > 60)
-    print('Wrong input')
-  end
+  print("Wrong input") if h < 0 || m < 0 || h > 12 || m > 60
 
-  if (h == 12)
-      h = 0
-  end
-  if (m == 60)
+  h = 0 if h == 12
+  if m == 60
     m = 0
     h += 1
-    if h>12
-      h = h-12
-    end
+    h -= 12 if h > 12
   end
 
   # Calculate the angles moved by
@@ -47,9 +41,7 @@ def angle_clock(hour, minutes)
 
   # Return the smaller angle of two
   # possible angles
-  if angle > 360 - angle
-    angle = 360 - angle
-  end
+  angle = 360 - angle if angle > 360 - angle
 
   angle
 end

@@ -199,7 +199,7 @@ print(get_row(row_index))
 # hold the output.
 
 def get_row(row_index)
-  (0..row_index).map { |num| combination(row_index, num) }
+  (0..row_index).map {|num| combination(row_index, num) }
 end
 
 def combination(num1, num2)
@@ -207,7 +207,7 @@ def combination(num1, num2)
 end
 
 def factorial(num)
-  (1..num).inject(1) { |res, i| res * i }
+  (1..num).inject(1) {|res, i| res * i }
 end
 
 row_index = 3

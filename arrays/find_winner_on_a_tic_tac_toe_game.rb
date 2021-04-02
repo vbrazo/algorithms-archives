@@ -66,18 +66,18 @@ def tictactoe(moves)
   a_moves = []
   b_moves = []
   winning_conditions = [
-      [[0,0],[0,1],[0,2]],
-      [[1,0],[1,1],[1,2]],
-      [[2,0],[2,1],[2,2]],
-      [[0,0],[1,0],[2,0]],
-      [[0,1],[1,1],[2,1]],
-      [[0,2],[1,2],[2,2]],
-      [[0,0],[1,1],[2,2]],
-      [[0,2],[1,1],[2,0]]
+    [[0, 0], [0, 1], [0, 2]],
+    [[1, 0], [1, 1], [1, 2]],
+    [[2, 0], [2, 1], [2, 2]],
+    [[0, 0], [1, 0], [2, 0]],
+    [[0, 1], [1, 1], [2, 1]],
+    [[0, 2], [1, 2], [2, 2]],
+    [[0, 0], [1, 1], [2, 2]],
+    [[0, 2], [1, 1], [2, 0]]
   ]
 
   moves.each_with_index do |move, index|
-    if index % 2 == 0
+    if index.even?
       a_moves << move
     else
       b_moves << move
@@ -92,10 +92,10 @@ def tictactoe(moves)
     end
   end
 
-  return moves.size == 9 ? "Draw" : "Pending"
+  moves.size == 9 ? "Draw" : "Pending"
 end
 
-moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]
+moves = [[0, 0], [2, 0], [1, 1], [2, 1], [2, 2]]
 tictactoe(moves)
 # Output: "A"
 # Explanation: "A" wins, he always plays first.
@@ -104,7 +104,7 @@ tictactoe(moves)
 # "   "    "O  "    "O  "    "OO "    "OOX"
 #
 
-moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]
+moves = [[0, 0], [1, 1], [0, 1], [0, 2], [1, 0], [2, 0]]
 tictactoe(moves)
 # Output: "B"
 # Explanation: "B" wins.
@@ -113,7 +113,7 @@ tictactoe(moves)
 # "   "    "   "    "   "    "   "    "   "    "O  "
 #
 
-moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]
+moves = [[0, 0], [1, 1], [2, 0], [1, 0], [1, 2], [2, 1], [0, 1], [0, 2], [2, 2]]
 tictactoe(moves)
 # Output: "Draw"
 # Explanation: The game ends in a draw since there are no moves to make.
@@ -122,7 +122,7 @@ tictactoe(moves)
 # "XOX"
 #
 
-moves = [[0,0],[1,1]]
+moves = [[0, 0], [1, 1]]
 tictactoe(moves)
 # Output: "Pending"
 # Explanation: The game has not finished yet.
@@ -134,7 +134,7 @@ tictactoe(moves)
 # Approach 2: Using matrix library
 #
 
-require 'matrix'
+require "matrix"
 
 class Matrix
   def rotate
@@ -142,7 +142,7 @@ class Matrix
   end
 end
 
-PLAYER = %w(A B)
+PLAYER = %w[A B]
 
 # @param {Integer[][]} moves
 # @return {String}
@@ -155,12 +155,12 @@ def tictactoe(moves)
 end
 
 def result(grid)
-  if (winner = horizontal(grid) || vertical(grid) || diag(grid))
+  if winner = horizontal(grid) || vertical(grid) || diag(grid)
     winner.first
   elsif pending?(grid)
-    'Pending'
+    "Pending"
   else
-    'Draw'
+    "Draw"
   end
 end
 
@@ -179,14 +179,14 @@ end
 
 # checking for a move played three times
 def winner(rows)
-  rows.find { |row| row.compact.size == 3 && row.uniq.size == 1 }
+  rows.find {|row| row.compact.size == 3 && row.uniq.size == 1 }
 end
 
 def pending?(grid)
   grid.flatten.any?(&:nil?)
 end
 
-moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]
+moves = [[0, 0], [2, 0], [1, 1], [2, 1], [2, 2]]
 tictactoe(moves)
 # Output: "A"
 # Explanation: "A" wins, he always plays first.
@@ -195,7 +195,7 @@ tictactoe(moves)
 # "   "    "O  "    "O  "    "OO "    "OOX"
 #
 
-moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]
+moves = [[0, 0], [1, 1], [0, 1], [0, 2], [1, 0], [2, 0]]
 tictactoe(moves)
 # Output: "B"
 # Explanation: "B" wins.
@@ -204,7 +204,7 @@ tictactoe(moves)
 # "   "    "   "    "   "    "   "    "   "    "O  "
 #
 
-moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]
+moves = [[0, 0], [1, 1], [2, 0], [1, 0], [1, 2], [2, 1], [0, 1], [0, 2], [2, 2]]
 tictactoe(moves)
 # Output: "Draw"
 # Explanation: The game ends in a draw since there are no moves to make.
@@ -213,7 +213,7 @@ tictactoe(moves)
 # "XOX"
 #
 
-moves = [[0,0],[1,1]]
+moves = [[0, 0], [1, 1]]
 tictactoe(moves)
 # Output: "Pending"
 # Explanation: The game has not finished yet.

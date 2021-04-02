@@ -11,46 +11,40 @@
 # Approach: Recursive
 #
 
-def delete_node(node,key)
-	return if node == nil
+def delete_node(node, key)
+  return if node.nil?
 
-	if key < node.val
-		node.left = delete_node(node.left,key)
-	elsif key > node.val
-		node.right = delete_node(node.right,key)
-	else
-		if node.left == nil && node.right == nil
-			node = nil
-		elsif node.right
-			node.val = successor(node)
-			node.right = delete_node(node.right,node.val)
-		else
-			node.val = predecessor(node)
-			node.left = delete_node(node.left,node.val)
-		end
-	end
+  if key < node.val
+    node.left = delete_node(node.left, key)
+  elsif key > node.val
+    node.right = delete_node(node.right, key)
+  elsif node.left.nil? && node.right.nil?
+    node = nil
+  elsif node.right
+    node.val = successor(node)
+    node.right = delete_node(node.right, node.val)
+  else
+    node.val = predecessor(node)
+    node.left = delete_node(node.left, node.val)
+  end
 
-	node
+  node
 end
 
 private
 
 def successor(node)
-	node = node.right
+  node = node.right
 
-	while node.left != nil do
-		node = node.left
-	end
+  node = node.left until node.left.nil?
 
-	node.val
+  node.val
 end
 
 def predecessor(node)
-	node = node.left
+  node = node.left
 
-	while node.right != nil do
-		node = node.right
-	end
+  node = node.right until node.right.nil?
 
-	node.val
+  node.val
 end
