@@ -54,3 +54,49 @@ end
 # We go to every node and add 1 to our cumulative count that node is unival with
 # all of its children.
 #
+
+#
+# Approach 2: Iterative (BFS)
+#
+
+# Now for an iterative approach. This approach is top down, and the key light bulb
+# that needs to go off is that once a parent node is unival, then all of its children
+# are unival. So once we hit a unival node, we can simply do a count of all the nodes
+# on that tree, and be done with all of them.
+#
+# First let's setup a counter method that will simply return the count of all
+# nodes given a root node, and then we can combine our above helper methods with
+# our counter and use BFS to get the job done. Basically, as we go through our
+# tree using BFS, for any root that is unival we count all the nodes from that
+# root and then forget about that root node and all of its children. If however
+# a node is not unival, we store its children for the next level of BFS. Worst
+# case scenario, only the leaves will be unival and we'll still hit O(n^2) time complexity,
+# but best case scenario we could get away with O(n) if the first root node is itself unival.
+
+def counter(root)
+  return 0 unless root
+
+  1 + counter(root.left) + counter(root.right)
+end
+
+def count_unival_subtrees(root)
+  return 0 unless root
+
+  univals = 0
+  nodes = [root]
+
+  while nodes.any?
+    next_nodes = []
+    nodes.each do |node|
+      if unival(node)
+        univals += counter(node)
+      else
+        next_nodes << node.left if node.left
+        next_nodes << node.right if node.right
+      end
+    end
+    nodes = next_nodes
+  end
+
+  univals
+end
