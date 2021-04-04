@@ -28,7 +28,7 @@
 # Output: 1
 
 def lowest_common_ancestor(p, q)
-	visited_p = []
+  visited_p = []
   visited_q = []
   # Hash{int:Node}
   nodes = {}
@@ -37,17 +37,17 @@ def lowest_common_ancestor(p, q)
   node_q = q
 
   while node_p || node_q do
-      if node_p
-          visited_p << node_p.val
-          nodes[node_p.val] = node_p
-          node_p = node_p && node_p.parent
-      end
+	if node_p
+	  visited_p << node_p.val
+	  nodes[node_p.val] = node_p
+	  node_p = node_p && node_p.parent
+	end
 
-      if node_q
-          visited_q << node_q.val
-          node_q = node_q && node_q.parent
-          node_q && nodes[node_q.val] = node_q
-      end
+	if node_q
+	  visited_q << node_q.val
+	  node_q = node_q && node_q.parent
+	  node_q && nodes[node_q.val] = node_q
+	end
   end
 
   # find the common nodes by getting the union
