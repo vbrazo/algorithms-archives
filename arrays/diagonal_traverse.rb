@@ -37,3 +37,12 @@ def find_diagonal_order(matrix)
 
   result
 end
+
+a = [
+ [ 1, 2, 3 ],
+ [ 4, 5, 6 ],
+ [ 7, 8, 9 ]
+]
+
+print(find_diagonal_order(a))
+# Output:  [1,2,4,7,5,3,6,8,9]
