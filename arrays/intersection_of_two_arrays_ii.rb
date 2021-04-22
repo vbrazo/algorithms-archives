@@ -25,21 +25,21 @@ require "set"
 def intersect(nums1, nums2)
   result = []
 
-  i = 0
-  j = 0
+  p1 = 0
+  p2 = 0
 
   nums1 = nums1.sort
   nums2 = nums2.sort
 
-  while i < nums1.length && j < nums2.length
-    if nums1[i] < nums2[j]
-      i += 1
-    elsif nums1[i] > nums2[j]
-      j += 1
-    elsif nums1[i] == nums2[j]
-      result << nums1[i]
-      i += 1
-      j += 1
+  while p1 < nums1.length && p2 < nums2.length
+    if nums1[p1] < nums2[p2]
+      p1 += 1
+    elsif nums1[p1] > nums2[p2]
+      p2 += 1
+    elsif nums1[p1] == nums2[p2]
+      result << nums1[p1]
+      p1 += 1
+      p2 += 1
     end
   end
 
