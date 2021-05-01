@@ -26,7 +26,9 @@
 # @param {Integer[]} b
 # @return {Integer[]}
 def anagram_mappings(a, b)
-
+  h = {}  
+  b.each_with_index { |v, i| h[v] = i }
+  a.map { |v|  h[v] }  
 end
 
 a = [12, 28, 46, 32, 50]
