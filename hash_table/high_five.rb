@@ -37,7 +37,23 @@
 # @param {Integer[][]} items
 # @return {Integer[][]}
 def high_five(items)
+  score_hash = {}
 
+  items.each.with_index do |item, i|
+    student_id = item[0].to_s
+
+    if score_hash[student_id].nil? ?
+      score_hash[student_id] = [ item[1] ] :
+      score_hash[student_id].push(item[1])
+    end
+  end
+    
+  score_hash.map do |k, v|
+    key = k.to_i
+    average = v.sort_by { |a| -a }[0..4].reduce(:+) / 5
+
+    [key, average]
+  end
 end
 
 items = [[1,91],[1,92],[2,93],[2,97],[1,60],[2,77],[1,65],[1,87],[1,100],[2,100],[2,76]]
