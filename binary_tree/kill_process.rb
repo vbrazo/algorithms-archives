@@ -34,5 +34,24 @@
 # @param {Integer} kill
 # @return {Integer[]}
 def kill_process(pid, ppid, kill)
+  process_map = {}
 
+  ppid.each_with_index do |process, i|
+    process_map[process] ||= []
+    process_map[process] << pid[i]
+  end
+
+  kill_process_and_subs(process_map, kill)
+end
+
+def kill_process_and_subs(process_map, kill)
+  killed_processes = [kill]
+
+  if map_entry = process_map[kill]
+    map_entry.each do |subp|
+      killed_processes += kill_process_and_subs(process_map, subp)
+    end
+  end
+
+  killed_processes
 end
