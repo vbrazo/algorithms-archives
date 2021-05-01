@@ -6,10 +6,12 @@
 #
 # Input: nums = [1,2,3,1], k = 3
 # Output: true
+#
 # Example 2:
 #
 # Input: nums = [1,0,1,1], k = 1
 # Output: true
+#
 # Example 3:
 #
 # Input: nums = [1,2,3,1,2,3], k = 2
@@ -52,3 +54,15 @@ def contains_nearby_duplicate(nums, k)
 
   false
 end
+
+nums = [1,2,3,1]
+k = 3
+puts contains_nearby_duplicate(nums, k)
+
+nums = [1,0,1,1]
+k = 1
+puts contains_nearby_duplicate(nums, k)
+
+nums = [1,2,3,1,2,3]
+k = 2
+puts contains_nearby_duplicate(nums, k)
