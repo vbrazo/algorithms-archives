@@ -37,7 +37,23 @@
 # @param {Integer[]} arr
 # @return {Integer}
 def sum_odd_length_subarrays(arr)
-  
+  array_length = arr.length
+  sub_start_end_diff = 0
+  sum = 0
+
+  while sub_start_end_diff <= array_length
+    i = 0
+    past_last_sub_start = array_length - sub_start_end_diff
+
+    while (i < past_last_sub_start)
+      sum += arr[i..i+sub_start_end_diff].inject(0, :+)
+      i += 1
+    end
+
+    sub_start_end_diff += 2
+  end
+
+  sum
 end
 
 arr = [1,4,2,5,3]
