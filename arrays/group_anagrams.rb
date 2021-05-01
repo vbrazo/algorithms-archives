@@ -29,7 +29,19 @@
 # @param {String[]} strs
 # @return {String[][]}
 def group_anagrams(strs)
+  ana_hash = Hash.new
 
+  strs.each do |word|
+    sort_key = word.chars.sort
+
+    if ana_hash[sort_key]==nil
+      ana_hash[sort_key]=[word]
+    else
+      ana_hash[sort_key]<<word
+    end
+  end
+
+  ana_hash.values
 end
 
 strs = ["eat","tea","tan","ate","nat","bat"]
