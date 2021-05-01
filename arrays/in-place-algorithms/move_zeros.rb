@@ -89,25 +89,7 @@ move_zeroes([0,1,0,3,12])
 # "last_non_zero_found_at" index with 0.
 
 def move_zeroes(nums)
-  last_non_zero_found_at = 0
-
-  # If the current element is not 0, then we need to
-  # append it just in front of last non 0 element we found.
-  nums.each_with_index do |value, index|
-    if nums[index] != 0
-      last_non_zero_found_at = last_non_zero_found_at + 1
-      nums[last_non_zero_found_at] = nums[index]
-    end
-  end
-
-  # After we have finished processing new elements,
- 	# all the non-zero elements are already at beginning of array.
- 	# We just need to fill remaining array with 0's
-  (last_non_zero_found_at..nums.length-1).each_with_index do |value, index|
-    nums[index] = 0
-  end
-
-  print(nums)
+# TBD
 end
 
 move_zeroes([0,1,0,3,12])
@@ -135,17 +117,7 @@ move_zeroes([0,1,0,3,12])
 # for both the algorithms is same.
 
 def move_zeroes(nums)
-  cur = 0
-  last_non_zero_found_at = 0
-  last_non_zero_found_at.times do |i|
-    if nums[i] != 0
-      last_non_zero_found_at=last_non_zero_found_at+1
-      nums[last_non_zero_found_at], nums[cur] = nums[cur], nums[last_non_zero_found_at]
-    end
-    cur=cur+1
-  end
-
-  print nums
+# TBD
 end
 
 move_zeroes([0,1,0,3,12])
