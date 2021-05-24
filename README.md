@@ -69,7 +69,7 @@ Reference: https://en.wikipedia.org/wiki/Bit_manipulation
 
 ## Dynamic Programming
 
-Dynamic Programming is a technique which combines the generality of recursion with efficient of greedy algorithms. he key idea is to break a problem down into reusable subproblems which combine to form the solution.
+Dynamic Programming is a technique which combines the generality of recursion with the efficiency of greedy algorithms. The key idea is to break a problem down into reusable subproblems which combine to form the solution.
 
 More formally, dynamic programming is an excellent choice when a problem exhibits two key features:
 
