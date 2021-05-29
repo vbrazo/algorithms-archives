@@ -37,3 +37,38 @@ def in_order(node, &block)
   yield node.val
   in_order(node.right, &block)
 end
+
+#
+# Approach 2: Iterative Inorder Traversal
+#
+
+# Alternatively, we could implement the above algorithm iteratively.
+
+# Complexity Analysis
+#
+# Time complexity: O(N) in the worst case when the tree is BST or the "bad" element is a rightmost leaf
+# Space complexity: O(N) to keep stack.
+
+def is_valid_bst(root)
+  result = []
+  stack = []
+  iterator = root
+
+  while iterator || !stack.empty? do
+    if iterator.nil?
+      node = stack.pop
+
+      if result.count > 0 && result.last >= node.val
+        return false
+      end
+
+      result << node.val
+      iterator = node&.right
+    else
+      stack << iterator
+      iterator = iterator.left
+    end
+  end
+
+  true
+end
