@@ -28,3 +28,46 @@ def sorted_array_to_bst(nums)
 
   root
 end
+
+#
+# Approach 2: Iterative
+#
+
+# Yeah, technically you can get away with just one stack for both indices, or even one stack for the indices and the current node since you already know what order you need to pop off each so you can just add the indices and nodes in the order that you need to correctly pop them off, but it looks super weird and unreadable IMHO.
+
+# Complexity Analysis
+#
+# Time complexity: O(N) since we visit each node exactly once.
+# Space complexity: O(N). O(N) to keep the output, and O(logN) for the recursion stack.
+
+def sorted_array_to_bst(nums)
+  left_indices = [0]
+  right_indices = [nums.length-1]
+  root = TreeNode.new(nil)
+  nodes = [root]
+
+  while nodes.any?
+    node = nodes.pop
+    left = left_indices.pop
+    right = right_indices.pop
+    mid = left + (right - left)/2
+
+    node.val = nums[mid]
+
+    if left < mid
+      node.left = TreeNode.new(nil)
+      nodes << node.left
+      left_indices << left
+      right_indices << mid - 1
+    end
+
+    if right > mid
+      node.right = TreeNode.new(nil)
+      nodes << node.right
+      left_indices << mid + 1
+      right_indices << right
+    end
+  end
+
+  root
+end
