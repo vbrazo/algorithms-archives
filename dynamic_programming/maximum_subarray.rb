@@ -41,3 +41,27 @@ def max_sub_array(nums)
 
   return max_sum
 end
+
+#
+# Approach 2: Dynamic Programming, Kadane's Algorithm
+#
+
+# Complexity Analysis
+#
+# Time complexity: O(N), where NN is the length of nums.
+# We iterate through every element of nums exactly once.
+# Space complexity: O(1)
+# No matter how long the input is, we are only ever using 2 variables: currentSubarray and maxSubarray.
+
+def max_sub_array(nums)
+  return if nums.empty?
+
+  max_so_far = Array.new(nums.length)
+  max_so_far[0] = nums[0]
+
+  (1...nums.length).each do |i|
+    max_so_far[i] = [nums[i], nums[i] + max_so_far[i-1]].max
+  end
+
+  return max_so_far.max
+end
