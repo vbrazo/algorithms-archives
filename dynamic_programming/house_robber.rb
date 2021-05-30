@@ -31,3 +31,20 @@ def rob(nums, i = nums.length - 1, memo = Array.new(nums.length, -1))
 
   memo[i] = [rob(nums, i-2, memo) + nums[i], rob(nums, i-1, memo)].max
 end
+
+#
+# Approach 2: Dynamic Programming
+#
+
+# Complexity Analysis
+#
+# Time Complexity: O(N) since we process at most N recursive calls, thanks to
+# caching, and during each of these calls, we make an O(1) computation which is
+# simply making two other recursive calls, finding their maximum, and populating
+# the cache based on that.
+# Space Complexity: O(N) which is occupied by the cache and also by the recursion stack
+
+def rob(nums, i = nums.length - 1)
+  return 0 if i < 0
+  [rob(nums, i-2) + nums[i], rob(nums, i-1)].max
+end
