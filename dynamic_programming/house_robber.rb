@@ -48,3 +48,28 @@ def rob(nums, i = nums.length - 1)
   return 0 if i < 0
   [rob(nums, i-2) + nums[i], rob(nums, i-1)].max
 end
+
+#
+# Approach 3: Optimized Dynamic Programming
+#
+
+# Time Complexity
+#
+# Time Complexity: O(N) since we have a loop from N−2 and we use the precalculated values of our dynamic programming table to calculate the current value in the table which is a constant time operation.
+# Space Complexity: O(1) since we are not using a table to store our values. Simply using two variables will suffice for our calculations.
+
+def rob(nums)
+  dp = Array.new(nums.size + 1)
+
+  (nums.size + 1).times do |i|
+    if i == 0
+      dp[i] = 0
+    elsif i == 1
+      dp[i] = nums[0]
+    else
+      dp[i] = [dp[i-2] + nums[i-1], dp[i-1]].max
+    end
+  end
+
+  dp[-1]
+end
