@@ -80,10 +80,8 @@ def number_to_words(num)
   words = ""
   i = 0
 
-  while (num > 0)
-    if (num % 1000 != 0)
-      words = helper(num % 1000) + THOUSANDS[i] + " " + words
-    end
+  while num > 0
+    words = helper(num % 1000) + THOUSANDS[i] + " " + words if num % 1000 != 0
 
     num /= 1000
     i += 1
@@ -93,11 +91,11 @@ def number_to_words(num)
 end
 
 def helper(num)
-  return '' if num == 0
+  return "" if num == 0
 
-  if (num < 20)
+  if num < 20
     LESS_THAN_20[num] + " "
-  elsif (num < 100)
+  elsif num < 100
     TENS[num / 10] + " " + helper(num % 10)
   else
     LESS_THAN_20[num / 100] + " Hundred " + helper(num % 100)
@@ -108,14 +106,14 @@ num = 123
 print number_to_words(num)
 # Output: "One Hundred Twenty Three"
 
-num = 12345
+num = 12_345
 print number_to_words(num)
 # Output: "Twelve Thousand Three Hundred Forty Five"
 
-num = 1234567
+num = 1_234_567
 print number_to_words(num)
 # Output: "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
 
-num = 1234567891
+num = 1_234_567_891
 print number_to_words(num)
 # Output: "One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One"
