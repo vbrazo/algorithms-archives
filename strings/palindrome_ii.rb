@@ -51,3 +51,72 @@ puts valid_palindrome_ii(s)
 s = "abc"
 puts valid_palindrome_ii(s)
 # Output: false
+
+#
+# Approach 2: Two pointers
+#
+
+# Complexity Analysis
+#
+# Time complexity: O(N)
+# Space Complexity: O(1)
+
+# Python program to check whether it is possible to make
+# string palindrome by removing one character
+
+# Utility method to check if substring from
+# low to high is palindrome or not.
+def is_palindrome(string, low, high)
+  while low < high
+    return false if string[low] != string[high]
+
+    low += 1
+    high -= 1
+  end
+
+  true
+end
+
+def valid_palindrome_ii(string)
+  low = 0
+  high = string.chars.count - 1
+
+  while low < high
+    # If both characters are equal then
+    # move both pointer towards end
+    if string[low] == string[high]
+      low += 1
+      high -= 1
+    else
+      # If removing string[low] makes the whole string palindrome.
+      # We basically check if substring string[low+1..high] is
+      # palindrome or not.
+      if is_palindrome(string, low + 1, high)
+        return true
+      end
+
+      # If removing string[high] makes the whole string palindrome
+      # We basically check if substring string[low+1..high] is
+      # palindrome or not
+      if is_palindrome(string, low, high - 1)
+        return true
+      end
+
+      return false
+    end
+  end
+
+  true
+end
+
+s = "aba"
+puts valid_palindrome_ii(s)
+# Output: true
+
+s = "abca"
+puts valid_palindrome_ii(s)
+# Output: true
+
+s = "abc"
+puts valid_palindrome_ii(s)
+# Output: false
