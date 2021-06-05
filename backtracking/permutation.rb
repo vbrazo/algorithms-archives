@@ -22,13 +22,13 @@
 #
 
 def backtrack(nums, cur_array)
-  if(cur_array.size == nums.size)
+  if cur_array.size == nums.size
     @ans << cur_array.clone
 
     return
   end
 
-  (0..nums.length-1).each do |i|
+  (0..nums.length - 1).each do |i|
     next if cur_array.include?(nums[i])
 
     cur_array << nums[i]
@@ -45,11 +45,11 @@ def permute(nums)
   @ans
 end
 
-nums = [1,2,3]
+nums = [1, 2, 3]
 permute(nums)
 # Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 
-nums = [0,1]
+nums = [0, 1]
 permute(nums)
 # Output: [[0,1],[1,0]]
 
@@ -61,30 +61,30 @@ permute(nums)
 # Approach 2: Backtracking (Swapping)
 #
 
+def perm(nums, i, result)
+  return result << nums.dup if i == nums.size
+
+  (i...nums.size).each do |j|
+    nums[i], nums[j] = nums[j], nums[i]
+    perm(nums, i + 1, result)
+    nums[i], nums[j] = nums[j], nums[i]
+  end
+end
+
 def permute(nums)
   result = []
   i = 0
 
   perm(nums, i, result)
 
-  return result
+  result
 end
 
-def perm(nums, i, result)
-  return result << nums.dup if i == nums.size
-
-  (i...nums.size).each do |j|
-    nums[i], nums[j] = nums[j], nums[i]
-    perm(nums, i+1, result)
-    nums[i], nums[j] = nums[j], nums[i]
-  end
-end
-
-nums = [1,2,3]
+nums = [1, 2, 3]
 permute(nums)
 # Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 
-nums = [0,1]
+nums = [0, 1]
 permute(nums)
 # Output: [[0,1],[1,0]]
 
