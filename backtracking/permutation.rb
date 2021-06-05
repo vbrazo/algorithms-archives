@@ -56,3 +56,38 @@ permute(nums)
 nums = [1]
 permute(nums)
 # Output: [[1]]
+
+#
+# Approach 2: Backtracking (Swapping)
+#
+
+def permute(nums)
+  result = []
+  i = 0
+
+  perm(nums, i, result)
+
+  return result
+end
+
+def perm(nums, i, result)
+  return result << nums.dup if i == nums.size
+
+  (i...nums.size).each do |j|
+    nums[i], nums[j] = nums[j], nums[i]
+    perm(nums, i+1, result)
+    nums[i], nums[j] = nums[j], nums[i]
+  end
+end
+
+nums = [1,2,3]
+permute(nums)
+# Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+nums = [0,1]
+permute(nums)
+# Output: [[0,1],[1,0]]
+
+nums = [1]
+permute(nums)
+# Output: [[1]]
