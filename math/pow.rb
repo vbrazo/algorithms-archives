@@ -16,7 +16,7 @@
 #
 # Input: x = 2.00000, n = -2
 # Output: 0.25000
-# Explanation: 2-2 = 1/22 = 1/4 = 0.25
+# Explanation: 2 - 2 = 1/22 = 1/4 = 0.25
 
 #
 # Approach 1: Fast Power Algorithm Recursive
@@ -53,10 +53,8 @@ end
 
 # Complexity Analysis
 #
-# Time complexity: O(logn). For each bit of n 's binary representation, we will at most multiply once. So the total time complexity is O(logn).
+# Time complexity: O(log n). For each bit of n 's binary representation, we will at most multiply once. So the total time complexity is O(log n).
 # Space complexity: O(1). We only need two variables for the current product and the final result of x.
-
-# O (log n) solution in Ruby, non-recursive
 
 def my_pow(x, n)
   return 1 if n == 0
