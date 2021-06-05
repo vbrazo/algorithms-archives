@@ -18,6 +18,10 @@
 # 1 <= nums.length <= 8
 # -10 <= nums[i] <= 10
 
+#
+# Approach 1: Backtracking with Groups of Numbers
+# 
+
 # @param {Integer[]} nums
 # @return {Integer[][]}
 require 'set'
@@ -44,3 +48,14 @@ def backtrack(nums, arr, result, visited)
     end
   end
 end
+
+nums = [1,1,2]
+print permute_unique(nums)
+# Output:
+# [[1,1,2],
+#  [1,2,1],
+#  [2,1,1]]
+
+nums = [1,2,3]
+print permute_unique(nums)
+# Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
