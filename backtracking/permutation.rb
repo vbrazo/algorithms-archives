@@ -21,9 +21,9 @@
 # Approach 1: Backtracking (Without swapping)
 #
 
-def backtrack(nums, cur_array)
+def backtrack(nums, cur_array, result)
   if cur_array.size == nums.size
-    @ans << cur_array.clone
+    result << cur_array.clone
 
     return
   end
@@ -33,28 +33,28 @@ def backtrack(nums, cur_array)
 
     cur_array << nums[i]
 
-    backtrack(nums, cur_array)
+    backtrack(nums, cur_array, result)
 
     cur_array.pop
   end
 end
 
 def permute(nums)
-  @ans = []
-  backtrack(nums, [])
-  @ans
+  result = []
+  backtrack(nums, [], result)
+  result
 end
 
 nums = [1, 2, 3]
-permute(nums)
+print permute(nums)
 # Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 
 nums = [0, 1]
-permute(nums)
+print permute(nums)
 # Output: [[0,1],[1,0]]
 
 nums = [1]
-permute(nums)
+print permute(nums)
 # Output: [[1]]
 
 #
@@ -73,21 +73,18 @@ end
 
 def permute(nums)
   result = []
-  i = 0
-
-  perm(nums, i, result)
-
+  perm(nums, 0, result)
   result
 end
 
 nums = [1, 2, 3]
-permute(nums)
+print permute(nums)
 # Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 
 nums = [0, 1]
-permute(nums)
+print permute(nums)
 # Output: [[0,1],[1,0]]
 
 nums = [1]
-permute(nums)
+print permute(nums)
 # Output: [[1]]
