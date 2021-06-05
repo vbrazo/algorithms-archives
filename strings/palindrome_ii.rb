@@ -61,7 +61,7 @@ puts valid_palindrome_ii(s)
 # Time complexity: O(N)
 # Space Complexity: O(1)
 
-# Python program to check whether it is possible to make
+# Ruby program to check whether it is possible to make
 # string palindrome by removing one character
 
 # Utility method to check if substring from
